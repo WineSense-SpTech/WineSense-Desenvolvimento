@@ -18,11 +18,7 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(50) NOT NULL,
 email VARCHAR(60) UNIQUE,
 telefone VARCHAR(20),
-nomePais VARCHAR(50),
-nomeEstado VARCHAR(40),
-nomeCidade VARCHAR(80),
-nomeRua VARCHAR(50),
-numeroRua INT
+endereco Varchar(40)
 );
 
 -- Tabela para guardar os dados dos tipos de vinho produzidos pela empresa
@@ -61,7 +57,7 @@ temperatura DECIMAL(5, 2) NOT NULL
 INSERT INTO usuario(nome, sobrenome, email, telefone, senha) VALUES
 ('Carolina', 'Soares', 'carol.soares@gmail.com', '5511993114452', '123456');
 
-INSERT INTO empresa(nome, email, telefone, nomePais, nomeEstado, nomeCidade, nomeRua, numeroRua) VALUES
+INSERT INTO empresa(nome, email, telefone, endereco) VALUES
 ('Wine', 'wine@gmail.com', '5511987614523', 'Brasil', 'São Paulo', 'Campinas', 'Rua do Vinho', 567);
 
 INSERT INTO vinho(tipoUva, tipoVinho, tempMinima, tempMaxima) VALUES
