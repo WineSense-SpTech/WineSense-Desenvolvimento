@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WineSense — Simulador Financeiro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #341826;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>WineSense — Simulador Financeiro</h1>
+    <p><i>Sensor de Temperatura na Fermentação de Vinho</i></p><br>
+
+    <b>Nome / Vinícola: </b><input type="text" id="id_nome"><br><br>
+
+    <b>Tipo de vinho (Tinto ou Branco): </b>
+    <select id="vinho">
+        <option>Selecione uma opção</option>
+        <option value="Tinto">Tinto</option>
+        <option value="Branco">Branco</option>
+    </select>
+
+    <br><br>
+
+    <b>Tipo de uva: </b>
+    <select id="uva">
+        <option>Selecione uma opção</option>
+        <option value="Cabernet Sauvignon">Cabernet Sauvignon</option>
+        <option value="Malbec">Malbec</option>
+        <option value="Pinot Noir">Pinot Noir</option>
+        <option value="Sauvignon Blanc">Sauvignon Blanc</option>
+        <option value="Chardonnay">Chardonnay</option>
+        <option value="Pinot Gris">Pinot Gris</option>
+
+    </select>
+    <br><br>
+
+    <b>Volume de mosto por tanque (litros): </b><input type="number" id="id_volume_mosto"><br><br>
+
+    <b>Quantidade de lotes por mês: </b><input type="number" id="id_quantidade_lote"><br><br>
+
+    <b>Preço médio de venda (R$/litro): </b><input type="number" id="id_preco_medio"><br><br>
+
+    <b>Quantos litros você estima que perde por mês por problemas na fermentação? </b><input type="number"
+        id="id_litros_perdidos"><br>
+    <span><i>Inclua perdas por superaquecimento, sub-resfriamento, parada de fermentação ou descarte de bateladas
+            comprometidas.</i></span><br><br>
+
+    <button onclick="calcular()">Simular</button>
+
+    <p id="mensagem"></p>
+
+</body>
+
+<script>
+    let eficacia_sensor = 0.75
+
+    function calcular() {
+        var nome = id_nome.value
+        var tipo_vinho = vinho.value
+        var tipo_uva = uva.value
+        let volume_mosto = Number(id_volume_mosto.value)
+        let quantidade_lote = Number(id_quantidade_lote.value)
+        let preco_medio = Number(id_preco_medio.value)
+        let litros_perdidos = Number(id_litros_perdidos.value)
+
+        // Volume total produzido 
+        let volume_total_mes = volume_mosto * quantidade_lote
+
+        // Percentual de perda
+        let percentual_perda = (litros_perdidos / volume_total_mes) * 100
+
+        //Prejuízo com base na perda informada pelo próprio usuário
+        let prejuizo_mensal = litros_perdidos * preco_medio
+        let prejuizo_anual = prejuizo_mensal * 12
+
+        // Tempo perdido por batelada comprometida
+        // Fonte: Wikipedia — Fermentation in Winemaking       
+        if (tipo_vinho == "Tinto") {
+            dias_perdidos = 18
+            horas_perdidas = dias_perdidos * 24
+            minutos_perdidos = horas_perdidas * 60
+            temperatura_ideal = "23°-28°"
+        } else if (tipo_vinho == "Branco") {
+            dias_perdidos = 10
+            horas_perdidas = dias_perdidos * 24
+            minutos_perdidos = horas_perdidas * 60
+            temperatura_ideal = "16°-21°"
+        }
+        // Economia com o sensor
+        let litros_recuperados = litros_perdidos * eficacia_sensor
+        let economia_mensal = litros_recuperados * preco_medio
+        let economia_anual = economia_mensal * 12
+
+        mensagem.innerHTML = `<h3>Olá ${nome}!</h3>
+        Vinho: ${tipo_vinho}<br>
+        Uva: ${tipo_uva}<br>
+        Temperatura ideal de fermentação: ${temperatura_ideal}<br>
+        Duração média de fermentação: ${dias_perdidos} dias<br><br>
+
+
+        <b>--- PRODUÇÃO MENSAL ---</b><br>
+        Volume total produzido por mês: ${volume_total_mes} litros<br>
+        Litros perdidos por mês (informado por você): ${litros_perdidos} litros<br>
+        Isso representa ${percentual_perda.toFixed(2)}% da sua produção mensal<br><br>    
+        
+        <b>--- PREJUÍZO SEM MONITORAMENTO ---</b><br>
+        Prejuízo mensal: R$ ${prejuizo_mensal.toFixed(2)}<br>
+        Prejuízo anual: R$ ${prejuizo_anual.toFixed(2)}<br><br>
+
+        <b>--- TEMPO PERDIDO POR BATELADA COMPROMETIDA ---</b><br>
+        Cada batelada com problema representa ${dias_perdidos} dias, ${horas_perdidas} horas ou ${minutos_perdidos} minutos de fermentação desperdiçada.<br><br>
+
+        <b>--- ECONOMIA COM O SENSOR WINESENSE ---</b><br>
+        <i>O sensor pode reduzir em até 100% de perdas caso utilizado para os devidos fins e da maneira orientada pela WineSense</i><br><br>
+
+        Litros recuperados por mês: ${litros_recuperados.toFixed(2)} litros<br>
+        Economia mensal: R$ ${economia_mensal.toFixed(2)}<br>
+        Economia anual: R$ ${economia_anual.toFixed(2)}<br>
+        `
+    }
+</script>
+
+<hr>
+<p>
+    <b>Fontes:</b><br>
+    <a href="https://www.oiv.int" target="_blank" style="color: #F1ECE2;">OIV — Produção mundial de vinho 2025</a><br>
+    <a href="https://wineserver.ucdavis.edu/industry-info/enology/fermentation-management-guides/wine-fermentation/problem-fermentations"
+        target="_blank" style="color: #F1ECE2;">UC Davis — Temperatura como principal causa de fermentação
+        travada</a><br>
+    <a href="https://en.wikipedia.org/wiki/Fermentation_in_winemaking" target="_blank" style="color: #F1ECE2;">Wikipedia
+        — Duração da fermentação por tipo de vinho</a><br>
+    <a href="https://www.embrapa.br/uva-e-vinho" target="_blank" style="color: #F1ECE2;">Embrapa Uva e Vinho</a><br>
+    <a href="https://www.winegrid.com/pt/#benefits" target="_blank" style="color: #F1ECE2;">Winegrid</a><br>
+    <br>
+    <i>Os litros perdidos são informados pelo próprio produtor. O simulador não assume nenhum percentual de perda. É
+        esperado que nosso produto obtenha até 100% de eficácia caso usado da maneira correta. Não assumimos
+        responsabilidade por outras problemáticas relacionadas à vinicultura, tornando o projeto exclusivo para o
+        monitoramento da temperatura na etapa de fermentação.</i>
+</p>
+
+</html>
