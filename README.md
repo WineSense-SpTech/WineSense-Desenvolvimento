@@ -1,91 +1,178 @@
-# WineSense — Sensor de Temperatura na Fermentação de Vinho
+# 🍷 WineSense — Repositório de Desenvolvimento
 
-O WineSense é uma solução baseada em IoT para monitoramento contínuo da temperatura durante o processo de fermentação vinícola. O sistema utiliza sensores térmicos integrados a uma plataforma web, permitindo identificar rapidamente qualquer desvio no controle térmico e realizar intervenções imediatas, reduzindo perdas e garantindo a qualidade do vinho.
+O **WineSense** é uma solução baseada em IoT para monitoramento da temperatura durante o processo de fermentação do vinho.
 
-### 📊 Diagrama de Visão de Negócio
+Este repositório contém a **implementação técnica do projeto**, incluindo sensores, banco de dados, APIs, dashboards e demais componentes necessários para o funcionamento da solução.
 
-<img src="diagramas\visao-de-negocio\diagrama-negocio-winesense.png" width="500"/>
+---
 
-## 💻 Site Institucional
-<div align="center">
-  <img src="site-institucional\home.png" width="500"/>
-  <img src="site-institucional\sobre.png" width="500"/>
-  <img src="site-institucional\simulador.png" width="500"/>
-</div>
+## 🚀 Visão Geral do Sistema
 
+O sistema realiza:
 
-## 🚀 Começando
+- Coleta de dados via sensor de temperatura  
+- Envio e armazenamento dos dados  
+- Processamento e análise  
+- Exibição em dashboard  
+- Geração de alertas  
 
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
+---
 
+## 🧠 Arquitetura da Solução
 
-### 📋 Pré-requisitos
+A solução é composta por:
 
-- Arduino Uno
-- Sensor de temperatura LM35
-- Arduino IDE instalada
-- Navegador web moderno (para o simulador financeiro)
+- Dispositivo IoT (Arduino + sensor)
+- API de ingestão de dados  
+- Banco de dados relacional  
+- API de aplicação  
+- Dashboard web  
+- Site institucional  
 
+---
+
+## 📦 Entregas por Disciplina
+
+### 💻 Algoritmos
+
+- Site Estático Institucional  
+  - HTML, CSS e JavaScript  
+  - Estrutura com reaproveitamento de componentes  
+
+- Site Estático Dashboard  
+  - Visualização de dados com gráficos (Chart.js)  
+
+- Sistema de Cadastro e Login  
+  - Interface estática para autenticação de usuários  
+
+---
+
+### 🧩 Tecnologia da Informação
+
+- Diagrama de Solução  
+  - Arquitetura técnica do projeto  
+
+- Gestão de Projeto  
+  - Organização por Sprints  
+  - Controle de atividades  
+
+- Backlog da Sprint  
+  - Demandas priorizadas  
+  - Pontuação e organização  
+
+---
+
+### 🗄️ Banco de Dados
+
+- Modelagem Lógica (v1)  
+- Estrutura relacional do sistema  
+
+- Scripts SQL  
+  - Criação do banco  
+  - Criação de tabelas  
+  - Execução em ambiente local  
+
+---
+
+### ⚙️ Arquitetura Computacional
+
+- Integração Sensor + Sistema  
+  - Leitura de dados do sensor  
+
+- Simulação com gráficos  
+  - Representação dos dados coletados  
+
+- Comunicação com API local  
+
+---
+
+### 🖥️ Sistemas Operacionais
+
+- Configuração de ambiente Linux (VM)  
+
+- Instalação do MySQL  
+  - Banco de dados da aplicação  
+
+- Integração Arduino → MySQL  
+
+- Validação da solução técnica  
+  - Testes completos do sistema  
+  - Validação da arquitetura  
+
+---
+
+## 🔧 Tecnologias Utilizadas
+
+- Arduino Uno  
+- Sensor LM35  
+- HTML, CSS, JavaScript  
+- Chart.js  
+- MySQL  
+- Ambiente Linux (VM)  
+
+---
+
+## ▶️ Como Executar o Projeto
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/seu-repositorio/winesense-dev.git
 ```
-Arduino IDE: https://docs.arduino.cc/software/ide/
-```
 
-### 🔧 Instalação
+---
 
-**1. Clone o repositório:**
+### 2. Executar o banco de dados
 
-```
-git clone https://github.com/isacardosods/WineSense.git
-```
+- Abrir o script SQL  
+- Executar no MySQL  
 
-**2. Abra o código do Arduino na IDE:**
+---
 
-```
-Arquivo > Abrir > sensor-temperatura.ino
-```
+### 3. Rodar o Arduino
 
-**3. Conecte o LM35 ao Arduino Uno:**
+- Abrir o código `.ino` na IDE  
+- Conectar o sensor  
+- Iniciar leitura dos dados  
 
-```
-Pino esquerdo (VCC) → 5V
-Pino do meio (Vout) → A0
-Pino direito (GND) → GND
-```
+---
 
-**4. Abra o simulador financeiro no navegador:**
+### 4. Abrir o sistema web
 
-```
-Abrir o arquivo: simulador-financeiro/simuladorFinanceiro.html diretamente no navegador
-```
+- Executar os arquivos HTML no navegador  
 
-**5. Abra e execute o arquivo SQL no MySQL:**
+---
 
-```
-Abrir o arquivo: banco-de-dados\BD-Sprint1-final.sql no MySQL
-```
+## 📊 Funcionalidades
 
-## 🛠️ Construído com
+- Cadastro de usuários  
+- Cadastro de empresas e vinhos  
+- Monitoramento de temperatura  
+- Dashboard com gráficos  
+- Alertas em tempo real  
+- Histórico de dados  
 
-* Arduino Uno — Plataforma de prototipagem eletrônica
-* LM35 — Sensor de temperatura analógico
-* [Arduino IDE](https://docs.arduino.cc/software/ide/) — Ambiente de desenvolvimento
-* HTML/CSS/JavaScript — Simulador financeiro web
-* [MySQL](https://dev.mysql.com) — Banco de dados
+---
 
-## ✒️ Autores
+## 🚫 Limitações
 
-* **Ana Clara Ferreira Clarete**
-* **Beatriz Mustafa Ferreira**
-* **Emanuelly Cristini Alves de Melo**
-* **Fernanda Rodrigues Leal**
-* **Isabella Cardoso dos Santos** 
-* **Sarah Tiemi Sato**
-* **Thays Ramos da Silva Delfino**
+- Monitoramento apenas de temperatura  
+- Não realiza controle automático  
+- Integração limitada ao ambiente local  
 
-## 📚 Fontes e Referências
+---
 
-* OIV — Organização Internacional da Vinha e do Vinho: https://www.oiv.int
-* UC Davis — Problem Fermentations: https://wineserver.ucdavis.edu
-* Wikipedia — Fermentation in Winemaking: https://en.wikipedia.org/wiki/Fermentation_in_winemaking
-* Embrapa Uva e Vinho: https://www.embrapa.br/uva-e-vinho
-* Carla Lopes André et al. — Implantação de Sistema IoT para Monitoramento da Temperatura do Processo de Fermentação em uma Vitivinícola Instalada no Vale do São Francisco. Revista de Engenharia e Pesquisa Aplicada, v.9, n.3, 2024.
+## 👥 Equipe
+
+- Enzo Basseto Martelozzo
+- Guilherme Gonçalves Britto
+- Jonatas Pereira Teles 
+- Marcos Paulos de Carvalho Ribeiro  
+- Marina Santos Paixão Ribeiro  
+- Rafael de Campos Naleto Filho  
+
+---
+
+## 📌 Observações
+
+Este repositório é destinado ao desenvolvimento e testes da solução, podendo sofrer alterações frequentes conforme evolução do projeto.
