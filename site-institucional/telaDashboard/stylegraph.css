@@ -1,0 +1,71 @@
+:root {
+            --primary-color: #200f06;
+            --bg-color: #f4ede0;
+            --card-bg: #f4e4d3;
+            --text-color:  #200f06;
+        }
+
+.body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.dashboard {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border-style: solid;
+    border-color:#dcb6a3;
+    border-width: 2px;
+    box-shadow: 0 10px 30px rgb(133, 125, 120);
+    width: 90%;
+    max-width: 600px;
+}
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+.temp-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    columns: var(--primary-color);
+}
+
+.container-grafico {
+    width: 100%;
+    height: 200px;
+    border-left: 2px solid rgb(61, 50, 43);
+    border-bottom: 2px solid rgb(61, 50, 43);
+    position: relative;
+    overflow: hidden;
+}
+
+#temp-linha{
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all 0.5s ease;
+}
+
+.linhas-grafico {
+    stroke: rgb(82, 71, 69);
+    stroke-width: 1;
+    stroke-dasharray: 5,5;
+}
+
+.label {
+    font-size: 12px;
+    fill: grey;
+}
