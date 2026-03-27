@@ -4,60 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>WineSense — Simulador Financeiro</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #341826;
-            text-align: center;
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
+    <div class="container">
+        <h1>WineSense — Simulador Financeiro</h1>
+        <p><i>Sensor de Temperatura na Fermentação de Vinho</i></p><br>
+        <div class="inputs">
+            <b>Nome / Vinícola: </b><input type="text" required id="id_nome" placeholder="Ex: Vinicula Silva"><br><br>
 
-    <h1>WineSense — Simulador Financeiro</h1>
-    <p><i>Sensor de Temperatura na Fermentação de Vinho</i></p><br>
+            <b>Tipo de vinho (Tinto ou Branco): </b>
+            <select id="vinho" required>
+                <option>Selecione uma opção</option>
+                <option value="Tinto">Tinto</option>
+                <option value="Branco">Branco</option>
+            </select>
 
-    <b>Nome / Vinícola: </b><input type="text" id="id_nome"><br><br>
+            <br><br>
 
-    <b>Tipo de vinho (Tinto ou Branco): </b>
-    <select id="vinho">
-        <option>Selecione uma opção</option>
-        <option value="Tinto">Tinto</option>
-        <option value="Branco">Branco</option>
-    </select>
+            <b>Tipo de uva: </b>
+            <select id="uva" required>
+                <option>Selecione uma opção</option>
+                <option value="Cabernet Sauvignon">Cabernet Sauvignon</option>
+                <option value="Malbec">Malbec</option>
+                <option value="Pinot Noir">Pinot Noir</option>
+                <option value="Sauvignon Blanc">Sauvignon Blanc</option>
+                <option value="Chardonnay">Chardonnay</option>
+                <option value="Pinot Gris">Pinot Gris</option>
 
-    <br><br>
+            </select>
+            <br><br>
 
-    <b>Tipo de uva: </b>
-    <select id="uva">
-        <option>Selecione uma opção</option>
-        <option value="Cabernet Sauvignon">Cabernet Sauvignon</option>
-        <option value="Malbec">Malbec</option>
-        <option value="Pinot Noir">Pinot Noir</option>
-        <option value="Sauvignon Blanc">Sauvignon Blanc</option>
-        <option value="Chardonnay">Chardonnay</option>
-        <option value="Pinot Gris">Pinot Gris</option>
+            <b>Volume do tanque em litros (mosto): </b><input required type="number" id="id_volume_mosto" placeholder='Ex: 10000L (Digite sem "L")' ><br><br>
 
-    </select>
-    <br><br>
+            <b>Quantidade de lotes por mês: </b><input required type="number" id="id_quantidade_lote" placeholder="Ex: 10"><br><br>
 
-    <b>Volume de mosto por tanque (litros): </b><input type="number" id="id_volume_mosto"><br><br>
+            <b>Preço médio de venda (US$/litro): </b><input required type="number" id="id_preco_medio"placeholder='Ex: US$4 (Digite sem "US$")' ><br><br>
+           
+            <b>Porcentagem de perda da produção por mês por problemas na fermentação? </b><span class="explicacao"><i>Inclua perdas por superaquecimento, sub-resfriamento, parada de fermentação ou descarte de bateladas
+                comprometidas.</i></span><input type="number" required placeholder='Ex: 7% (Digite sem "%")'
+            id="id_litros_perdidos"><br><br> 
+        </div>
+        <span><i><strong><b class="red">* </b>Os exemplos que ocupam os campos antes de que o usuário escreva são opções de dados reais que podem ser utilizados caso o usuário não tenha essas informações!</strong></i></span><br><br>
 
-    <b>Quantidade de lotes por mês: </b><input type="number" id="id_quantidade_lote"><br><br>
 
-    <b>Preço médio de venda (R$/litro): </b><input type="number" id="id_preco_medio"><br><br>
+        <button onclick="calcular()" type="submit">Simular</button>
 
-    <b>Quantos litros você estima que perde por mês por problemas na fermentação? </b><input type="number"
-        id="id_litros_perdidos"><br>
-    <span><i>Inclua perdas por superaquecimento, sub-resfriamento, parada de fermentação ou descarte de bateladas
-            comprometidas.</i></span><br><br>
-
-    <button onclick="calcular()">Simular</button>
-
-    <p id="mensagem"></p>
+        <p id="mensagem"></p>
+    </div>
 
 </body>
 
@@ -71,13 +67,13 @@
         let volume_mosto = Number(id_volume_mosto.value)
         let quantidade_lote = Number(id_quantidade_lote.value)
         let preco_medio = Number(id_preco_medio.value)
-        let litros_perdidos = Number(id_litros_perdidos.value)
+        let litros_perdidos = Number(id_litros_perdidos.value)/100
 
         // Volume total produzido 
         let volume_total_mes = volume_mosto * quantidade_lote
 
         // Percentual de perda
-        let percentual_perda = (litros_perdidos / volume_total_mes) * 100
+        let percentual_perda = (litros_perdidos * volume_total_mes) 
 
         //Prejuízo com base na perda informada pelo próprio usuário
         let prejuizo_mensal = litros_perdidos * preco_medio
@@ -130,22 +126,24 @@
     }
 </script>
 
-<hr>
-<p>
-    <b>Fontes:</b><br>
-    <a href="https://www.oiv.int" target="_blank" style="color: #F1ECE2;">OIV — Produção mundial de vinho 2025</a><br>
-    <a href="https://wineserver.ucdavis.edu/industry-info/enology/fermentation-management-guides/wine-fermentation/problem-fermentations"
-        target="_blank" style="color: #F1ECE2;">UC Davis — Temperatura como principal causa de fermentação
-        travada</a><br>
-    <a href="https://en.wikipedia.org/wiki/Fermentation_in_winemaking" target="_blank" style="color: #F1ECE2;">Wikipedia
-        — Duração da fermentação por tipo de vinho</a><br>
-    <a href="https://www.embrapa.br/uva-e-vinho" target="_blank" style="color: #F1ECE2;">Embrapa Uva e Vinho</a><br>
-    <a href="https://www.winegrid.com/pt/#benefits" target="_blank" style="color: #F1ECE2;">Winegrid</a><br>
-    <br>
-    <i>Os litros perdidos são informados pelo próprio produtor. O simulador não assume nenhum percentual de perda. É
-        esperado que nosso produto obtenha até 100% de eficácia caso usado da maneira correta. Não assumimos
-        responsabilidade por outras problemáticas relacionadas à vinicultura, tornando o projeto exclusivo para o
-        monitoramento da temperatura na etapa de fermentação.</i>
-</p>
-
+<footer>
+    <p>
+        <b>Fontes:</b><br>
+        <a href="https://www.oiv.int" target="_blank">OIV — Produção mundial de vinho 2025</a><br>
+        <a href="https://wineserver.ucdavis.edu/industry-info/enology/fermentation-management-guides/wine-fermentation/problem-fermentations"
+            target="_blank">UC Davis — Temperatura como principal causa de fermentação
+            travada</a><br>
+        <a href="https://en.wikipedia.org/wiki/Fermentation_in_winemaking" target="_blank">Wikipedia
+            — Duração da fermentação por tipo de vinho</a><br>
+        <a href="https://www.embrapa.br/uva-e-vinho" target="_blank">Embrapa Uva e Vinho</a><br>
+        <a href="https://www.winegrid.com/pt/#benefits" target="_blank" >Winegrid</a><br>
+        <br>
+        <div class="italic ">
+        <i>Os litros perdidos são informados pelo próprio produtor. O simulador não assume nenhum percentual de perda. É
+            esperado que nosso produto obtenha até 100% de eficácia caso usado da maneira correta. Não assumimos
+            responsabilidade por outras problemáticas relacionadas à vinicultura, tornando o projeto exclusivo para o
+            monitoramento da temperatura na etapa de fermentação.</i>
+        </div>
+    </p>
+</footer>
 </html>
