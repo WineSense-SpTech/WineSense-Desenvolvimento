@@ -10,6 +10,7 @@
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -19,6 +20,7 @@
 .dashboard {
     background-color: var(--card-bg);
     padding: 2rem;
+    margin: 5rem;
     border-radius: 15px;
     border-style: solid;
     border-color:#dcb6a3;
