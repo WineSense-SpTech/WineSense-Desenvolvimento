@@ -1,7 +1,7 @@
 :root {
             --primary-color: #200f06;
-            --bg-color: #f4ede0;
-            --card-bg: #f4e4d3;
+            --bg-color: #F5EFE8;
+            --card-bg: #F0E6D8;
             --text-color:  #200f06;
         }
 
@@ -21,12 +21,12 @@
     background-color: var(--card-bg);
     padding: 2rem;
     margin: 5rem;
-    border-radius: 15px;
+    border-radius: 12px;
     border-style: solid;
     border-color:#dcb6a3;
-    border-width: 2px;
-    box-shadow: 0 10px 30px rgb(133, 125, 120);
-    width: 90%;
+    border-width: 0px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
     max-width: 600px;
 }
 
