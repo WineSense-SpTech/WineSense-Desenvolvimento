@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+<title>WineSense Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="../styleFix.css">
+</head>
+
+<body class="dashboard-body">
+
+<div class="dashboard-wrapper">
+
+<div class="tabs">
+<button class="tab active">GRÁFICOS</button>
+<button class="tab">VARIAÇÃO</button>
+</div>
+
+<div class="graficos-container">
+
+<div class="grafico-card">
+<div class="grafico-header">
+PREJUÍZO ANUAL EM RELAÇÃO À FERMENTAÇÃO
+</div>
+<canvas id="graficoPrejuizo"></canvas>
+</div>
+
+<div class="grafico-card">
+<div class="grafico-header">
+ECONOMIA ANUAL EM RELAÇÃO À FERMENTAÇÃO
+</div>
+<canvas id="graficoEconomia"></canvas>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+// GRÁFICO PREJUÍZO
+var graficoPrejuizo = new Chart(document.getElementById('graficoPrejuizo'), {
+type: 'bar',
+data: {
+labels: ['Sem Monitoramento', 'Com Monitoramento'],
+datasets: [{
+data: [33600000, 8400000],
+backgroundColor: ['#5A2334','#8E3E5B']
+}]
+},
+options: {
+responsive:true,
+plugins:{
+legend:{display:false}
+}
+}
+});
+
+
+// GRÁFICO ECONOMIA
+var graficoEconomia = new Chart(document.getElementById('graficoEconomia'), {
+type: 'bar',
+data: {
+labels: ['Sem Monitoramento', 'Com Monitoramento'],
+datasets: [{
+data: [0,25200000],
+backgroundColor: ['#B88746','#E0B978']
+}]
+},
+options: {
+responsive:true,
+plugins:{
+legend:{display:false}
+}
+}
+});
+
+</script>
+
+</body>
+
+</html>

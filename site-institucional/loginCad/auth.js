@@ -55,7 +55,7 @@ if (document.title.includes("Login")) {
 
         if (email === usuarioSalvo.email && senha === usuarioSalvo.senha) {
             alert("Login realizado com sucesso!")
-            window.location.href = "index.html"
+            window.location.href = "../homeWineSense/index.html"
         } else {
             alert("Email ou senha incorretos")
         }
