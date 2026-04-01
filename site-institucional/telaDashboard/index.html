@@ -6,31 +6,22 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../styleFix.css">
 </head>
-<style>
-    
-</style>
-<body class="body">
-    <div class="container-main">
-            <h1>Winesense Dashboards</h1>
-            
+
+<body>
+
+    <h1>Grafico</h1>
+    <div style="display: flex;">
+        <div style="width: 100%;">
+            <canvas id="sensorTemp"></canvas>
+        </div>
     </div>
-    <h2 style="color: rgb(112, 106, 101);">Consulte as temperaturas de suas adegas</h2><br><br>
-    
-    <div class="">
-        
-            <canvas id="sensorAnalogico" class="dashboard "></canvas>
-        
-        
-            <canvas id="sensorDigital" class="dashboard"></canvas>
-        
-    </div>  
 
     <script>
-        var sensorAnalogico = new Chart(document.getElementById('sensorAnalogico').getContext('2d'), {
+        var sensorTemp = new Chart(document.getElementById('sensorTemp').getContext('2d'), {
             type: 'line',
             data: {
                 datasets: [{
-                    label: 'Analogico',
+                    label: 'Temperatura',
                     borderColor: '#63B1BC',
                     backgroundColor: '#ED145B'
                 }]
@@ -48,31 +39,6 @@
                         beginAtZero: true,
                     },
                 },
-            }
-        });
-
-        var sensorDigital = new Chart(document.getElementById('sensorDigital').getContext('2d'), {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'Digital',
-                    borderColor: '#63B1BC',
-                    backgroundColor: '#0762C8'
-                }]
-            },
-            options: {
-                scales: {
-                    x: {
-                        beginAtZero: true
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: '(0-1)'
-                        },
-                        beginAtZero: true
-                    }
-                }
             }
         });
 
@@ -109,11 +75,32 @@
         }
 
         setInterval(() => {
-            obterDados(sensorAnalogico, 'analogico');
-            obterDados(sensorDigital, 'digital');
+            obterDados(sensorTemp, 'temperatura');
         }, 1000);
 
     </script>
 </body>
-
+<footer>
+        <div class="title_footer">
+            <h3>WineSense</h3>
+        </div>
+        <div class="rodape_colunas">
+            <div class="coluna">
+                <ul>
+                    <li>Navegação</li>
+                    <li><a href="../homeWineSense/index.html">Home</a></li>
+                    <li><a href="">Sobre nós</a></li>
+                    <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador financeiro</a></li>
+                    <li><a href="../homeWineSense/index.html">Fale conosco</a></li>
+                </ul>
+            </div>
+            <div class="coluna">
+                <ul>
+                    <li>Contato</li>
+                    <li><a href="">winesenseoficial@gmail.com</a></li>
+                    <li><a href="">11 98765-4321</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </html>
