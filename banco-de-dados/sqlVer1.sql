@@ -3,7 +3,7 @@ CREATE DATABASE wineSense;
 USE wineSense;
 CREATE TABLE endereco (
 	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-	CEP CHAR(8),
+	CEP CHAR(8) NOT NULL,
 	numero INT,
 	cidade VARCHAR (40),
 	estado VARCHAR (30)
@@ -11,7 +11,7 @@ CREATE TABLE endereco (
 
 CREATE TABLE uva(
 	idUva INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(20)
+	nome VARCHAR(20) NOT NULL
 );
 
 -- Tabela para guardar os dados do sensor, como em que tanque ele está localizado na empresa contratante
@@ -20,7 +20,7 @@ CREATE TABLE sensor(
 	nomeTanque VARCHAR(20) NOT NULL,
 	codSensor INT NOT NULL,
 	tempAtual DECIMAL (4,1),
-	condicao VARCHAR(20),
+	condicao VARCHAR(20) NOT NULL,
 	CONSTRAINT condicaoC CHECK(condicao IN ('Funcionando', 'Defeituoso'))
 );
 
@@ -30,8 +30,8 @@ CREATE TABLE vinho(
 	fkUva INT, 
 	FOREIGN KEY (fkUva) REFERENCES uva(idUva),
 	tipoVinho VARCHAR(20) NOT NULL,
-	tempMinima INT,
-	tempMaxima INT,
+	tempMinima INT NOT NULL,
+	tempMaxima INT NOT NULL,
 	CONSTRAINT cTipo CHECK (tipoVinho IN('Branco', 'Tinto'))
 );
 
@@ -71,7 +71,7 @@ CREATE TABLE tanque(
 -- Tabela para armazenar os registros feitos pelo sensor
 CREATE TABLE registro(
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-	data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+	data_hora DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	temperatura DECIMAL(5, 2) NOT NULL,
     fkSensor INT,
     CONSTRAINT cFkSensor FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
