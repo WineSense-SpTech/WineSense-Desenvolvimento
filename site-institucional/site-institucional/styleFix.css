@@ -265,6 +265,122 @@ font-size:12px;
 fill:grey;
 }
 
+/*        SOBRE          */
+
+.titulo{
+text-align:center;
+margin-top:50px;
+}
+
+.titulo h1{
+font-size:2.8rem;
+color:#3B1E2C;
+font-weight:700;
+}
+
+.subtitulo{
+text-align:center;
+margin:20px 0 40px 0;
+color:#5c4b4b;
+font-size:1.1rem;
+}
+
+/* BOTÕES TÍTULO */
+
+.box{
+display:flex;
+justify-content:center;
+margin:40px 0 30px 0;
+}
+
+.boxContent{
+border:2px solid #B37D33;
+color:#3B1E2C;
+padding:8px 30px;
+border-radius:30px;
+font-weight:600;
+background:#F5EFE8;
+}
+
+/* MISSÃO */
+
+.misVal{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:60px;
+padding:20px 80px;
+}
+
+.text{
+width:45%;
+text-align:left;
+font-size:1.05rem;
+}
+
+.textContent{
+margin-bottom:20px;
+}
+
+/* CARD TEXTO */
+
+.card{
+border:2px solid #B37D33;
+padding:20px;
+border-radius:10px;
+background:#F0E6D8;
+}
+
+/* IMAGEM */
+
+.imageSobre{
+width:420px;
+border-radius:10px;
+}
+
+/* VALORES */
+
+.titleValores{
+text-align:center;
+margin-top:20px;
+}
+
+.titleValores h2{
+font-size:2rem;
+color:#3B1E2C;
+}
+
+/* CARDS VALORES */
+
+.cards_container{
+margin-top:30px;
+}
+
+.cardValores{
+background:#F0E6D8;
+border:2px solid #B37D33;
+padding:25px;
+width:240px;
+border-radius:10px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px;
+transition:0.3s;
+}
+
+.cardValores img{
+width:45px;
+}
+
+.cardValores p{
+font-weight:500;
+text-align:center;
+}
+
+.cardValores:hover{
+transform:translateY(-5px);
+}
 
 /*FOOTER*/
 
