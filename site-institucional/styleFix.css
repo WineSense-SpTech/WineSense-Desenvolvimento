@@ -1,5 +1,3 @@
-/*RESET GLOBAL*/
-
 *{
 margin:0;
 padding:0;
@@ -46,7 +44,6 @@ color:#4a2333;
 text-decoration:underline;
 }
 
-/*BOTÕES*/
 .btn_principal,
 .btn_entrar,
 .btn-primary,
@@ -61,7 +58,6 @@ font-weight:bold;
 transition:0.3s;
 }
 
-/* BOTÃO ENVIAR (MENOR) */
 .btn_enviar{
 background:#4a2333;
 color:white;
@@ -85,16 +81,6 @@ background:#6d344b;
 transform:scale(0.98);
 }
 
-/*.btn-outline{
-border:1px solid #C9A97B;
-background:none;
-padding:8px 25px;
-border-radius:6px;
-cursor:pointer;
-}*/
-
-/*HERO*/
-
 .hero{
 display:flex;
 justify-content:space-between;
@@ -115,8 +101,6 @@ margin-bottom:15px;
 .imagem img{
 width:30vw;
 }
-
-/*SECTIONS*/
 
 section{
 padding:60px 20px;
@@ -143,8 +127,6 @@ margin-bottom:10px;
 color:#4a2333;
 }
 
-/*CARDS*/
-
 .cards_container{
 display:flex;
 gap:20px;
@@ -165,7 +147,39 @@ transition:0.3s;
 transform:translateY(-5px);
 }
 
-/*FORMULARIOS*/
+.container_diagrama{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:25px;
+margin-top:30px;
+}
+
+.diagrama{
+display:flex;
+align-items:center;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.diagrama img{
+width:110px;
+transition:0.3s;
+}
+
+.diagrama img[src*="seta"]{
+width:60px;
+}
+
+.seta_curva{
+width:80px !important;
+margin:10px 0;
+}
+
+.diagrama img:hover{
+transform:scale(1.1);
+}
 
 .formulario,
 .auth-box form,
@@ -216,88 +230,6 @@ margin-top:20px;
 font-weight:bold;
 }
 
-/*SOBRE*/
-
-.titulo{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-.subtitulo{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    font-size: 1.5rem;
-}
-
-.box{
-    display: flex;
-    padding: 50px;
-    justify-content: center;
-    text-align: center;
-}
-
-.boxContent{
-    padding: 5px 15px;
-    color: #3b1d1d;
-    font-weight: bold;
-    border: 3px solid #C9A97B;
-    border-radius: 30px;
-    font-size: 18px;
-    background-color: rgba(179, 125, 51, 0.2);
-}
-
-.misVal{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 250px ;
-    padding-right:250px ;
-}
-
-.text{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px 50px;
-    font-size: 1.15rem;
-}
-
-
-.imageSobre{
-    border-radius: 8px;
-    width: 800px;
-    height: auto;
-}
-
-.titleValores{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.cardValores{
-background:#F0E6D8;
-border:2px solid #B37D33;
-padding:20px 30px;
-width:300px;
-border-radius:10px;
-transition:0.3s;
-text-align: center;
-font-size: 1.2rem;
-font-weight: bold;
-}
-.cardValores:hover{
-    transform:translateY(-5px);
-}
-
-
 /*SIMULADOR*/
 
 .container{
@@ -347,6 +279,110 @@ font-size:12px;
 fill:grey;
 }
 
+/*        SOBRE          */
+
+.titulo{
+text-align:center;
+margin-top:50px;
+}
+
+.titulo h1{
+font-size:2.8rem;
+color:#3B1E2C;
+font-weight:700;
+}
+
+.subtitulo{
+text-align:center;
+margin:20px 0 40px 0;
+color:#5c4b4b;
+font-size:1.1rem;
+}
+
+.box{
+display:flex;
+justify-content:center;
+margin:40px 0 30px 0;
+}
+
+.boxContent{
+border:2px solid #B37D33;
+color:#3B1E2C;
+padding:8px 30px;
+border-radius:30px;
+font-weight:600;
+background:#F5EFE8;
+}
+
+.misVal{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:60px;
+padding:20px 80px;
+}
+
+.text{
+width:45%;
+text-align:left;
+font-size:1.05rem;
+}
+
+.textContent{
+margin-bottom:20px;
+}
+
+.card{
+border:2px solid #B37D33;
+padding:20px;
+border-radius:10px;
+background:#F0E6D8;
+}
+
+.imageSobre{
+width:420px;
+border-radius:10px;
+}
+
+.titleValores{
+text-align:center;
+margin-top:20px;
+}
+
+.titleValores h2{
+font-size:2rem;
+color:#3B1E2C;
+}
+
+.cards_container{
+margin-top:30px;
+}
+
+.cardValores{
+background:#F0E6D8;
+border:2px solid #B37D33;
+padding:25px;
+width:240px;
+border-radius:10px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px;
+transition:0.3s;
+}
+
+.cardValores img{
+width:45px;
+}
+
+.cardValores p{
+font-weight:500;
+text-align:center;
+}
+
+.cardValores:hover{
+transform:translateY(-5px);
+}
 
 /*FOOTER*/
 
