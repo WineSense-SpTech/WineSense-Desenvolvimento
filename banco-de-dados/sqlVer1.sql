@@ -19,7 +19,6 @@ CREATE TABLE sensor(
 	idSensor INT PRIMARY KEY AUTO_INCREMENT,
 	nomeTanque VARCHAR(20) NOT NULL,
 	codSensor INT NOT NULL,
-	tempAtual DECIMAL (4,1),
 	condicao VARCHAR(20) NOT NULL,
 	CONSTRAINT condicaoC CHECK(condicao IN ('Funcionando', 'Defeituoso'))
 );
@@ -71,7 +70,7 @@ CREATE TABLE tanque(
 -- Tabela para armazenar os registros feitos pelo sensor
 CREATE TABLE registro(
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-	data_hora DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	dataHora DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	temperatura DECIMAL(5, 2) NOT NULL,
     fkSensor INT,
     CONSTRAINT cFkSensor FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
@@ -103,11 +102,11 @@ INSERT INTO vinho(fkUva, tipoVinho, tempMinima, tempMaxima) VALUES
 (1, 'Tinto', 13, 15),(2, 'Tinto', 8, 14),
 (3, 'Branco', 10, 20),(4, 'Branco', 9, 13);
 
-INSERT INTO sensor (nomeTanque,codSensor,tempAtual,condicao) VALUES
-('Tanque A24', '004', 23, 'Funcionando'),
-('Tanque A24', '014', 20, 'Funcionando'),
-('Tanque mil', '002', 20, 'Defeituoso'),
-('Tanque 0300', '003', 15, 'Funcionando');
+INSERT INTO sensor (nomeTanque,codSensor,condicao) VALUES
+('Tanque A24', '004', 'Funcionando'),
+('Tanque A24', '014', 'Funcionando'),
+('Tanque mil', '002', 'Defeituoso'),
+('Tanque 0300', '003', 'Funcionando');
 
 INSERT INTO tanque(codTanque,localTanque,fkSensor ,fkVinho,fkEmpresa) VALUES
 ('001', 'Rua do vinho 554', 1, 1, 1),
@@ -124,9 +123,9 @@ INSERT INTO registro(temperatura,fkSensor) VALUES
 -- SELECTS 
 
 -- Ver temperatura registrada por sensor, Base de gráficos em tempo real
-SELECT s.idSensor AS 'Sensor', s.nomeTanque AS 'Nome', s.codSensor AS 'Código', r.data_hora
+SELECT s.idSensor AS 'Sensor', s.nomeTanque AS 'Nome', s.codSensor AS 'Código', r.dataHora
 FROM sensor s
-INNER JOIN registro r 
+JOIN registro r 
 ON s.idSensor = r.fkSensor;
 
 -- selecionar tipo de vinho 
@@ -142,7 +141,7 @@ FROM vinho;
 SELECT 
 	idRegistro AS Registro, 
 	nomeTanque AS 'Nome Tanque', 
-	data_hora, 
+	dataHora, 
 	temperatura,
 	CASE 
 		WHEN r.temperatura BETWEEN v.tempMinima AND v.tempMaxima 
@@ -150,15 +149,15 @@ SELECT
 		ELSE 'Alerta'
 	END AS 'Status'	
 FROM registro r
-INNER JOIN sensor s ON r.fkSensor = s.idSensor
-INNER JOIN tanque t ON s.idSensor = t.fkSensor
-INNER JOIN vinho v ON t.fkVinho = v.idVinho
-INNER JOIN empresa e ON t.fkEmpresa = e.idEmpresa;
+JOIN sensor s ON r.fkSensor = s.idSensor
+JOIN tanque t ON s.idSensor = t.fkSensor
+JOIN vinho v ON t.fkVinho = v.idVinho
+JOIN empresa e ON t.fkEmpresa = e.idEmpresa;
 
 -- Qual empresa é dona de cada tanque
 SELECT t.codTanque AS Codigo, e.razaoSocial AS Empresa
 FROM tanque t
-INNER JOIN empresa e 
+JOIN empresa e 
 ON t.fkEmpresa = e.idEmpresa;
 
 -- Monitoramento geral da fermentação
@@ -170,9 +169,9 @@ SELECT
 	r.temperatura, 
 	v.tempMinima, 
 	v.tempMaxima, 
-	r.data_hora
+	r.dataHora
 FROM registro r
-INNER JOIN sensor s ON r.fkSensor = s.idSensor
-INNER JOIN tanque t ON s.idSensor = t.fkSensor
-INNER JOIN vinho v ON t.fkVinho = v.idVinho
-INNER JOIN empresa e ON t.fkEmpresa = e.idEmpresa;
+JOIN sensor s ON r.fkSensor = s.idSensor
+JOIN tanque t ON s.idSensor = t.fkSensor
+JOIN vinho v ON t.fkVinho = v.idVinho
+JOIN empresa e ON t.fkEmpresa = e.idEmpresa;
