@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../styleFix.css">
+</head>
+
+<body>
+
+  <header class="cabecalho">
+    <div></div>
+    <nav>
+      <ul class="menu">
+        <li><a href="../homeWineSense\index.html">Home</a></li>
+        <li><a href="../sobre/sobre.html">Sobre</a></li>
+        <li><a href="Dashboard.html">Dashboards</a></li>
+        <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="btn_entrar">Entrar</button>
+  </header>
+
+  <div class="container cinza">
+
+
+    <section class="distribuicao_de_tanques">
+      <div class="tanque">
+        <h3>Tanque 1</h3>
+        <p class="critico red">revisão necessária</p>
+      </div>
+
+      <div class="tanque">
+        <h3>Tanque 2</h3>
+        <p class="critico red">revisão necessária</p>
+      </div>
+
+      <div class="tanque">
+        <h3>Tanque 3</h3>
+        <p class="alerta"> status: atenção</p>
+      </div>
+
+      <div class="tanque">
+        <h3>Tanque 4</h3>
+        <p class="normal"> Status: normal</p>
+      </div>
+
+      <div class="tanque">
+        <h3>Tanque 5</h3>
+        <p class="normal"> Status: normal</p>
+      </div>
+
+      <div class="tanque">
+        <h3>Tanque 6</h3>
+        <p class="normal"> Status: normal</p>
+      </div>
+    </section>
+
+<!-- CARDS -->
+    <section class="card_dashboard">
+      <div class="indicadores cor_verde_de_fundo">
+        <h3>Tempo na faixa Ideal</h3>
+        <p class="valor">82%</p>
+      </div>
+
+      <div class="indicadores cor_vermelha_de_fundo">
+        <h3>Alertas na Semana</h3>
+        <p class="valor">14</p>
+        <span class="">(3 críticos)</span>
+      </div>
+
+      <div class="indicadores cor_verde_de_fundo">
+        <h3>Desvio padrão de temperatura</h3>
+        <p class="valor">1,2°C</p>
+      </div>
+    </section>
+
+
+<section class="graficos">
+
+    <!-- GRÁFICO LINHA -->
+    <div class="grafico-box">
+      <h2>TEMPERATURA</h2>
+      <canvas id="linha"></canvas>
+    </div>
+
+    <!-- GRÁFICO BARRA -->
+    <div class="grafico-box">
+      <h2>ALERTAS DE VARIAÇÃO DE TEMPERATURA</h2>
+      <canvas id="barra"></canvas>
+    </div>
+
+  </div>
+
+  </section>
+
+  <script src="script.js"></script>
+
+  <footer>
+    <div class="title_footer">
+      <h3>WineSense</h3>
+    </div>
+    <div class="rodape_colunas">
+      <div class="coluna">
+        <ul>
+          <li>Navegação</li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="../sobre/sobre.html">Sobre nós</a></li>
+          <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador financeiro</a></li>
+          <li><a href="">Fale conosco</a></li>
+        </ul>
+      </div>
+      <div class="coluna">
+        <ul>
+          <li>Contato</li>
+          <li><a href="">winesenseoficial@gmail.com</a></li>
+          <li><a href="">11 98765-4321</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+
+
+</html>
+
+<script>
+  // GRÁFICO DE LINHA
+  new Chart(document.getElementById("linha"), {
+    type: "line",
+    data: {
+      labels: ["6h", "8h", "10h", "12h", "14h", "16h", "18h"],
+      datasets: [{
+        label: "Temperatura",
+        data: [12, 13.5, 11.5, 12.8, 15, 13, 16],
+        borderColor: "#7a2f4b",
+        fill: false
+      }]
+    }
+  });
+
+  // GRÁFICO DE BARRA
+  new Chart(document.getElementById("barra"), {
+    type: "bar",
+    data: {
+      labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4", "Semana 5"],
+      datasets: [
+        {
+          label: "± 3°C",
+          data: [7, 3, 8, 3, 6],
+          backgroundColor: "#5a1f35"
+        },
+        {
+          label: "± 2°C",
+          data: [5, 4, 1, 6, 7],
+          backgroundColor: "#b07a8d"
+        },
+        {
+          label: "± 1°C",
+          data: [4, 6, 3, 2, 8],
+          backgroundColor: "#d23c6b"
+        }
+      ]
+    }
+  });
+</script>
