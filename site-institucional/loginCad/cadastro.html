@@ -13,20 +13,19 @@
 
 <body>
 
-<nav>
-
-<h2>WineSense</h2>
-
-<ul>
-<li><a href="../homeWineSense/index.html">Home</a></li>
-<li><a href="sobre.html">Sobre</a></li>
-<li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
-<li><a href="">Contato</a></li>
-</ul>
-
-<button class="btn-outline">Entrar</button>
-
-</nav>
+ <header class="cabecalho">
+        <div></div>
+        <nav>
+            <ul class="menu">
+                <li><a href="../homeWineSense/index.html">Home</a></li>
+                <li><a href="../sobre/sobre.html">Sobre</a></li>
+                <li><a href="../telaDashboard/index.html">Dashboards</a></li>
+                <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
+                <li><a href="../homeWineSense/index.html">Contato</a></li>
+            </ul>
+        </nav>
+        <button type="button" class="btn_entrar" onclick="entrar()">Entrar</button>
+    </header>
 
 
 <section class="auth">
@@ -39,15 +38,15 @@
 
 <form>
 
-<input type="text" placeholder="Nome completo">
+<input type="text" id="idNome" placeholder="Nome completo">
 
-<input type="email" placeholder="Email">
+<input type="email" id="idEmail" placeholder="Email">
 
-<input type="password" placeholder="Senha">
+<input type="password" id="idSenha" placeholder="Senha">
 
-<input type="password" placeholder="Confirmar senha">
+<input type="password" id="idConfirmaSenha" placeholder="Confirmar senha">
 
-<button class="btn-primary">Cadastrar</button>
+<button type="button" class="btn-primary" onclick="cadastrar()">Cadastrar</button>
 
 </form>
 

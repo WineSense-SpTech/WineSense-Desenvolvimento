@@ -1,64 +1,67 @@
-// Verifica qual página está aberta
-const form = document.querySelector("form")
-
+// CADASTRO
 if (document.title.includes("Cadastro")) {
-    
-    form.addEventListener("submit", function(event) {
-        event.preventDefault()
 
-        const nome = document.querySelector("input[type='text']").value
-        const email = document.querySelector("input[type='email']").value
-        const senha = document.querySelectorAll("input[type='password']")[0].value
-        const confirmarSenha = document.querySelectorAll("input[type='password']")[1].value
+    function cadastrar() {
+        let nome = idNome.value;
+        let email = idEmail.value;
+        let senha = idSenha.value;
+        let confirmarSenha = idConfirmaSenha.value;
 
-        // Validação
         if (nome === "" || email === "" || senha === "" || confirmarSenha === "") {
-            alert("Preencha todos os campos")
-            return
+            alert("Preencha todos os campos");
+            return false;
         }
 
         if (senha !== confirmarSenha) {
-            alert("As senhas não coincidem")
-            return
+            alert("As senhas não coincidem");
+            return false;
         }
 
-        // Salvar no localStorage
-        const usuario = {
-            nome: nome,
-            email: email,
-            senha: senha
-        }
+        // Salva os dados separados
+        localStorage.setItem("emailCadastrado", email);
+        localStorage.setItem("senhaCadastrada", senha);
 
-        localStorage.setItem("usuarioWineSense", JSON.stringify(usuario))
-
-        alert("Cadastro realizado com sucesso!")
-
-        window.location.href = "login.html"
-    })
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "login.html";
+        return false;
+    }
 }
 
 
+// LOGIN
 if (document.title.includes("Login")) {
 
-    form.addEventListener("submit", function(event) {
-        event.preventDefault()
+    let erros = [];
 
-        const email = document.querySelector("input[type='email']").value
-        const senha = document.querySelector("input[type='password']").value
+    function entrar() {
 
-        const usuarioSalvo = JSON.parse(localStorage.getItem("usuarioWineSense"))
+        let email = idEmail.value;
+        let senha = idSenha.value;
+        let emailSalvo = localStorage.getItem("emailCadastrado");
+        let senhaSalva = localStorage.getItem("senhaCadastrada");
 
-        if (!usuarioSalvo) {
-            alert("Nenhum usuário cadastrado")
-            return
+        if (emailSalvo === null) {
+            alert("Nenhum usuário cadastrado");
+            return false;
         }
 
-        if (email === usuarioSalvo.email && senha === usuarioSalvo.senha) {
-            alert("Login realizado com sucesso!")
-            window.location.href = "../homeWineSense/index.html"
+        if (email === emailSalvo && senha === senhaSalva) {
+            alert("Login realizado com sucesso!");
+            window.location.href = "../homeWineSense/index.html";
+            return false;
         } else {
-            alert("Email ou senha incorretos")
+            erros.push("erro");
         }
 
-    })
+        for (let i = 0; i < erros.length; i++) {
+            if (i === 2) {
+                alert("Você excedeu o número de tentativas. Acesso bloqueado!");
+                return false;
+            }
+        }
+
+        let restantes = 3 - erros.length;
+        alert("Email ou senha incorretos. Tentativas restantes: " + restantes);
+        return false;
+    }
 }

@@ -2,60 +2,59 @@
 <html lang="pt-br">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WineSense | Login</title>
+    <title>WineSense | Login</title>
 
-<link rel="stylesheet" href="../styleFix.css">
+    <link rel="stylesheet" href="../styleFix.css">
 
 </head>
 
 <body>
 
-<nav>
+    <header class="cabecalho">
+        <div></div>
+        <nav>
+            <ul class="menu">
+                <li><a href="../homeWineSense/index.html">Home</a></li>
+                <li><a href="../sobre/sobre.html">Sobre</a></li>
+                <li><a href="../telaDashboard/index.html">Dashboards</a></li>
+                <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
+                <li><a href="../homeWineSense/index.html">Contato</a></li>
+            </ul>
+        </nav>
+        <button type="button" class="btn_entrar" onclick="entrar()">Entrar</button>
+    </header>
 
-<h2>WineSense</h2>
+    <section class="auth">
 
-<ul>
-<li><a href="../homeWineSense/index.html">Home</a></li>
-<li><a href="sobre.html">Sobre</a></li>
-<li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
-<li><a href="">Contato</a></li>
-</ul>
+        <div class="auth-box">
 
-<button class="btn-outline">Entrar</button>
+            <h1>Login</h1>
 
-</nav>
+            <p>Acesse sua conta WineSense</p>
 
+            <form>
 
-<section class="auth">
+                <input type="email" id="idEmail" placeholder="Email">
 
-<div class="auth-box">
+                <input type="password" id="idSenha" placeholder="Senha">
 
-<h1>Login</h1>
+                <button type="button" class="btn-primary" onclick="entrar()">Entrar</button>
 
-<p>Acesse sua conta WineSense</p>
+            </form>
 
-<form>
+            <p class="auth-link">
+                Não possui conta?
+                <a href="cadastro.html">Criar conta</a>
+            </p>
 
-<input type="email" placeholder="Email">
+        </div>
 
-<input type="password" placeholder="Senha">
-
-<button class="btn-primary">Entrar</button>
-
-</form>
-
-<p class="auth-link">
-Não possui conta?
-<a href="cadastro.html">Criar conta</a>
-</p>
-
-</div>
-
-</section>
+    </section>
 
 </body>
 <script src="auth.js"></script>
+
 </html>
