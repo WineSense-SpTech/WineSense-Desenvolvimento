@@ -483,6 +483,7 @@ footer ul {
     display:flex;
     align-items: center;
     flex-wrap: nowrap;
+    justify-content: space-around;
     gap: 20px;
 }
 
@@ -528,7 +529,7 @@ footer ul {
   border-radius: 12px;
   padding: 20px;
   width: 45%; 
-  height: 375px;
+  height: 450px;
   min-width: 300px;
   text-align: center;
   background-color: white;
