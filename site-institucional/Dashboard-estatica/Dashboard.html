@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="../styleFix.css">
 </head>
@@ -30,7 +29,7 @@
 
     <section class="distribuicao_de_tanques">
       <div class="tanque">
-        <h3>Tanque 1</h3>
+        <h3><a href="Dashboard revisao necessaria.html">Tanque 1</a></h3>
         <p class="critico red">revisão necessária</p>
       </div>
 
@@ -143,24 +142,24 @@
     }
   });
 
-  // GRÁFICO DE BARRA
+    // GRÁFICO DE BARRA
   new Chart(document.getElementById("barra"), {
     type: "bar",
     data: {
       labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4", "Semana 5"],
       datasets: [
         {
-          label: "± 3°C",
+          label: "Urgente(± 3°C)",
           data: [7, 3, 8, 3, 6],
           backgroundColor: "#5a1f35"
         },
         {
-          label: "± 2°C",
+          label: "atenção(± 2°C)",
           data: [5, 4, 1, 6, 7],
           backgroundColor: "#b07a8d"
         },
         {
-          label: "± 1°C",
+          label: "desvio regular(± 1°C)",
           data: [4, 6, 3, 2, 8],
           backgroundColor: "#d23c6b"
         }
