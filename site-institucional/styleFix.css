@@ -493,8 +493,8 @@ footer ul {
     justify-content: space-evenly;
     padding: 5px;
     border: solid;
-    width: 170px;
-    min-height: 50x;
+    width: 20%;
+    /*min-height: 50x;*/
     background-color: white;
 }
 /*core e fonte usada para o tanque, reutilizei
