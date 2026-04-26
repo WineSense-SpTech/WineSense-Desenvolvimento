@@ -442,63 +442,82 @@ footer ul {
 
 }
 
-/* daqui pra frente é só Dashboard estática */
-
-/*espaço onde coloquei os indicadores*/
 .card_dashboard {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 15px;
-
+    padding: 10px;
 }
-/*usado nos indicadores*/
 .cor_vermelha_de_fundo{
-    background-color: #E57373 !important;
-}
-.cor_verde_de_fundo{
-    background-color:#66BB6A;
+    background-color: #7e1a23 ;
+    color: white;
+    font-size: 20px;
+    border: #F0E6D8 solid;
 }
 
-/*para o Container*/
+.cor_vermelha_de_fundo h3{
+    font-size: 55px;
+    color: white;
+}
+
+.cor_verde_de_fundo{
+    background-color: #F5EFE8;
+    color:#236626;
+    font-size: 20px;
+    border: #6d344b solid;
+}
+
+.cor_verde_de_fundo h3{
+    font-size: 55px;
+    color:#236626
+}
+
 .cinza{
-    background-color: gray !important;
+    background-color: rgb(207, 207, 207) !important;
+    
 }
 
 .indicadores {
-    border: #B37D33 solid;
     width: 275px;
     min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 15px;
-    color: white;
+    border-radius: 15px;
 }
 
 /*espaço onde coloquei os tanques*/
 .distribuicao_de_tanques {
+    display: flex;
+    justify-content: center;
     padding: 10px;
     border-radius: 30px;
-    display:flex;
     align-items: center;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    gap: 20px;
+    gap: 30px;
 }
 
 .tanque {
-    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 5px;
-    border: solid;
-    width: 20%;
-    /*min-height: 50x;*/
-    background-color: white;
+    padding: 10px 30px;
+    border: 2px solid #F5EFE8;
+    font-size: 18px;
+    width: 100%;
+    background-color: #F5EFE8;
 }
-/*core e fonte usada para o tanque, reutilizei
- .red que vi em outras sessões do CSS*/
+
+.tanque h3{
+    color:#3B1E2C
+}
+
+.tanque:hover h3{
+    color:white
+}
+
+.tanque p {
+font-size: 22   px;
+}
+
 .critico {
     font-weight: bold;
 }
@@ -509,7 +528,7 @@ footer ul {
 }
 
 .normal{
-  color: green;
+  color: rgb(29, 179, 29);
   font-weight: bold;
 }
 
@@ -520,17 +539,36 @@ footer ul {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap; 
-  padding: 20px;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .grafico-box{
-  background: #F0E6D8;
-  border: 2px solid #B37D33;
+  border: 2px solid #6d344b;
   border-radius: 12px;
   padding: 20px;
   width: 45%; 
   height: 450px;
   min-width: 300px;
   text-align: center;
-  background-color: white;
+  background-color: #F5EFE8;
+}
+
+
+.distribuicao_de_tanques {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.carrossel_container {
+  display: flex;
+  gap: 10px;
+}
+
+.btn_carrossel {
+  padding: 10px;
+  font-size: 20px;
+  background-color: rgb(100, 100, 100);
 }
