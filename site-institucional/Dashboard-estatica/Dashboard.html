@@ -1,108 +1,106 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Dashboard</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../styleFix.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
 
-  <body>
-    <header class="cabecalho">
-      <div></div>
-      <nav>
-        <ul class="menu">
-          <li><a href="../homeWineSense/index.html">Home</a></li>
-          <li><a href="../sobre/sobre.html">Sobre</a></li>
-          <li><a href="Dashboard.html">Dashboards</a></li>
-          <li>
-            <a href="../simulador-financeiro/simuladorFinanceiro.html"
-              >Simulador</a
-            >
-          </li>
-          <li><a href="../homeWineSense/index.html">Contato</a></li>
-        </ul>
-      </nav>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../styleFix.css" />
+</head>
 
-      <a href="../loginCad/cadastro.html">
-        <button class="btn_entrar">Entrar</button>
-      </a>
-    </header>
+<body>
+  <header class="cabecalho">
+    <div></div>
+    <nav>
+      <ul class="menu">
+        <li><a href="../homeWineSense/index.html">Home</a></li>
+        <li><a href="../sobre/sobre.html">Sobre</a></li>
+        <li><a href="Dashboard.html">Dashboards</a></li>
+        <li>
+          <a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a>
+        </li>
+        <li><a href="../homeWineSense/index.html#contato">Contato</a></li>
+      </ul>
+    </nav>
 
-    <div class="container cinza">
-      <section class="distribuicao_de_tanques">
-        <button id="btnPrev" class="btn_carrossel">◀</button>
+    <a href="../loginCad/cadastro.html">
+      <button class="btn_entrar">Entrar</button>
+    </a>
+  </header>
 
-        <div id="carrossel" class="carrossel_container"></div>
+  <div class="container cinza">
+    <section class="distribuicao_de_tanques">
+      <button id="btnPrev" class="btn_carrossel">◀</button>
 
-        <button id="btnNext" class="btn_carrossel">▶</button>
-      </section>
+      <div id="carrossel" class="carrossel_container"></div>
 
-      <h2 id="tituloTanque" class="titulo_tanque">Tanque --</h2>
+      <button id="btnNext" class="btn_carrossel">▶</button>
+    </section>
 
-      <section class="card_dashboard">
-        <div class="indicadores cor_verde_de_fundo">
-          <p>Tempo na faixa Ideal</p>
-          <h3 id="tempoIdeal" class="valor">--</h3>
-        </div>
+    <h2 id="tituloTanque" class="titulo_tanque">Tanque --</h2>
 
-        <div class="indicadores cor_vermelha_de_fundo">
-          <p>Alertas nos Últimos 7 dias</p>
-          <h3 id="alertasSemana" class="valor">--</h3>
-        </div>
+    <section class="card_dashboard">
+      <div class="indicadores cor_verde_de_fundo">
+        <p>Tempo na faixa Ideal</p>
+        <h3 id="tempoIdeal">--</h3>
+      </div>
 
-        <div class="indicadores cor_verde_de_fundo">
-          <p>Desvio padrão de temperatura</p>
-          <h3 id="desvioPadrao" class="valor">--</h3>
-        </div>
-      </section>
+      <div class="indicadores cor_vermelha_de_fundo">
+        <p>Alertas nos Últimos 7 dias</p>
+        <h3 id="alertasSemana">--</h3>
+      </div>
 
-      <section class="graficos">
-        <div class="grafico-box">
-          <h2>TEMPERATURA</h2>
-          <canvas id="linha"></canvas>
-        </div>
+      <div class="indicadores cor_verde_de_fundo">
+        <p>Variação Mínima e Máxima</p>
+        <h3 id="varMinMax">--</h3>
+      </div>
+    </section>
 
-        <div class="grafico-box">
-          <h2>ALERTAS DE VARIAÇÃO DE TEMPERATURA</h2>
-          <canvas id="barra"></canvas>
-        </div>
-      </section>
+    <section class="graficos">
+      <div class="grafico-box">
+        <h2>TEMPERATURA</h2>
+        <canvas id="linha"></canvas>
+      </div>
+
+      <div class="grafico-box">
+        <h2>ALERTAS DE VARIAÇÃO DE TEMPERATURA</h2>
+        <canvas id="barra"></canvas>
+      </div>
+    </section>
+  </div>
+
+  <script src="tanques.js"></script>
+
+  <script src="Dashboard.js"></script>
+
+  <footer>
+    <div class="title_footer">
+      <h3>WineSense</h3>
     </div>
 
-    <script src="tanques.js"></script>
-
-    <script src="Dashboard.js"></script>
-
-    <footer>
-      <div class="title_footer">
-        <h3>WineSense</h3>
+    <div class="rodape_colunas">
+      <div class="coluna">
+        <ul>
+          <li>Navegação</li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="../sobre/sobre.html">Sobre nós</a></li>
+          <li>
+            <a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador financeiro</a>
+          </li>
+          <li><a href="">Fale conosco</a></li>
+        </ul>
       </div>
 
-      <div class="rodape_colunas">
-        <div class="coluna">
-          <ul>
-            <li>Navegação</li>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="../sobre/sobre.html">Sobre nós</a></li>
-            <li>
-              <a href="../simulador-financeiro/simuladorFinanceiro.html"
-                >Simulador financeiro</a
-              >
-            </li>
-            <li><a href="">Fale conosco</a></li>
-          </ul>
-        </div>
-
-        <div class="coluna">
-          <ul>
-            <li>Contato</li>
-            <li><a href="">winesenseoficial@gmail.com</a></li>
-            <li><a href="">11 98765-4321</a></li>
-          </ul>
-        </div>
+      <div class="coluna">
+        <ul>
+          <li>Contato</li>
+          <li><a href="">winesenseoficial@gmail.com</a></li>
+          <li><a href="">11 98765-4321</a></li>
+        </ul>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+</body>
+
 </html>

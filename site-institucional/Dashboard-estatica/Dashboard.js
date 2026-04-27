@@ -100,8 +100,8 @@ function carregarDashboard(tanque) {
   document.getElementById("alertasSemana").innerText =
     tanque.metricas.alertasSemana;
 
-  document.getElementById("desvioPadrao").innerText =
-    tanque.metricas.desvioPadrao + "°C";
+  document.getElementById("varMinMax").innerText =
+    tanque.metricas.varMin + "°C - " + tanque.metricas.varMax + "°C";
 
   if (chartLinha) chartLinha.destroy();
 

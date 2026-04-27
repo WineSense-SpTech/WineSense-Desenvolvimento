@@ -6,7 +6,8 @@
     "metricas": {
       "tempoIdeal": 82,
       "alertasSemana": 14,
-      "desvioPadrao": 1.2
+      "varMin": 11.5,
+      "varMax": 16
     },
     "temperatura": {
       "labels": ["6h", "8h", "10h", "12h", "14h", "16h", "18h"],
