@@ -1,43 +1,44 @@
 [
   {
     "id": 1,
+    "unidade": "Unidade São Paulo",
     "status": "Crítico",
     "classe": "critico red",
     "metricas": {
       "tempoIdeal": 82,
-      "alertasSemana": 14,
+      "alertasSemana": 33,
       "varMin": 11.5,
       "varMax": 16
     },
     "temperatura": {
-      "labels": ["6h", "8h", "10h", "12h", "14h", "16h", "18h"],
-      "valores": [12, 13.5, 11.5, 12.8, 15, 13, 16]
+      "labels": ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00"],
+      "valores": [12, 13.5, 11.5, 12.8, 15, 13, 16, 12.2, 12.8, 13.9, 12.5, 14.6, 12.7]
     },
     "alertas": {
-      "labels": ["Semana 1", "Semana 2", "Semana 3", "Semana 4", "Semana 5"],
-      "urgente": [7, 3, 8, 3, 6],
-      "atencao": [5, 4, 1, 6, 7],
-      "regular": [4, 6, 3, 2, 8]
+      "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
+      "urgente": [5, 2, 6, 3, 1],
+      "atencao": [3, 3, 1, 5, 4]
     }
   },
   {
     "id": 2,
+    "unidade": "Unidade Minas Gerais",
     "status": "Regular",
     "classe": "normal",
     "metricas": {
       "tempoIdeal": 91,
-      "alertasSemana": 5,
-      "desvioPadrao": 0.8
+      "alertasSemana": 18,
+      "varMin": 11,
+      "varMax": 13.5
     },
     "temperatura": {
-      "labels": ["6h", "8h", "10h", "12h", "14h", "16h", "18h"],
-      "valores": [11, 11.5, 12, 12.2, 12.5, 12.3, 12]
+      "labels": ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00"],
+      "valores": [11, 11.5, 12, 12.2, 12.5, 12.3, 12, 13.5, 12.8, 11.1, 12.6, 12, 13]
     },
     "alertas": {
-      "labels": ["Semana 1", "Semana 2", "Semana 3", "Semana 4", "Semana 5"],
-      "urgente": [1, 0, 2, 1, 1],
-      "atencao": [2, 1, 1, 2, 1],
-      "regular": [3, 2, 2, 1, 2]
+      "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
+      "urgente": [1, 0, 2, 4, 1],
+      "atencao": [3, 1, 1, 3, 2]
     }
   }
 ]

@@ -91,7 +91,7 @@ function carregarDashboard(tanque) {
 
   const titulo = document.getElementById("tituloTanque");
 
-  titulo.innerText = `Tanque ${tanque.id}`;
+  titulo.innerText = `Tanque ${tanque.id} - ${tanque.unidade}`;
   titulo.className = `titulo_tanque ${tanque.classe}`;
 
   document.getElementById("tempoIdeal").innerText =
@@ -128,17 +128,14 @@ function carregarDashboard(tanque) {
         {
           label: "Urgente",
           data: tanque.alertas.urgente,
-          backgroundColor: "#5a1f35"
+          backgroundColor: "#5a1f35",
+          borderRadius: "6"
         },
         {
           label: "Atenção",
           data: tanque.alertas.atencao,
-          backgroundColor: "#b07a8d"
-        },
-        {
-          label: "Regular",
-          data: tanque.alertas.regular,
-          backgroundColor: "#d23c6b"
+          backgroundColor: "#b07a8d",
+          borderRadius: "6"
         }
       ]
     }
