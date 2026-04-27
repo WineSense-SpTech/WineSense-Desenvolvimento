@@ -15,6 +15,11 @@ body {
     line-height: 1.6;
 }
 
+body::selection{
+    background-color: #4a2333;
+    color: #F0E6D8;
+}
+
 /*HEADER / NAVBAR*/
 
 .cabecalho,
@@ -442,6 +447,18 @@ footer ul {
 
 }
 
+.titulo_tanque {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 48px;
+  font-weight: bold;
+  color: #3B1E2C;
+}
+
+#tituloTanque{
+    color: #3B1E2C;
+}
+
 .card_dashboard {
     display: flex;
     flex-direction: row;
@@ -473,8 +490,9 @@ footer ul {
 }
 
 .cinza{
-    background-color: rgb(207, 207, 207) !important;
-    
+    background-color: rgb(207, 207, 207);
+    margin-top: 0;
+    padding: 30px;
 }
 
 .indicadores {
@@ -499,7 +517,7 @@ footer ul {
 .tanque {
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 10px 30px;
+    padding: 5px 20px;
     border: 2px solid #F5EFE8;
     font-size: 18px;
     width: 100%;

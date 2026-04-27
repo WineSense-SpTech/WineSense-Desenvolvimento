@@ -1,25 +1,36 @@
+const container = document.getElementById("carrossel");
+const btnPrev = document.getElementById("btnPrev");
+const btnNext = document.getElementById("btnNext");
+
+let tanques = [];
+let indexAtual = 0;
+const itensPorPagina = 6;
+
+let chartLinha = null;
+let chartBarra = null;
+
+
 const tanqueId = localStorage.getItem("tanqueId");
+
 
 fetch("tanques.js")
   .then(res => {
-    console.log("STATUS:", res.status);
-
     if (!res.ok) {
       throw new Error("Erro ao carregar JSON");
     }
-
     return res.json();
   })
   .then(data => {
-    console.log("DADOS:", data);
+    tanques = data;
+
+    renderizarCarrossel();
 
     let tanque;
 
     if (!tanqueId) {
-      console.warn("Nenhum tanque selecionado, usando o primeiro");
-      tanque = data[0];
+      tanque = tanques[0];
     } else {
-      tanque = data.find(t => t.id == tanqueId);
+      tanque = tanques.find(t => t.id == tanqueId);
     }
 
     if (!tanque) {
@@ -30,11 +41,58 @@ fetch("tanques.js")
     carregarDashboard(tanque);
   })
   .catch(err => {
-    console.error("ERRO REAL:", err);
+    console.error("ERRO:", err);
   });
 
 
+function renderizarCarrossel() {
+  container.innerHTML = "";
+
+  const slice = tanques.slice(indexAtual, indexAtual + itensPorPagina);
+
+  slice.forEach(tanque => {
+    const div = document.createElement("div");
+    div.className = "card_tanque";
+
+    div.innerHTML = `
+      <button class="tanque">
+        <h3>Tanque ${tanque.id}</h3>
+        <p class="${tanque.classe}">${tanque.status}</p>
+      </button>
+    `;
+
+    div.onclick = () => {
+      localStorage.setItem("tanqueId", tanque.id);
+      carregarDashboard(tanque);
+    };
+
+    container.appendChild(div);
+  });
+}
+
+
+btnNext.onclick = () => {
+  if (indexAtual + itensPorPagina < tanques.length) {
+    indexAtual += itensPorPagina;
+    renderizarCarrossel();
+  }
+};
+
+btnPrev.onclick = () => {
+  if (indexAtual - itensPorPagina >= 0) {
+    indexAtual -= itensPorPagina;
+    renderizarCarrossel();
+  }
+};
+
+
+
 function carregarDashboard(tanque) {
+
+  const titulo = document.getElementById("tituloTanque");
+
+  titulo.innerText = `Tanque ${tanque.id}`;
+  titulo.className = `titulo_tanque ${tanque.classe}`;
 
   document.getElementById("tempoIdeal").innerText =
     tanque.metricas.tempoIdeal + "%";
@@ -45,8 +103,9 @@ function carregarDashboard(tanque) {
   document.getElementById("desvioPadrao").innerText =
     tanque.metricas.desvioPadrao + "°C";
 
+  if (chartLinha) chartLinha.destroy();
 
-  new Chart(document.getElementById("linha"), {
+  chartLinha = new Chart(document.getElementById("linha"), {
     type: "line",
     data: {
       labels: tanque.temperatura.labels,
@@ -59,8 +118,9 @@ function carregarDashboard(tanque) {
     }
   });
 
+  if (chartBarra) chartBarra.destroy();
 
-  new Chart(document.getElementById("barra"), {
+  chartBarra = new Chart(document.getElementById("barra"), {
     type: "bar",
     data: {
       labels: tanque.alertas.labels,

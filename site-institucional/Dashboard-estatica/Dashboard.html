@@ -6,8 +6,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../styleFix.css" />
-    <script src="dashboard.js"></script>
-    <script src="tanques.js"></script>
   </head>
 
   <body>
@@ -33,7 +31,6 @@
     </header>
 
     <div class="container cinza">
-      <!-- CARROSSEL -->
       <section class="distribuicao_de_tanques">
         <button id="btnPrev" class="btn_carrossel">◀</button>
 
@@ -42,7 +39,8 @@
         <button id="btnNext" class="btn_carrossel">▶</button>
       </section>
 
-      <!-- CARDS -->
+      <h2 id="tituloTanque" class="titulo_tanque">Tanque --</h2>
+
       <section class="card_dashboard">
         <div class="indicadores cor_verde_de_fundo">
           <p>Tempo na faixa Ideal</p>
@@ -60,7 +58,6 @@
         </div>
       </section>
 
-      <!-- GRÁFICOS -->
       <section class="graficos">
         <div class="grafico-box">
           <h2>TEMPERATURA</h2>
@@ -74,7 +71,8 @@
       </section>
     </div>
 
-    <!-- IMPORTANTE: agora usa JS externo -->
+    <script src="tanques.js"></script>
+
     <script src="dashboard.js"></script>
 
     <footer>
