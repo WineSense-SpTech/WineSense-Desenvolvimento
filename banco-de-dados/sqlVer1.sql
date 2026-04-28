@@ -166,6 +166,7 @@ SELECT
 	t.codTanque AS Codigo, 
 	v.tipoVinho AS Tipo, 
 	s.codSensor AS 'Cod Sensor', 
+	u.nome as uva,
 	r.temperatura, 
 	v.tempMinima, 
 	v.tempMaxima, 
@@ -174,4 +175,5 @@ FROM registro r
 JOIN sensor s ON r.fkSensor = s.idSensor
 JOIN tanque t ON s.idSensor = t.fkSensor
 JOIN vinho v ON t.fkVinho = v.idVinho
+JOIN uva u ON v.fkUva = u.idUva
 JOIN empresa e ON t.fkEmpresa = e.idEmpresa;
