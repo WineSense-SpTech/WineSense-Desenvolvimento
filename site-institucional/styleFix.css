@@ -238,6 +238,7 @@ textarea:focus {
 /*SIMULADOR*/
 
 .container {
+    position: relative;
     padding: 60px;
     margin: 5% 10%;
     border-radius: 30px;
@@ -488,6 +489,17 @@ footer ul {
 .cor_verde_de_fundo h3 {
     font-size: 55px;
     color: #236626
+}
+
+.card_dia {
+    position: absolute;
+    text-align: center;
+    background-color: #F5EFE8;
+    font-size: 30px;
+    font-weight: bold;
+    border: #6d344b solid;
+    width: 10%;
+    border-radius: 15px;
 }
 
 .cinza {

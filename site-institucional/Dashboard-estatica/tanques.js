@@ -4,6 +4,7 @@
     "unidade": "Unidade São Paulo",
     "status": "Crítico",
     "classe": "critico red",
+    "data_medicao": "05/05",
     "metricas": {
       "tempoIdeal": 82,
       "alertasSemana": 33,
@@ -25,6 +26,7 @@
     "unidade": "Unidade Minas Gerais",
     "status": "Regular",
     "classe": "normal",
+    "data_medicao": "05/05",
     "metricas": {
       "tempoIdeal": 91,
       "alertasSemana": 18,

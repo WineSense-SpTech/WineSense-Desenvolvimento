@@ -89,6 +89,10 @@ btnPrev.onclick = () => {
 
 function carregarDashboard(tanque) {
 
+  const data_medicao = document.getElementById("data_medicao");
+
+  data_medicao.innerText = tanque.data_medicao;
+
   const titulo = document.getElementById("tituloTanque");
 
   titulo.innerText = `Tanque ${tanque.id} - ${tanque.unidade}`;
