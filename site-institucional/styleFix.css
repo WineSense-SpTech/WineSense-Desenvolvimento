@@ -492,7 +492,6 @@ footer ul {
 }
 
 .card_dia {
-    position: absolute;
     text-align: center;
     background-color: #F5EFE8;
     font-size: 30px;
@@ -602,4 +601,46 @@ footer ul {
     padding: 10px;
     font-size: 20px;
     background-color: rgb(100, 100, 100);
+}
+
+.exit {
+    position: absolute;
+    text-decoration: none;
+    color: #3B1E2C;
+    font-size: 32px;
+    top: 30px;
+    left: 30px;
+    transform: scaleX(-1);
+}
+
+.unidade_select {
+    text-align: center;
+    margin-top: 15%;
+}
+
+.titulo_unidade {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.info_unidade {
+    text-align: start;
+    font-size: 24px;
+}
+
+.info_unidade.alerta {
+    color: rgb(186, 66, 66);
+    font-weight: 600;
+}
+
+.btn_entrar_dash {
+    padding: 50px
+}
+
+.box-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Selecionar Unidade</title>
+    <link rel="stylesheet" href="../styleFix.css" />
+</head>
+
+<body>
+    <a href="../homeWineSense/index.html" class="exit">➜</a>
+    <div class="container cinza unidade_select">
+        <h2>Escolha a Unidade</h2>
+
+        <div class="unidades" id="listaUnidades"></div>
+    </div>
+
+    <script src="tanques.json"></script>
+
+    <script>
+        const container = document.getElementById("listaUnidades");
+
+        fetch("tanques.json")
+            .then((res) => res.json())
+            .then((data) => {
+                data.forEach((unidadeObj) => {
+                    const totalTanques = unidadeObj.tanques.length;
+
+                    const tanquesCriticos = unidadeObj.tanques.filter(
+                        (t) => t.status === "Crítico" || t.status === "Atenção",
+                    ).length;
+
+                    const btn = document.createElement("button");
+
+                    btn.innerHTML = `
+                        <div class="titulo_unidade">${unidadeObj.unidade}</div>
+                        <div class="info_unidade">Quantidade de Tanques: ${totalTanques} </div>
+                        <div class="info_unidade alerta">Tanques com Alerta: ${tanquesCriticos}</div>
+                    `
+                        ;
+                    btn.className = "btn_entrar_dash";
+
+                    btn.onclick = () => {
+                        localStorage.setItem("unidadeSelecionada", unidadeObj.unidade);
+                        window.location.href = "Dashboard.html";
+                    };
+
+                    container.appendChild(btn);
+                });
+            })
+            .catch((err) => console.error("Erro:", err));
+    </script>
+</body>
+
+</html>

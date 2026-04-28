@@ -9,40 +9,35 @@ const itensPorPagina = 6;
 let chartLinha = null;
 let chartBarra = null;
 
-
 const tanqueId = localStorage.getItem("tanqueId");
+const unidadeSelecionada = localStorage.getItem("unidadeSelecionada");
 
 
-fetch("tanques.js")
+fetch("tanques.json")
   .then(res => {
-    if (!res.ok) {
-      throw new Error("Erro ao carregar JSON");
-    }
+    if (!res.ok) throw new Error("Erro ao carregar JSON");
     return res.json();
   })
   .then(data => {
-    tanques = data;
 
-    renderizarCarrossel();
+    const unidadeObj = data.find(u => u.unidade === unidadeSelecionada);
 
-    let tanque;
-
-    if (!tanqueId) {
-      tanque = tanques[0];
-    } else {
-      tanque = tanques.find(t => t.id == tanqueId);
-    }
-
-    if (!tanque) {
-      console.error("Tanque não encontrado");
+    if (!unidadeObj) {
+      console.error("Unidade não encontrada");
       return;
     }
 
-    carregarDashboard(tanque);
+    tanques = unidadeObj.tanques;
+
+    if (tanques.length === 0) {
+      console.error("Nenhum tanque encontrado para essa unidade");
+      return;
+    }
+
+    renderizarCarrossel();
+    carregarDashboardInicial();
   })
-  .catch(err => {
-    console.error("ERRO:", err);
-  });
+  .catch(err => console.error("ERRO:", err));
 
 
 function renderizarCarrossel() {
@@ -86,17 +81,31 @@ btnPrev.onclick = () => {
 };
 
 
+function carregarDashboardInicial() {
+  let tanque;
+
+  if (!tanqueId) {
+    tanque = tanques[0];
+  } else {
+    tanque = tanques.find(t => t.id == tanqueId) || tanques[0];
+  }
+
+  carregarDashboard(tanque);
+}
+
 
 function carregarDashboard(tanque) {
 
-  const data_medicao = document.getElementById("data_medicao");
-
-  data_medicao.innerText = tanque.data_medicao;
+  document.getElementById("data_medicao").innerText =
+    tanque.data_medicao || "--";
 
   const titulo = document.getElementById("tituloTanque");
 
-  titulo.innerText = `Tanque ${tanque.id} - ${tanque.unidade}`;
+  titulo.innerText =
+    `Unidade: ${unidadeSelecionada} | Tanque ${tanque.id}`;
+
   titulo.className = `titulo_tanque ${tanque.classe}`;
+
 
   document.getElementById("tempoIdeal").innerText =
     tanque.metricas.tempoIdeal + "%";
@@ -105,7 +114,8 @@ function carregarDashboard(tanque) {
     tanque.metricas.alertasSemana;
 
   document.getElementById("varMinMax").innerText =
-    tanque.metricas.varMin + "°C - " + tanque.metricas.varMax + "°C";
+    `${tanque.metricas.varMin}°C - ${tanque.metricas.varMax}°C`;
+
 
   if (chartLinha) chartLinha.destroy();
 
@@ -133,16 +143,21 @@ function carregarDashboard(tanque) {
           label: "Urgente",
           data: tanque.alertas.urgente,
           backgroundColor: "#5a1f35",
-          borderRadius: "6"
+          borderRadius: 6
         },
         {
           label: "Atenção",
           data: tanque.alertas.atencao,
           backgroundColor: "#b07a8d",
-          borderRadius: "6"
+          borderRadius: 6
         }
       ]
     }
   });
 
+}
+
+function voltarUnidade() {
+  localStorage.removeItem("tanqueId");
+  window.location.href = "selecionarUnidade.html";
 }

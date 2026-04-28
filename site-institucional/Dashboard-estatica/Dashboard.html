@@ -30,17 +30,23 @@
   </header>
 
   <div class="container cinza">
-    <div class="card_dia">
-      <p id="data_medicao">--</p>
+    <div class="box-header">
+      <button onclick="voltarUnidade()" class="btn_carrossel unidade_dash">
+        Unidades
+      </button>
+
+      <section class="distribuicao_de_tanques">
+        <button id="btnPrev" class="btn_carrossel">◀</button>
+
+        <div id="carrossel" class="carrossel_container"></div>
+
+        <button id="btnNext" class="btn_carrossel">▶</button>
+      </section>
+
+      <div class="card_dia">
+        <p id="data_medicao">--</p>
+      </div>
     </div>
-    <section class="distribuicao_de_tanques">
-      <button id="btnPrev" class="btn_carrossel">◀</button>
-
-      <div id="carrossel" class="carrossel_container"></div>
-
-      <button id="btnNext" class="btn_carrossel">▶</button>
-    </section>
-
     <h2 id="tituloTanque" class="titulo_tanque">Tanque --</h2>
 
     <section class="card_dashboard">
@@ -73,7 +79,7 @@
     </section>
   </div>
 
-  <script src="tanques.js"></script>
+  <script src="tanques.json"></script>
 
   <script src="Dashboard.js"></script>
 
