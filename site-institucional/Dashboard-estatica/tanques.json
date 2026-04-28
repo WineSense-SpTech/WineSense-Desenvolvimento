@@ -7,20 +7,85 @@
         "status": "Crítico",
         "classe": "critico red",
         "data_medicao": "05/05",
-        "metricas": {
-          "tempoIdeal": 82,
-          "alertasSemana": 33,
-          "varMin": 11.5,
-          "varMax": 16
-        },
+        "metricas": { "tempoIdeal": 75, "alertasSemana": 20, "varMin": 11, "varMax": 16 },
         "temperatura": {
-          "labels": ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00"],
-          "valores": [12, 13.5, 11.5, 12.8, 15, 13, 16, 12.2, 12.8, 13.9, 12.5, 14.6, 12.7]
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [12,14,15,13,16,14,15]
         },
         "alertas": {
-          "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
-          "urgente": [5, 2, 6, 3, 1],
-          "atencao": [3, 3, 1, 5, 4]
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [5,4,6,3,2],
+          "atencao": [3,2,4,3,2]
+        }
+      },
+      {
+        "id": 2,
+        "status": "Crítico",
+        "classe": "critico red",
+        "data_medicao": "05/05",
+        "metricas": { "tempoIdeal": 70, "alertasSemana": 25, "varMin": 10, "varMax": 17 },
+        "temperatura": {
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [13,15,16,14,17,15,16]
+        },
+        "alertas": {
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [6,5,7,4,3],
+          "atencao": [4,3,5,3,2]
+        }
+      },
+      {
+        "id": 3,
+        "status": "Atenção",
+        "classe": "alerta",
+        "data_medicao": "05/05",
+        "metricas": { "tempoIdeal": 80, "alertasSemana": 15, "varMin": 11, "varMax": 15 },
+        "temperatura": {
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [12,13,14,13,15,14,13]
+        },
+        "alertas": {
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [2,1,3,2,1],
+          "atencao": [3,2,3,2,2]
+        }
+      },
+      {
+        "id": 4,
+        "status": "Regular",
+        "classe": "normal",
+        "data_medicao": "05/05",
+        "metricas": { "tempoIdeal": 90, "alertasSemana": 5, "varMin": 11, "varMax": 13 },
+        "temperatura": {
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [11,12,12,13,12,12,11]
+        },
+        "alertas": {
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [0,0,1,0,0],
+          "atencao": [1,1,1,1,1]
+        }
+      }
+    ]
+  },
+
+  {
+    "unidade": "Campinas",
+    "tanques": [
+      {
+        "id": 1,
+        "status": "Regular",
+        "classe": "normal",
+        "data_medicao": "05/05",
+        "metricas": { "tempoIdeal": 95, "alertasSemana": 2, "varMin": 11, "varMax": 12 },
+        "temperatura": {
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [11,11.5,12,12,11.8,12,11.9]
+        },
+        "alertas": {
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [0,0,0,0,0],
+          "atencao": [1,0,1,0,0]
         }
       },
       {
@@ -28,20 +93,69 @@
         "status": "Regular",
         "classe": "normal",
         "data_medicao": "05/05",
-        "metricas": {
-          "tempoIdeal": 91,
-          "alertasSemana": 18,
-          "varMin": 11,
-          "varMax": 13.5
-        },
+        "metricas": { "tempoIdeal": 93, "alertasSemana": 3, "varMin": 11, "varMax": 12.5 },
         "temperatura": {
-          "labels": ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00"],
-          "valores": [11, 11.5, 12, 12.2, 12.5, 12.3, 12, 13.5, 12.8, 11.1, 12.6, 12, 13]
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [11,12,12.2,12.3,12,12.1,12]
         },
         "alertas": {
-          "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
-          "urgente": [1, 0, 2, 4, 1],
-          "atencao": [3, 1, 1, 3, 2]
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [0,0,0,0,0],
+          "atencao": [0,1,0,1,1]
+        }
+      }
+    ]
+  },
+
+  {
+    "unidade": "Rio de Janeiro",
+    "tanques": [
+      {
+        "id": 1,
+        "status": "Crítico",
+        "classe": "critico red",
+        "data_medicao": "05/05",
+        "metricas": { "tempoIdeal": 78, "alertasSemana": 18, "varMin": 11, "varMax": 16 },
+        "temperatura": {
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [12,14,15,14,16,15,14]
+        },
+        "alertas": {
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [4,3,5,3,3],
+          "atencao": [3,2,3,2,2]
+        }
+      },
+      {
+        "id": 2,
+        "status": "Regular",
+        "classe": "normal",
+        "data_medicao": "05/05",
+        "metricas": { "tempoIdeal": 92, "alertasSemana": 4, "varMin": 11, "varMax": 13 },
+        "temperatura": {
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [11,12,12,13,12,12,11]
+        },
+        "alertas": {
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [0,0,1,0,0],
+          "atencao": [1,1,1,1,1]
+        }
+      },
+      {
+        "id": 3,
+        "status": "Regular",
+        "classe": "normal",
+        "data_medicao": "05/05",
+        "metricas": { "tempoIdeal": 94, "alertasSemana": 2, "varMin": 11, "varMax": 12 },
+        "temperatura": {
+          "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
+          "valores": [11,11.5,12,12,11.8,12,11.9]
+        },
+        "alertas": {
+          "labels": ["01/05","02/05","03/05","04/05","05/05"],
+          "urgente": [0,0,0,0,0],
+          "atencao": [0,0,1,0,0]
         }
       }
     ]
