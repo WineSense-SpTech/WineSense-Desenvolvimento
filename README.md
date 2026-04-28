@@ -1,5 +1,8 @@
 # 🍷 WineSense — Repositório de Desenvolvimento
 
+![STATUS EM DESENVOLVIMENTO](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange?style=for-the-badge)
+![INSTITUIÇÃO SPTECH SCHOOL](https://img.shields.io/badge/Institui%C3%A7%C3%A3o-SPTech%20School-blue?style=for-the-badge)
+
 O **WineSense** é uma solução baseada em IoT para monitoramento da temperatura durante o processo de fermentação do vinho.
 
 Este repositório contém a **implementação técnica do projeto**, incluindo sensores, banco de dados, APIs, dashboards e demais componentes necessários para o funcionamento da solução.
@@ -103,12 +106,9 @@ A solução é composta por:
 
 ## 🔧 Tecnologias Utilizadas
 
-- Arduino Uno  
-- Sensor LM35  
-- HTML, CSS, JavaScript  
-- Chart.js  
-- MySQL  
-- Ambiente Linux (VM)  
+### ![Arduino Uno](https://img.shields.io/badge/Arduino_Uno-00979C?style=for-the-badge&logo=arduino&logoColor=white) ![Sensor LM35](https://img.shields.io/badge/Sensor_LM35-4B4B4B?style=for-the-badge&logo=microchip&logoColor=white)
+### ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
+### ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white) ![VirtualBox](https://img.shields.io/badge/VirtualBox-183D61?style=for-the-badge&logo=virtualbox&logoColor=white)
 
 ---
 
