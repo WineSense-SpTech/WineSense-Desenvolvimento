@@ -6,8 +6,9 @@
         "id": 1,
         "status": "Crítico",
         "classe": "critico red",
+        "Uva": "Malbec",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 75, "alertasSemana": 20, "varMin": 11, "varMax": 16 },
+        "metricas": { "horarioVar": 750, "alertasSemana": 20, "varMin": 11, "varMax": 16},
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [12,14,15,13,16,14,15]
@@ -22,8 +23,9 @@
         "id": 2,
         "status": "Crítico",
         "classe": "critico red",
+        "Uva": "Cabernet",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 70, "alertasSemana": 25, "varMin": 10, "varMax": 17 },
+        "metricas": { "horarioVar": 700, "alertasSemana": 25, "varMin": 10, "varMax": 17 },
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [13,15,16,14,17,15,16]
@@ -38,8 +40,9 @@
         "id": 3,
         "status": "Atenção",
         "classe": "alerta",
+        "Uva": "Rosada",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 80, "alertasSemana": 15, "varMin": 11, "varMax": 15 },
+        "metricas": { "horarioVar": 800, "alertasSemana": 15, "varMin": 11, "varMax": 15 },
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [12,13,14,13,15,14,13]
@@ -54,8 +57,9 @@
         "id": 4,
         "status": "Regular",
         "classe": "normal",
+        "Uva": "Bourbon",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 90, "alertasSemana": 5, "varMin": 11, "varMax": 13 },
+        "metricas": { "horarioVar": 900, "alertasSemana": 5, "varMin": 11, "varMax": 13 },
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [11,12,12,13,12,12,11]
@@ -76,8 +80,9 @@
         "id": 1,
         "status": "Regular",
         "classe": "normal",
+        "Uva": "Bourbon",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 95, "alertasSemana": 2, "varMin": 11, "varMax": 12 },
+        "metricas": { "horarioVar": 950, "alertasSemana": 2, "varMin": 11, "varMax": 12 },
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [11,11.5,12,12,11.8,12,11.9]
@@ -92,8 +97,9 @@
         "id": 2,
         "status": "Regular",
         "classe": "normal",
+        "Uva": "Rosada",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 93, "alertasSemana": 3, "varMin": 11, "varMax": 12.5 },
+        "metricas": { "horarioVar": 800, "alertasSemana": 3, "varMin": 11, "varMax": 12.5 },
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [11,12,12.2,12.3,12,12.1,12]
@@ -114,8 +120,9 @@
         "id": 1,
         "status": "Crítico",
         "classe": "critico red",
+        "Uva": "Malbec",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 78, "alertasSemana": 18, "varMin": 11, "varMax": 16 },
+        "metricas": { "horarioVar": 750, "alertasSemana": 18, "varMin": 11, "varMax": 16 },
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [12,14,15,14,16,15,14]
@@ -130,8 +137,9 @@
         "id": 2,
         "status": "Regular",
         "classe": "normal",
+        "Uva": "Cabernet",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 92, "alertasSemana": 4, "varMin": 11, "varMax": 13 },
+        "metricas": { "horarioVar": 920, "alertasSemana": 4, "varMin": 11, "varMax": 13 },
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [11,12,12,13,12,12,11]
@@ -146,8 +154,9 @@
         "id": 3,
         "status": "Regular",
         "classe": "normal",
+        "Uva": "Malbec",
         "data_medicao": "05/05",
-        "metricas": { "tempoIdeal": 94, "alertasSemana": 2, "varMin": 11, "varMax": 12 },
+        "metricas": { "horarioVar": 720, "alertasSemana": 2, "varMin": 11, "varMax": 12 },
         "temperatura": {
           "labels": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00"],
           "valores": [11,11.5,12,12,11.8,12,11.9]

@@ -93,22 +93,24 @@ function carregarDashboardInicial() {
   carregarDashboard(tanque);
 }
 
+  
 
 function carregarDashboard(tanque) {
 
+  
   document.getElementById("data_medicao").innerText =
     tanque.data_medicao || "--";
 
   const titulo = document.getElementById("tituloTanque");
-
+  
   titulo.innerText =
     `Unidade: ${unidadeSelecionada} | Tanque ${tanque.id}`;
 
   titulo.className = `titulo_tanque ${tanque.classe}`;
 
 
-  document.getElementById("tempoIdeal").innerText =
-    tanque.metricas.tempoIdeal + "%";
+  document.getElementById("horarioVar").innerText =
+    tanque.metricas.horarioVar + `h` + `m`;
 
   document.getElementById("alertasSemana").innerText =
     tanque.metricas.alertasSemana;
@@ -131,6 +133,18 @@ function carregarDashboard(tanque) {
       }]
     }
   });
+
+  const totalMinutos = tanque.metricas.horarioVar;
+  const horas = Math.floor(totalMinutos / 60);
+  const minutos = totalMinutos % 60;
+
+  const horaFormatada = `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}`;
+
+  document.getElementById("horarioVar").innerText = horaFormatada;
+
+  titulo.className = `titulo_tanque ${tanque.classe}`;
+  document.getElementById("tipoUva").innerText = `Uva: ${tanque.Uva ? tanque.Uva : "Não informada"}`;
+
 
   if (chartBarra) chartBarra.destroy();
 
