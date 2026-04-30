@@ -668,5 +668,17 @@ footer ul {
     font-weight: bold; 
     margin-bottom: 20px;
     
+}
+
+.bemVindo_unidade_select {
+
+    text-align: flex-start;
+    font-size: 5rem;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: -150px;
+    margin-top: 200px;
+    margin-left: 3rem;
+
 
 }
