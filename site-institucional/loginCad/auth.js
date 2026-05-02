@@ -16,10 +16,24 @@ if (document.title.includes("Cadastro")) {
             alert("As senhas não coincidem");
             return false;
         }
+    if (nome.length <= 1) {
+        alert("Nome deve ter mais de 1 caractere.");
+        return false;
+    }
+
+    if (email.includes("@") === false || email.includes(".") === false) {
+        alert("E-mail inválido.");
+        return false;
+    }
+
+    if (senha.length <= 6) {
+        alert("Senha deve ter mais de 6 caracteres.");
+        return false;
+    }
 
         // Salva os dados separados
-        localStorage.setItem("emailCadastrado", email);
-        localStorage.setItem("senhaCadastrada", senha);
+        sessionStorage.setItem("emailCadastrado", email);
+        sessionStorage.setItem("senhaCadastrada", senha);
 
         alert("Cadastro realizado com sucesso!");
         window.location.href = "login.html";
@@ -37,8 +51,8 @@ if (document.title.includes("Login")) {
 
         let email = idEmail.value;
         let senha = idSenha.value;
-        let emailSalvo = localStorage.getItem("emailCadastrado");
-        let senhaSalva = localStorage.getItem("senhaCadastrada");
+        let emailSalvo = sessionStorage.getItem("emailCadastrado");
+        let senhaSalva = sessionStorage.getItem("senhaCadastrada");
 
         if (emailSalvo === null) {
             alert("Nenhum usuário cadastrado");
@@ -47,7 +61,7 @@ if (document.title.includes("Login")) {
 
         if (email === emailSalvo && senha === senhaSalva) {
             alert("Login realizado com sucesso!");
-            window.location.href = "../homeWineSense/index.html";
+            window.location.href = "../Dashboard-estatica/Dashboard.html";
             return false;
         } else {
             erros.push("erro");
