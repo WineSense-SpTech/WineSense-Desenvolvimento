@@ -39,9 +39,20 @@ fetch("tanques.json")
   })
   .catch(err => console.error("ERRO:", err));
 
+function ordenarTanques(lista) {
+  const prioridade = {
+    "Crítico": 1,
+    "Atenção": 2,
+    "Regular": 3
+  };
+
+  return lista.sort((a, b) => prioridade[a.status] - prioridade[b.status]);
+}
 
 function renderizarCarrossel() {
   container.innerHTML = "";
+
+  const tanquesOrdenados = ordenarTanques([...tanques]);
 
   const slice = tanques.slice(indexAtual, indexAtual + itensPorPagina);
 
