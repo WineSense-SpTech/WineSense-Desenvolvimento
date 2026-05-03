@@ -516,12 +516,12 @@ footer ul {
     border-radius: 15px;
 }
 
-.indicadores p{
-    font-size: 18px;
-}
-
 .indicadores #varMinMax{
     font-size: 40px;
+}
+
+.indicadores #horarioVar{
+    font-size: 45px;
 }
 
 /*espaço onde coloquei os tanques*/
@@ -679,13 +679,12 @@ footer ul {
 }
 
 .bemVindo_unidade_select {
-
     text-align: flex-start;
     font-size: 5rem;
     display: flex;
     justify-content: flex-start;
     margin-bottom: -150px;
-    margin-top: 200px;
+    margin-top: 100px;
     margin-left: 3rem;
 
 

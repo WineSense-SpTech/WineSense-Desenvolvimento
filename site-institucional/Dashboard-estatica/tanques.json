@@ -9,7 +9,7 @@
         "Uva": "Malbec",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 680,
+          "horarioVar": "11:20",
           "alertasSemana": 34,
           "varMin": 11.1,
           "varMax": 15.6
@@ -62,7 +62,7 @@
         "Uva": "Cabernet Sauvignon",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 635,
+          "horarioVar": "10:35",
           "alertasSemana": 38,
           "varMin": 10.4,
           "varMax": 17
@@ -115,7 +115,7 @@
         "Uva": "Syrah",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 660,
+          "horarioVar": "11:00",
           "alertasSemana": 30,
           "varMin": 10.9,
           "varMax": 15.6
@@ -168,7 +168,7 @@
         "Uva": "Tempranillo",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 650,
+          "horarioVar": "10:50",
           "alertasSemana": 18,
           "varMin": 10.8,
           "varMax": 14.4
@@ -221,7 +221,7 @@
         "Uva": "Merlot",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 660,
+          "horarioVar": "11:00",
           "alertasSemana": 16,
           "varMin": 10.3,
           "varMax": 14.2
@@ -274,7 +274,7 @@
         "Uva": "Sauvignon Blanc",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 670,
+          "horarioVar": "11:10",
           "alertasSemana": 15,
           "varMin": 10.7,
           "varMax": 13.8
@@ -327,7 +327,7 @@
         "Uva": "Chardonnay",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 480,
+          "horarioVar": "10:50",
           "alertasSemana": 5,
           "varMin": 10.3,
           "varMax": 13.3
@@ -380,7 +380,7 @@
         "Uva": "Pinot Noir",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 510,
+          "horarioVar": "11:40",
           "alertasSemana": 4,
           "varMin": 11,
           "varMax": 12.5
@@ -432,7 +432,7 @@
         "Uva": "Tannat",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 450,
+          "horarioVar": "11:30",
           "alertasSemana": 3,
           "varMin": 10.2,
           "varMax": 12.4
@@ -485,7 +485,7 @@
         "Uva": "Riesling",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 720,
+          "horarioVar": "12:00",
           "alertasSemana": 2,
           "varMin": 10.6,
           "varMax": 12.3
@@ -539,7 +539,7 @@
         "Uva": "Carménère",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 600,
+          "horarioVar": "11:20",
           "alertasSemana": 1,
           "varMin": 11,
           "varMax": 12.2
@@ -597,57 +597,9 @@
         "Uva": "Chardonnay",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 480,
+          "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 11,
-          "varMax": 12
-        },
-        "temperatura": {
-          "labels": [
-    "10:00",
-    "10:05",
-    "10:10",
-    "10:15",
-    "10:20",
-    "10:25",
-    "10:30",
-    "10:35",
-    "10:40",
-    "10:45",
-    "10:50",
-    "10:55",
-    "11:00",
-    "11:05",
-    "11:10",
-    "11:15",
-    "11:20",
-    "11:25",
-    "11:30",
-    "11:35",
-    "11:40",
-    "11:45",
-    "11:50",
-    "11:55",
-    "12:00"
-  ],
-          "valores": [11, 11.1, 11.3, 11.5, 11.8, 12, 11.9]
-        },
-        "alertas": {
-          "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
-          "urgente": [0, 0, 0, 0, 0],
-          "atencao": [0, 0, 0, 0, 0]
-        }
-      },
-      {
-        "id": 2,
-        "status": "Regular",
-        "classe": "normal",
-        "Uva": "Sauvignon Blanc",
-        "data_medicao": "05/05",
-        "metricas": {
-          "horarioVar": 510,
-          "alertasSemana": 0,
-          "varMin": 11,
+          "varMin": 10.8,
           "varMax": 12.1
         },
         "temperatura": {
@@ -678,7 +630,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.1, 11.2, 11.4, 11.8, 12.1, 12]
+          "valores": [
+  11.0, 11.2, 11.0, 11.1, 11.3, 11.2, 11.5, 
+  11.4, 11.7, 11.8, 12.0, 12.1, 11.9, 12.1, 
+  11.8, 12.0, 11.7, 11.9, 12.1, 11.8, 12.0, 
+  11.7, 11.9, 12.1, 11.9
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -687,15 +644,15 @@
         }
       },
       {
-        "id": 3,
+        "id": 2,
         "status": "Regular",
         "classe": "normal",
-        "Uva": "Merlot",
+        "Uva": "Sauvignon Blanc",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 540,
+          "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 11,
+          "varMin": 10.5,
           "varMax": 12.2
         },
         "temperatura": {
@@ -726,7 +683,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.1, 11.4, 11.6, 11.9, 12.2, 12]
+          "valores": [
+  11.0, 10.8, 11.1, 10.9, 11.2, 11.0, 11.4, 
+  11.2, 11.6, 11.8, 12.1, 11.9, 12.1, 11.8, 
+  12.0, 11.7, 12.1, 11.9, 12.2, 11.8, 12.1, 
+  11.9, 12.0, 11.8, 12.0
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -735,15 +697,15 @@
         }
       },
       {
-        "id": 4,
+        "id": 3,
         "status": "Regular",
         "classe": "normal",
-        "Uva": "Cabernet Sauvignon",
+        "Uva": "Merlot",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 570,
+          "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 11,
+          "varMin": 10.1,
           "varMax": 12.3
         },
         "temperatura": {
@@ -774,7 +736,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.2, 11.4, 11.7, 12.1, 12.3, 12.1]
+          "valores": [
+  11.0, 10.8, 11.1, 10.9, 11.4, 11.2, 11.5, 
+  11.3, 11.6, 11.8, 11.9, 12.1, 12.2, 12.0, 
+  11.8, 12.1, 11.9, 12.2, 12.0, 12.3, 12.1, 
+  11.9, 12.2, 12.0, 12.0
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -783,16 +750,16 @@
         }
       },
       {
-        "id": 5,
+        "id": 4,
         "status": "Regular",
         "classe": "normal",
-        "Uva": "Syrah",
+        "Uva": "Cabernet Sauvignon",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 600,
+          "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 11,
-          "varMax": 12.1
+          "varMin": 10.6,
+          "varMax": 12.3
         },
         "temperatura": {
           "labels": [
@@ -822,24 +789,29 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.1, 11.3, 11.6, 12, 12.1, 11.9]
+          "valores": [
+  11.0, 10.9, 11.2, 11.1, 11.4, 11.2, 11.6, 
+  11.4, 11.7, 11.9, 12.1, 12.3, 12.1, 11.9, 
+  12.2, 12.0, 11.8, 12.1, 12.3, 12.0, 12.2, 
+  11.9, 12.1, 11.8, 12.1
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
-          "urgent": [0, 0, 0, 0, 0],
+          "urgente": [0, 0, 0, 0, 0],
           "atencao": [0, 0, 0, 0, 0]
         }
       },
       {
-        "id": 6,
+        "id": 5,
         "status": "Regular",
         "classe": "normal",
-        "Uva": "Pinot Noir",
+        "Uva": "Syrah",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 630,
+          "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 11,
+          "varMin": 10.7,
           "varMax": 12.2
         },
         "temperatura": {
@@ -870,7 +842,65 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.1, 11.2, 11.5, 11.9, 12.2, 12]
+          "valores": [
+  11.0, 10.8, 11.1, 10.9, 11.3, 11.1, 11.5, 
+  11.3, 11.6, 11.8, 12.0, 12.1, 11.9, 12.1, 
+  11.8, 12.0, 11.7, 11.9, 12.2, 12.0, 11.8, 
+  12.1, 11.9, 12.0, 11.9
+]
+        },
+        "alertas": {
+          "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
+          "urgent": [0, 0, 0, 0, 0],
+          "atencao": [0, 0, 0, 0, 0]
+        }
+      },
+      {
+        "id": 6,
+        "status": "Regular",
+        "classe": "normal",
+        "Uva": "Pinot Noir",
+        "data_medicao": "05/05",
+        "metricas": {
+          "horarioVar": "Sem Variação",
+          "alertasSemana": 0,
+          "varMin": 10.7,
+          "varMax": 12.2
+        },
+        "temperatura": {
+          "labels": [
+    "10:00",
+    "10:05",
+    "10:10",
+    "10:15",
+    "10:20",
+    "10:25",
+    "10:30",
+    "10:35",
+    "10:40",
+    "10:45",
+    "10:50",
+    "10:55",
+    "11:00",
+    "11:05",
+    "11:10",
+    "11:15",
+    "11:20",
+    "11:25",
+    "11:30",
+    "11:35",
+    "11:40",
+    "11:45",
+    "11:50",
+    "11:55",
+    "12:00"
+  ],
+          "valores": [
+  11.0, 10.9, 11.1, 11.0, 11.2, 11.4, 11.1, 
+  11.5, 11.3, 11.7, 11.9, 12.1, 12.2, 12.0, 
+  11.8, 12.1, 11.9, 12.2, 12.0, 11.8, 12.1, 
+  11.9, 12.2, 11.8, 12.0
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -890,9 +920,9 @@
         "Uva": "Malbec",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 600,
+          "horarioVar": "10:55",
           "alertasSemana": 29,
-          "varMin": 10.5,
+          "varMin": 10.1,
           "varMax": 16.2
         },
         "temperatura": {
@@ -923,7 +953,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [10.5, 11.5, 12, 13, 16.2, 14.5, 15.5]
+          "valores": [
+  10.5, 10.2, 11.0, 11.5, 11.2, 11.8, 12.0, 
+  12.3, 12.7, 13.0, 14.2, 15.1, 16.2, 15.8, 
+  14.5, 15.2, 14.8, 15.5, 15.1, 14.9, 15.7, 
+  15.3, 15.0, 15.4, 15.5
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -938,9 +973,9 @@
         "Uva": "Cabernet Sauvignon",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 630,
+          "horarioVar": "11:10",
           "alertasSemana": 17,
-          "varMin": 11,
+          "varMin": 10.2,
           "varMax": 14.8
         },
         "temperatura": {
@@ -971,7 +1006,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.3, 12, 12.6, 14.8, 13.8, 13]
+          "valores": [
+  11.0, 10.7, 11.1, 11.3, 11.0, 11.6, 12.0, 
+  12.2, 12.4, 12.6, 13.5, 14.1, 14.8, 14.3, 
+  13.8, 14.0, 13.5, 13.0, 13.4, 12.8, 13.2, 
+  13.0, 12.7, 13.1, 13.0
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -986,7 +1026,7 @@
         "Uva": "Syrah",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 660,
+          "horarioVar": "11:00",
           "alertasSemana": 14,
           "varMin": 11,
           "varMax": 14.2
@@ -1019,7 +1059,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.2, 11.8, 12.4, 14.2, 13.2, 12.8]
+          "valores": [
+  11.0, 10.7, 11.2, 10.9, 11.5, 11.8, 12.1, 
+  12.0, 12.4, 13.5, 14.2, 13.8, 13.2, 13.5, 
+  12.8, 13.1, 12.6, 12.9, 13.2, 12.7, 13.0, 
+  12.5, 12.8, 13.1, 12.8
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -1034,9 +1079,9 @@
         "Uva": "Merlot",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 480,
+          "horarioVar": "11:35",
           "alertasSemana": 4,
-          "varMin": 11,
+          "varMin": 10.4,
           "varMax": 12.5
         },
         "temperatura": {
@@ -1067,7 +1112,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.1, 11.3, 11.7, 12.1, 12.5, 12.2]
+          "valores": [
+  11.0, 10.7, 11.1, 10.9, 11.3, 11.1, 11.5, 
+  11.7, 11.4, 11.9, 12.1, 12.3, 12.5, 12.3, 
+  12.2, 12.4, 12.1, 12.5, 12.0, 12.3, 12.2, 
+  11.9, 12.4, 12.1, 12.2
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -1082,10 +1132,10 @@
         "Uva": "Chardonnay",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 510,
+          "horarioVar": "11:15",
           "alertasSemana": 3,
-          "varMin": 11,
-          "varMax": 12.4
+          "varMin": 10.4,
+          "varMax": 12.5
         },
         "temperatura": {
           "labels": [
@@ -1115,7 +1165,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.2, 11.4, 11.8, 12.2, 12.4, 12.1]
+          "valores": [
+  11.0, 10.8, 11.2, 11.0, 11.4, 11.2, 11.6, 
+  11.8, 11.5, 12.0, 12.2, 12.5, 12.4, 12.2, 
+  12.1, 12.3, 11.9, 12.2, 12.0, 12.3, 12.1, 
+  11.8, 12.2, 12.0, 12.1
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -1130,10 +1185,10 @@
         "Uva": "Pinot Noir",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 540,
+          "horarioVar": "10:50",
           "alertasSemana": 2,
-          "varMin": 11,
-          "varMax": 12.2
+          "varMin": 10.6,
+          "varMax": 12.3
         },
         "temperatura": {
           "labels": [
@@ -1163,7 +1218,12 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.1, 11.3, 11.6, 12, 12.2, 12]
+          "valores": [
+  11.0, 10.8, 11.1, 10.9, 11.3, 11.1, 11.4, 
+  11.6, 11.8, 11.5, 12.0, 12.3, 12.2, 12.0, 
+  11.8, 12.1, 11.9, 12.2, 11.9, 12.1, 12.0, 
+  11.8, 12.1, 12.2, 12.0
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
@@ -1178,57 +1238,9 @@
         "Uva": "Riesling",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 570,
+          "horarioVar": "11:05",
           "alertasSemana": 1,
-          "varMin": 11,
-          "varMax": 12
-        },
-        "temperatura": {
-          "labels": [
-    "10:00",
-    "10:05",
-    "10:10",
-    "10:15",
-    "10:20",
-    "10:25",
-    "10:30",
-    "10:35",
-    "10:40",
-    "10:45",
-    "10:50",
-    "10:55",
-    "11:00",
-    "11:05",
-    "11:10",
-    "11:15",
-    "11:20",
-    "11:25",
-    "11:30",
-    "11:35",
-    "11:40",
-    "11:45",
-    "11:50",
-    "11:55",
-    "12:00"
-  ],
-          "valores": [11, 11.1, 11.2, 11.5, 11.9, 12, 11.8]
-        },
-        "alertas": {
-          "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
-          "urgente": [0, 0, 0, 0, 0],
-          "atencao": [0, 0, 1, 0, 0]
-        }
-      },
-      {
-        "id": 8,
-        "status": "Regular",
-        "classe": "normal",
-        "Uva": "Carménère",
-        "data_medicao": "05/05",
-        "metricas": {
-          "horarioVar": 600,
-          "alertasSemana": 2,
-          "varMin": 11,
+          "varMin": 10.7,
           "varMax": 12.1
         },
         "temperatura": {
@@ -1259,25 +1271,30 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11.1, 11.3, 11.5, 11.9, 12.1, 12]
+          "valores": [
+  11.0, 10.8, 11.1, 10.9, 11.2, 11.0, 11.3, 
+  11.5, 11.2, 11.7, 11.9, 11.6, 12.0, 11.8, 
+  11.6, 11.9, 11.7, 12.0, 11.8, 12.1, 11.9, 
+  11.7, 11.9, 11.6, 11.8
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
           "urgente": [0, 0, 0, 0, 0],
-          "atencao": [0, 1, 0, 1, 0]
+          "atencao": [0, 0, 1, 0, 0]
         }
       },
       {
-        "id": 9,
+        "id": 8,
         "status": "Regular",
         "classe": "normal",
-        "Uva": "Tannat",
+        "Uva": "Carménère",
         "data_medicao": "05/05",
         "metricas": {
-          "horarioVar": 630,
-          "alertasSemana": 1,
-          "varMin": 11,
-          "varMax": 12
+          "horarioVar": "11:20",
+          "alertasSemana": 2,
+          "varMin": 10.5,
+          "varMax": 12.3
         },
         "temperatura": {
           "labels": [
@@ -1307,7 +1324,65 @@
     "11:55",
     "12:00"
   ],
-          "valores": [11, 11, 11.2, 11.4, 11.8, 12, 11.9]
+          "valores": [
+  11.0, 10.8, 11.1, 10.9, 11.3, 11.1, 11.4, 
+  11.5, 11.7, 11.9, 11.7, 12.0, 12.1, 11.9, 
+  12.0, 11.8, 12.1, 12.3, 12.0, 12.2, 11.9, 
+  12.1, 11.8, 12.0, 12.0
+]
+        },
+        "alertas": {
+          "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
+          "urgente": [0, 0, 0, 0, 0],
+          "atencao": [0, 1, 0, 1, 0]
+        }
+      },
+      {
+        "id": 9,
+        "status": "Regular",
+        "classe": "normal",
+        "Uva": "Tannat",
+        "data_medicao": "05/05",
+        "metricas": {
+          "horarioVar": "11:10",
+          "alertasSemana": 1,
+          "varMin": 10.7,
+          "varMax": 12.1
+        },
+        "temperatura": {
+          "labels": [
+    "10:00",
+    "10:05",
+    "10:10",
+    "10:15",
+    "10:20",
+    "10:25",
+    "10:30",
+    "10:35",
+    "10:40",
+    "10:45",
+    "10:50",
+    "10:55",
+    "11:00",
+    "11:05",
+    "11:10",
+    "11:15",
+    "11:20",
+    "11:25",
+    "11:30",
+    "11:35",
+    "11:40",
+    "11:45",
+    "11:50",
+    "11:55",
+    "12:00"
+  ],
+          "valores": [
+  11.0, 10.8, 11.0, 11.1, 11.2, 11.0, 11.3, 
+  11.4, 11.6, 11.8, 11.6, 11.9, 12.0, 11.8, 
+  11.9, 12.1, 11.8, 12.0, 11.7, 11.9, 12.1, 
+  11.8, 12.0, 11.7, 11.9
+]
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
