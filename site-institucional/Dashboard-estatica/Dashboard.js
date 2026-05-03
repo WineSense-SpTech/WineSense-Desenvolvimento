@@ -50,30 +50,30 @@ function ordenarTanques(lista) {
 }
 
 function renderizarCarrossel() {
-  container.innerHTML = "";
+container.innerHTML = "";
 
-  const tanquesOrdenados = ordenarTanques([...tanques]);
+const tanquesOrdenados = ordenarTanques([...tanques]);
 
-  const slice = tanques.slice(indexAtual, indexAtual + itensPorPagina);
+const slice = tanquesOrdenados.slice(indexAtual, indexAtual + itensPorPagina);
 
-  slice.forEach(tanque => {
-    const div = document.createElement("div");
-    div.className = "card_tanque";
+slice.forEach(tanque => {
+const div = document.createElement("div");
+div.className = "card_tanque";
 
-    div.innerHTML = `
-      <button class="tanque">
-        <h3>Tanque ${tanque.id}</h3>
-        <p class="${tanque.classe}">${tanque.status}</p>
-      </button>
-    `;
+div.innerHTML = `
+<button class="tanque">
+<h3>Tanque ${tanque.id}</h3>
+<p class="${tanque.classe}">${tanque.status}</p>
+</button>
+`;
 
-    div.onclick = () => {
-      localStorage.setItem("tanqueId", tanque.id);
-      carregarDashboard(tanque);
-    };
+div.onclick = () => {
+localStorage.setItem("tanqueId", tanque.id);
+carregarDashboard(tanque);
+};
 
-    container.appendChild(div);
-  });
+container.appendChild(div);
+});
 }
 
 

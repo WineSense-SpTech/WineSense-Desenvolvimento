@@ -516,6 +516,14 @@ footer ul {
     border-radius: 15px;
 }
 
+.indicadores p{
+    font-size: 18px;
+}
+
+.indicadores #varMinMax{
+    font-size: 40px;
+}
+
 /*espaço onde coloquei os tanques*/
 .distribuicao_de_tanques {
     display: flex;
