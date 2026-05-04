@@ -34,6 +34,7 @@ nav {
     display: flex;
     gap: 40px;
     list-style: none;
+
 }
 
 .menu a,
@@ -41,6 +42,17 @@ nav a {
     text-decoration: none;
     color: #3B1E2C;
     transition: 0.3s;
+}
+
+.logo img{
+    width: 10%;
+    margin-left: 4%;
+}
+
+.navegacao{
+    display: flex;
+
+    align-items: center;
 }
 
 .menu a:hover,
