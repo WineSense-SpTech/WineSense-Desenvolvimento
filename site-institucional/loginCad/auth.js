@@ -16,6 +16,20 @@ if (document.title.includes("Cadastro")) {
             alert("As senhas não coincidem");
             return false;
         }
+    if (nome.length <= 1) {
+        alert("Nome deve ter mais de 1 caractere.");
+        return false;
+    }
+
+    if (email.includes("@") === false || email.includes(".") === false) {
+        alert("E-mail inválido.");
+        return false;
+    }
+
+    if (senha.length <= 6) {
+        alert("Senha deve ter mais de 6 caracteres.");
+        return false;
+    }
 
         // Salva os dados separados
         sessionStorage.setItem("emailCadastrado", email);
