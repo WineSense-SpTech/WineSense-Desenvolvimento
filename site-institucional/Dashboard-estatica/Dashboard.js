@@ -174,22 +174,44 @@ function carregarDashboard(tanque) {
   // Destroi gráfico antigo (evita duplicação)
   if (chartLinha) chartLinha.destroy();
 
+
+  const tempMax = tanque.temperatura.temp_max[0];
+  const tempMin = tanque.temperatura.temp_min[0];
+  const totalLabels = tanque.temperatura.labels.length;
+
   // Cria novo gráfico de linhas
   chartLinha = new Chart(document.getElementById("linha"), {
-    type: "line",
-    data: {
-      labels: tanque.temperatura.labels,
-      datasets: [
-        {
-          label: "Temperatura",
-          data: tanque.temperatura.valores,
-          borderColor: "#7a2f4b",
-          fill: false,
-        },
-      ],
-    },
-  });
-
+  type: "line",
+  data: {
+    labels: tanque.temperatura.labels,
+    datasets: [
+      {
+        label: "Temperatura",
+        data: tanque.temperatura.valores,
+        borderColor: "#7a2f4b",
+        fill: false,
+      },
+      {
+        label: "Limite Superior",
+        data: new Array(totalLabels).fill(tempMax),
+        borderColor: "#22c55e",
+        borderDash: [6, 3],   
+        borderWidth: 2,
+        pointRadius: 0,        
+        fill: false,
+      },
+      {
+        label: "Limite Inferior",
+        data: new Array(totalLabels).fill(tempMin),
+        borderColor: "#16a34a",
+        borderDash: [6, 3],
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+      },
+    ],
+  },
+});
   // Pega o horário já formatado do JSON
   const horario = tanque.metricas.horarioVar;
 
