@@ -28,18 +28,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 60px;
-    margin-right: 10%;
-    width: 100%;
 }
-.logo{
-    width: 18%;
 
-}
 .menu {
     display: flex;
     gap: 40px;
     list-style: none;
-    align-items: center;
 }
 
 .menu a,
@@ -55,10 +49,6 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.btnDiv{
-margin-left: 10%;
-}
-
 .btn_principal,
 .btn_entrar,
 .btn-primary,
@@ -72,10 +62,7 @@ button {
     font-weight: bold;
     transition: 0.3s;
 }
-.btn_entrar .login{
-    display: flex;
-    justify-content: flex-end;
-}
+
 .btn_enviar {
     background: #4a2333;
     color: white;
@@ -339,21 +326,16 @@ textarea:focus {
     align-items: center;
     gap: 60px;
     padding: 20px 80px;
-    gap: 2%;
 }
 
 .text {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;  
+    width: 45%;
     text-align: left;
     font-size: 1.05rem;
-    width: 35%;
 }
 
 .textContent {
     margin-bottom: 20px;
-
 }
 
 .card {
@@ -363,10 +345,8 @@ textarea:focus {
     background: #F0E6D8;
 }
 
-
-
 .imageSobre {
-    width: 32%;
+    width: 420px;
     border-radius: 10px;
 }
 

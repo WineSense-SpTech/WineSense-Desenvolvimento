@@ -11,8 +11,8 @@
         "metricas": {
           "horarioVar": "11:20",
           "alertasSemana": 34,
-          "varMin": 11.1,
-          "varMax": 15.6
+          "varMin": 16.1,
+          "varMax": 25.6
         },
         "temperatura": {
           "labels": [
@@ -66,8 +66,8 @@
         "metricas": {
           "horarioVar": "10:35",
           "alertasSemana": 38,
-          "varMin": 10.4,
-          "varMax": 17
+          "varMin": 26.4,
+          "varMax": 34
         },
         "temperatura": {
           "labels": [
@@ -121,8 +121,8 @@
         "metricas": {
           "horarioVar": "11:00",
           "alertasSemana": 30,
-          "varMin": 10.9,
-          "varMax": 15.6
+          "varMin": 16.9,
+          "varMax": 22.6
         },
         "temperatura": {
           "labels": [
@@ -176,8 +176,8 @@
         "metricas": {
           "horarioVar": "10:50",
           "alertasSemana": 18,
-          "varMin": 10.8,
-          "varMax": 14.4
+          "varMin": 25.8,
+          "varMax": 30.4
         },
         "temperatura": {
           "labels": [
@@ -232,8 +232,8 @@
         "metricas": {
           "horarioVar": "11:00",
           "alertasSemana": 16,
-          "varMin": 10.3,
-          "varMax": 14.2
+          "varMin": 18.3,
+          "varMax": 28.2
         },
         "temperatura": {
           "labels": [
@@ -289,7 +289,7 @@
           "horarioVar": "11:10",
           "alertasSemana": 15,
           "varMin": 10.7,
-          "varMax": 13.8
+          "varMax": 17.8
         },
         "temperatura": {
           "labels": [
@@ -344,8 +344,8 @@
         "metricas": {
           "horarioVar": "10:50",
           "alertasSemana": 5,
-          "varMin": 10.3,
-          "varMax": 13.3
+          "varMin": 13.3,
+          "varMax": 23.3
         },
         "temperatura": {
           "labels": [
@@ -387,8 +387,8 @@
         },
         "alertas": {
           "labels": ["01/05", "02/05", "03/05", "04/05", "05/05"],
-          "urgente": [0, 0, 1, 0, 0],
-          "atencao": [1, 1, 1, 1, 0]
+          "urgente": [0, 0, 1, 0, 1],
+          "atencao": [1, 1, 1, 0, 0]
         }
       },
       {
@@ -400,8 +400,8 @@
         "metricas": {
           "horarioVar": "11:40",
           "alertasSemana": 4,
-          "varMin": 11,
-          "varMax": 12.5
+          "varMin": 22,
+          "varMax": 27.5
         },
         "temperatura": {
           "labels": [
@@ -456,8 +456,8 @@
         "metricas": {
           "horarioVar": "11:30",
           "alertasSemana": 3,
-          "varMin": 10.2,
-          "varMax": 12.4
+          "varMin": 27.2,
+          "varMax": 29.4
         },
         "temperatura": {
           "labels": [
@@ -512,8 +512,8 @@
         "metricas": {
           "horarioVar": "12:00",
           "alertasSemana": 2,
-          "varMin": 10.6,
-          "varMax": 12.3
+          "varMin": 12.6,
+          "varMax": 15.3
         },
         "temperatura": {
           "labels": [
@@ -570,7 +570,7 @@
           "horarioVar": "11:20",
           "alertasSemana": 1,
           "varMin": 11,
-          "varMax": 12.2
+          "varMax": 25
         },
         "temperatura": {
           "labels": [
@@ -630,8 +630,8 @@
         "metricas": {
           "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 10.8,
-          "varMax": 12.1
+          "varMin": 12.8,
+          "varMax": 16.1
         },
         "temperatura": {
           "labels": [
@@ -687,7 +687,7 @@
           "horarioVar": "Sem Variação",
           "alertasSemana": 0,
           "varMin": 10.5,
-          "varMax": 12.2
+          "varMax": 14.2
         },
         "temperatura": {
           "labels": [
@@ -742,8 +742,8 @@
         "metricas": {
           "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 10.1,
-          "varMax": 12.3
+          "varMin": 22.1,
+          "varMax": 29.3
         },
         "temperatura": {
           "labels": [
@@ -798,8 +798,8 @@
         "metricas": {
           "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 10.6,
-          "varMax": 12.3
+          "varMin": 26.6,
+          "varMax": 29.3
         },
         "temperatura": {
           "labels": [
@@ -854,8 +854,8 @@
         "metricas": {
           "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 10.7,
-          "varMax": 12.2
+          "varMin": 20.7,
+          "varMax": 28.2
         },
         "temperatura": {
           "labels": [
@@ -910,8 +910,8 @@
         "metricas": {
           "horarioVar": "Sem Variação",
           "alertasSemana": 0,
-          "varMin": 10.7,
-          "varMax": 12.2
+          "varMin": 20.7,
+          "varMax": 27.2
         },
         "temperatura": {
           "labels": [
@@ -971,8 +971,8 @@
         "metricas": {
           "horarioVar": "10:55",
           "alertasSemana": 29,
-          "varMin": 10.1,
-          "varMax": 16.2
+          "varMin": 24.1,
+          "varMax": 36.2
         },
         "temperatura": {
           "labels": [
@@ -1027,8 +1027,8 @@
         "metricas": {
           "horarioVar": "11:10",
           "alertasSemana": 17,
-          "varMin": 10.2,
-          "varMax": 14.8
+          "varMin": 23.2,
+          "varMax": 26.8
         },
         "temperatura": {
           "labels": [
@@ -1083,8 +1083,8 @@
         "metricas": {
           "horarioVar": "11:00",
           "alertasSemana": 14,
-          "varMin": 11,
-          "varMax": 14.2
+          "varMin": 26,
+          "varMax": 32.2
         },
         "temperatura": {
           "labels": [
@@ -1139,8 +1139,8 @@
         "metricas": {
           "horarioVar": "11:35",
           "alertasSemana": 4,
-          "varMin": 10.4,
-          "varMax": 12.5
+          "varMin": 22.4,
+          "varMax": 31.5
         },
         "temperatura": {
           "labels": [
@@ -1196,7 +1196,7 @@
           "horarioVar": "11:15",
           "alertasSemana": 3,
           "varMin": 10.4,
-          "varMax": 12.5
+          "varMax": 17.5
         },
         "temperatura": {
           "labels": [
@@ -1251,8 +1251,8 @@
         "metricas": {
           "horarioVar": "10:50",
           "alertasSemana": 2,
-          "varMin": 10.6,
-          "varMax": 12.3
+          "varMin": 20.6,
+          "varMax": 28.3
         },
         "temperatura": {
           "labels": [
@@ -1307,8 +1307,8 @@
         "metricas": {
           "horarioVar": "11:05",
           "alertasSemana": 1,
-          "varMin": 10.7,
-          "varMax": 12.1
+          "varMin": 12.7,
+          "varMax": 16.1
         },
         "temperatura": {
           "labels": [
@@ -1363,8 +1363,8 @@
         "metricas": {
           "horarioVar": "11:20",
           "alertasSemana": 2,
-          "varMin": 10.5,
-          "varMax": 12.3
+          "varMin": 26.5,
+          "varMax": 29.3
         },
         "temperatura": {
           "labels": [
@@ -1419,8 +1419,8 @@
         "metricas": {
           "horarioVar": "11:10",
           "alertasSemana": 1,
-          "varMin": 10.7,
-          "varMax": 12.1
+          "varMin": 27.7,
+          "varMax": 29.5
         },
         "temperatura": {
           "labels": [
