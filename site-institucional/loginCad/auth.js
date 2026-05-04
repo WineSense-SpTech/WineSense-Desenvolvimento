@@ -61,7 +61,7 @@ if (document.title.includes("Login")) {
 
         if (email === emailSalvo && senha === senhaSalva) {
             alert("Login realizado com sucesso!");
-            window.location.href = "../Dashboard-estatica/Dashboard.html";
+            window.location.href = "../Dashboard-estatica/selecionarUnidade.html";
             return false;
         } else {
             erros.push("erro");
