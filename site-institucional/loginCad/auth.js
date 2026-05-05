@@ -6,8 +6,9 @@ if (document.title.includes("Cadastro")) {
         let email = idEmail.value;
         let senha = idSenha.value;
         let confirmarSenha = idConfirmaSenha.value;
+        let empresa = idEmpresa.value;
 
-        if (nome === "" || email === "" || senha === "" || confirmarSenha === "") {
+        if (nome === "" || email === "" || senha === "" || confirmarSenha === "" || empresa === ``) {
             alert("Preencha todos os campos");
             return false;
         }
@@ -31,9 +32,15 @@ if (document.title.includes("Cadastro")) {
         return false;
     }
 
+    if (empresa.length < 5 || empresa.length > 5){
+        alert(`empresa deve conter 5 digitos`);
+        return false;
+    }
+
         // Salva os dados separados
         sessionStorage.setItem("emailCadastrado", email);
         sessionStorage.setItem("senhaCadastrada", senha);
+        sessionStorage.setItem("empresaCadastrada", empresa);
 
         alert("Cadastro realizado com sucesso!");
         window.location.href = "login.html";
@@ -51,15 +58,17 @@ if (document.title.includes("Login")) {
 
         let email = idEmail.value;
         let senha = idSenha.value;
+        let empresa = idEmpresa.value;
         let emailSalvo = sessionStorage.getItem("emailCadastrado");
         let senhaSalva = sessionStorage.getItem("senhaCadastrada");
+        let empresaSalva = sessionStorage.getItem("empresaCadastrada");
 
         if (emailSalvo === null) {
             alert("Nenhum usuário cadastrado");
             return false;
         }
 
-        if (email === emailSalvo && senha === senhaSalva) {
+        if (email === emailSalvo && senha === senhaSalva && empresa === empresaSalva) {
             alert("Login realizado com sucesso!");
             window.location.href = "../Dashboard-estatica/selecionarUnidade.html";
             return false;
@@ -75,7 +84,7 @@ if (document.title.includes("Login")) {
         }
 
         let restantes = 3 - erros.length;
-        alert("Email ou senha incorretos. Tentativas restantes: " + restantes);
+        alert("Email ou senha ou codEmpresa incorretos. Tentativas restantes: " + restantes);
         return false;
     }
 }
