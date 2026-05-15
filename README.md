@@ -112,9 +112,9 @@ A solução é composta por:
 
 ---
 
-## ▶️ Como Executar o Projeto
+## ▶️ Manual de Instalação
 
-### 1. Clonar o repositório
+### 1. Clonar o repositório ou fazer o download do .zip do projeto
 
 ```bash
 git clone https://github.com/seu-repositorio/winesense-dev.git
@@ -124,22 +124,31 @@ git clone https://github.com/seu-repositorio/winesense-dev.git
 
 ### 2. Executar o banco de dados
 
-- Abrir o script SQL  
-- Executar no MySQL  
+- Abrir a VM Linux com as seguintes configurações de portas:
+  - 3307 - 3306
+  - 2222 - 22
+- Tenha Banco de Dados MySQL instalado na VM
+- Executar Scripts de Criação do Banco de Dados disponível no Repositório no MySQL da VM
 
 ---
 
 ### 3. Rodar o Arduino
 
-- Abrir o código `.ino` na IDE  
-- Conectar o sensor  
-- Iniciar leitura dos dados  
+- Montar o Arduíno com o sensor de temperatura LM32
+- Abrir o código `.ino` do repositório na IDE
+- Verifique no arquivo `sensor-temperatura\grafico\mains.js` as configurações do Banco de Dados
+- Conectar o sensor numa das portas USB
+- Iniciar leitura dos dados atravéz da API `data-aqu-ino` e exeutar no Terminal os comandos `npm i` e `npm start` 
 
 ---
 
-### 4. Abrir o sistema web
+### 4. Ligar a API que suporta o site
 
-- Executar os arquivos HTML no navegador  
+- Entrar no repositório `web-data-viz`
+- Verifique ou Crie o arquivo `.env` e `.env.dev` para ver se o Banco de Dados MySQL e as Portas estão configurados
+- Executar os comando no Terminal `npm i` e `npm start`
+- Abrir o navegador e cole a URL: `localhost:3333`
+- Explore o site com a navegação em "NavBar"
 
 ---
 
