@@ -147,6 +147,9 @@ git clone https://github.com/seu-repositorio/winesense-dev.git
 - Entrar no repositório `web-data-viz`
 - Verifique ou Crie o arquivo `.env` e `.env.dev` para ver se o Banco de Dados MySQL e as Portas estão configurados
 - Executar os comando no Terminal `npm i` e `npm start`
+
+### 5. Rodar o site e usar
+
 - Abrir o navegador e cole a URL: `localhost:3333`
 - Explore o site com a navegação em "NavBar"
 
