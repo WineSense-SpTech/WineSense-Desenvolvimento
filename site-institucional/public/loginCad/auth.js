@@ -16,7 +16,11 @@ function mostrarSucesso(mensagem) {
 // CADASTRO
 if (document.title.includes("Cadastro")) {
     function cadastrar() {
-        // ... validações ...
+        var nome = document.getElementById("idNome").value;
+        var email = document.getElementById("idEmail").value;
+        var senha = document.getElementById("idSenha").value;
+        var confirmaSenha = document.getElementById("idConfirmaSenha").value;
+        var empresa = document.getElementById("idEmpresa").value;
 
         var corpo = {
             nomeServer: nome,
@@ -59,10 +63,10 @@ if (document.title.includes("Login")) {
             return;
         }
 
-        var corpo = { emailServer: email, senhaServer: senha }; // ✅ definido!
+        var corpo = { emailServer: email, senhaServer: senha }; 
 
         fetch("/usuarios/autenticar", {
-            method: "POST", // ✅ POST, não GET
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(corpo)
         })
