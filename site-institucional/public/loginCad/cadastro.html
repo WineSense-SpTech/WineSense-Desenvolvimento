@@ -2,8 +2,8 @@
 <html lang="pt-br">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>WineSense | Cadastro</title>
 
@@ -14,7 +14,7 @@
 
 <body>
 
-<div class="navegacao">
+    <div class="navegacao">
         <div class="logo">
             <a href="index.html" class="logo"><img src="../homeWineSense/img/LOGO-WINESENSE.png" alt="Logo Wine"></a>
         </div>
@@ -36,39 +36,49 @@
     </div>
 
 
-<section class="auth">
+    <section class="auth">
 
-<div class="auth-box">
+        <div class="auth-box">
 
-<h1>Criar Conta</h1>
+            <h1>Criar Conta</h1>
 
-<p>Cadastre-se na WineSense</p>
+            <p>Cadastre-se na WineSense</p>
 
-<form>
+            <form>
 
-<input type="text" id="idEmpresa" placeholder="Cód da Empresa">
+                <input type="text" id="idEmpresa" placeholder="Cód da Empresa">
 
-<input type="text" id="idNome" placeholder="Nome completo">
+                <input type="text" id="idNome" placeholder="Nome">
 
-<input type="email" id="idEmail" placeholder="Email">
+                <input type="text" id="idSobrenome" placeholder="Sobrenome">
 
-<input type="password" id="idSenha" placeholder="Senha">
+                <input type="email" id="idEmail" placeholder="Email">
 
-<input type="password" id="idConfirmaSenha" placeholder="Confirmar senha">
+                <input type="password" id="idSenha" placeholder="Senha">
 
-<button type="button" class="btn-primary" onclick="cadastrar()">Cadastrar</button>
+                <input type="password" id="idConfirmaSenha" placeholder="Confirmar senha">
 
-</form>
+                <button type="button" class="btn-primary" onclick="cadastrar()">Cadastrar</button>
 
-<p class="auth-link">
-Já possui conta?
-<a href="login.html">Entrar</a>
-</p>
+            </form>
 
-</div>
+            <p class="auth-link">
+                Já possui conta?
+                <a href="login.html">Entrar</a>
+            </p>
 
-</section>
+        </div>
+        <div id="cardErro" style="display: none;">
+            <span id="mensagem_erro"></span>
+        </div>
+
+        <div id="cardSucesso" style="display: none;">
+            <span id="mensagem_sucesso"></span>
+        </div>
+
+    </section>
 
 </body>
 <script src="auth.js"></script>
+
 </html>

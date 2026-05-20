@@ -17,6 +17,7 @@ function mostrarSucesso(mensagem) {
 if (document.title.includes("Cadastro")) {
     function cadastrar() {
         var nome = document.getElementById("idNome").value;
+        var sobrenome = document.getElementById("idSobrenome").value;
         var email = document.getElementById("idEmail").value;
         var senha = document.getElementById("idSenha").value;
         var confirmaSenha = document.getElementById("idConfirmaSenha").value;
@@ -24,6 +25,7 @@ if (document.title.includes("Cadastro")) {
 
         var corpo = {
             nomeServer: nome,
+            sobrenomeServer: sobrenome,
             emailServer: email,
             senhaServer: senha,
             idEmpresaVincularServer: empresa
@@ -34,16 +36,16 @@ if (document.title.includes("Cadastro")) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(corpo)
         })
-        .then(r => r.json())
-        .then(function (dados) {
-            if (dados.id) {
-                mostrarSucesso("Cadastro realizado! Redirecionando...");
-                setTimeout(() => window.location.href = "login.html", 1500);
-            } else {
-                mostrarErro(dados.mensagem);
-            }
-        })
-        .catch(() => mostrarErro("Não foi possível conectar ao servidor."));
+            .then(r => r.json())
+            .then(function (dados) {
+                if (dados.id) {
+                    mostrarSucesso("Cadastro realizado! Redirecionando...");
+                    setTimeout(() => window.location.href = "login.html", 1500);
+                } else {
+                    mostrarErro(dados.mensagem);
+                }
+            })
+            .catch(() => mostrarErro("Não foi possível conectar ao servidor."));
     }
 }
 
@@ -63,26 +65,26 @@ if (document.title.includes("Login")) {
             return;
         }
 
-        var corpo = { emailServer: email, senhaServer: senha }; 
+        var corpo = { emailServer: email, senhaServer: senha };
 
         fetch("/usuarios/autenticar", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(corpo)
         })
-        .then(r => r.json())
-        .then(function (dados) {
-            if (dados.id) {
-                mostrarSucesso("Login realizado! Redirecionando...");
-                setTimeout(() => window.location.href = "../dashboard/dashboard.html", 1500);
-            } else {
-                tentativas++;
-                var restantes = 3 - tentativas;
-                document.getElementById("tentativas").textContent = 
-                    tentativas >= 3 ? "Acesso bloqueado!" : `Tentativas restantes: ${restantes}`;
-                mostrarErro(dados.mensagem || "Email e/ou senha inválidos.");
-            }
-        })
-        .catch(() => mostrarErro("Não foi possível conectar ao servidor."));
+            .then(r => r.json())
+            .then(function (dados) {
+                if (dados.id) {
+                    mostrarSucesso("Login realizado! Redirecionando...");
+                    setTimeout(() => window.location.href = "../dashboard/dashboard.html", 1500);
+                } else {
+                    tentativas++;
+                    var restantes = 3 - tentativas;
+                    document.getElementById("tentativas").textContent =
+                        tentativas >= 3 ? "Acesso bloqueado!" : `Tentativas restantes: ${restantes}`;
+                    mostrarErro(dados.mensagem || "Email e/ou senha inválidos.");
+                }
+            })
+            .catch(() => mostrarErro("Não foi possível conectar ao servidor."));
     }
 }
