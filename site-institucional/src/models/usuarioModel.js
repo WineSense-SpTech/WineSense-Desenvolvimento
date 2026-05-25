@@ -14,7 +14,7 @@ function cadastrar(nome, sobrenome, email, senha, empresa) {
         INSERT INTO usuario 
         (nome, sobrenome, email, senha, fkEmpresa) 
         VALUES 
-        ('${nome}', '${sobrenome}', '${email}', '${senha}', ${empresa});
+        ('${nome}', '${sobrenome}', '${email}', '${senha}', '${empresa}');
     `;
 
     return database.executar(instrucaoSql);
