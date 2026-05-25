@@ -4,33 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>WineSense | Login</title>
-
     <link rel="stylesheet" href="/styleFix.css">
     <link rel="icon" href="../homeWineSense/img/LOGO-WINESENSE.png">
-
 </head>
 
 <body>
 
-<div class="navegacao">
+    <div class="navegacao">
         <div class="logo">
-            <a href="index.html" class="logo"><img src="../homeWineSense/img/LOGO-WINESENSE.png" alt="Logo Wine"></a>
+            <a href="index.html" class="logo">
+                <img src="../homeWineSense/img/LOGO-WINESENSE.png" alt="Logo Wine">
+            </a>
         </div>
         <header class="cabecalho">
             <nav>
                 <ul class="menu">
                     <li><a href="../homeWineSense/index.html">Home</a></li>
                     <li><a href="../sobre/sobre.html">Sobre</a></li>
-                    <li>
-                        <a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a>
-                    </li>
+                    <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
                     <li><a href="../homeWineSense/index.html">Contato</a></li>
                 </ul>
             </nav>
             <a href="../loginCad/cadastro.html">
-                <button class="btn_entrar">Entrar</button>
+                <button class="btn_entrar">Cadastrar</button>
             </a>
         </header>
     </div>
@@ -40,12 +37,16 @@
         <div class="auth-box">
 
             <h1>Login</h1>
-
             <p>Acesse sua conta WineSense</p>
 
             <form>
 
-                <input type="text" id="idEmpresa" placeholder="Cód da Empresa">
+                <input type="text" id="idCodigo" placeholder="Cód da Empresa">
+
+                <label class="label-checkbox">
+                    <input type="checkbox" id="idAdm" onclick="alternarCodigo()">
+                    Sou administrador
+                </label>
 
                 <input type="email" id="idEmail" placeholder="Email">
 
@@ -60,6 +61,14 @@
                 <a href="cadastro.html">Criar conta</a>
             </p>
 
+        </div>
+
+        <div id="cardErro" style="display: none;">
+            <span id="mensagem_erro"></span>
+        </div>
+
+        <div id="cardSucesso" style="display: none;">
+            <span id="mensagem_sucesso"></span>
         </div>
 
     </section>

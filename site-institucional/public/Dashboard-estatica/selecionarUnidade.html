@@ -2,8 +2,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <title>WineSense | Dashboard</title>
-
+    <title>WineSense | Selecionar Unidade</title>
     <link rel="stylesheet" href="../styleFix.css">
     <link rel="icon" href="../homeWineSense/img/LOGO-WINESENSE.png">
   </head>
@@ -15,11 +14,7 @@
         <ul class="menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="../sobre/sobre.html">Sobre</a></li>
-          <li>
-            <a href="../simulador-financeiro/simuladorFinanceiro.html"
-              >Simulador</a
-            >
-          </li>
+          <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
@@ -29,60 +24,78 @@
     </header>
 
     <a href="../homeWineSense/index.html" class="exit">➜</a>
-    <div class="bemVindo_unidade_select">Bem vindo, 'Administrador'!</div>
+
+    <div class="bemVindo_unidade_select" id="bemVindo"></div>
+
     <div class="container cinza unidade_select">
       <h2>Escolha a Unidade</h2>
-
       <div class="unidades" id="listaUnidades"></div>
     </div>
 
-    <script src="tanques.json"></script>
-
     <script>
-      const container = document.getElementById("listaUnidades");
+      var nomeUsuario  = sessionStorage.nomeUsuario  || "Usuário";
+      var cargoUsuario = sessionStorage.cargoUsuario || "";
+      var empresaUsuario = sessionStorage.empresaUsuario || "";
 
-      fetch("tanques.json")
-        .then((res) => res.json())
-        .then((data) => {
-          data.forEach((unidadeObj) => {
-            const totalTanques = unidadeObj.tanques.length;
+      bemVindo.innerHTML = "Bem-vindo, " + nomeUsuario + "!";
 
-            const tanquesAlerta = unidadeObj.tanques.filter(
-              (t) => t.status === "Crítico" || t.status === "Atenção",
-            ).length;
+      // Se não for adm, redireciona direto pra dashboard
+      if (cargoUsuario !== "adm") {
+        localStorage.setItem("unidadeSelecionada", empresaUsuario);
+        window.location.href = "Dashboard.html";
+      }
 
-            const btn = document.createElement("button");
+      function fetchUnidades() {
+        return fetch("tanques.json").then(function(res) { return res.json(); });
+      }
 
-            btn.className = "btn_entrar";
-            btn.style.margin = "10px";
+      function renderizarUnidades(listaUnidades) {
+        var container = listaUnidades;
+        var lista     = document.getElementById("listaUnidades");
 
-            let corClasse = "";
+        listaUnidades.forEach(function(unidadeObj) {
+          var totalTanques = unidadeObj.tanques.length;
 
-            if (tanquesAlerta === 0) {
-              corClasse = "verde";
-            } else if (tanquesAlerta === 1) {
-              corClasse = "amarelo";
-            } else {
-              corClasse = "vermelho";
-            }
+          var tanquesAlerta = unidadeObj.tanques.filter(function(t) {
+            return t.status === "Crítico" || t.status === "Atenção";
+          }).length;
 
-            btn.innerHTML = `
+          var corClasse = "";
+          if (tanquesAlerta === 0) {
+            corClasse = "verde";
+          } else if (tanquesAlerta === 1) {
+            corClasse = "amarelo";
+          } else {
+            corClasse = "vermelho";
+          }
+
+          var btn = document.createElement("button");
+          btn.className = "btn_entrar";
+          btn.style.margin = "10px";
+
+          btn.innerHTML = `
             <div class="titulo_unidade">${unidadeObj.unidade}</div>
             <div class="info_unidade">Tanques: ${totalTanques}</div>
             <div class="info_unidade alerta ${corClasse}">
-            Tanques com Alertas: ${tanquesAlerta}
+              Tanques com Alertas: ${tanquesAlerta}
             </div>
-            `;
+          `;
 
-            btn.onclick = () => {
-              localStorage.setItem("unidadeSelecionada", unidadeObj.unidade);
-              window.location.href = "Dashboard.html";
-            };
+          btn.onclick = function() {
+            localStorage.setItem("unidadeSelecionada", unidadeObj.unidade);
+            window.location.href = "Dashboard.html";
+          };
 
-            container.appendChild(btn);
-          });
-        })
-        .catch((err) => console.error("Erro:", err));
+          lista.appendChild(btn);
+        });
+      }
+
+      // Só carrega a lista se for adm
+      fetchUnidades()
+        .then(renderizarUnidades)
+        .catch(function(erro) {
+          console.error("Erro ao carregar unidades:", erro);
+        });
     </script>
   </body>
 </html>

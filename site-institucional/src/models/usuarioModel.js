@@ -1,23 +1,57 @@
-var database = require("../database/config");
+var db = require("../database/config");
 
-function autenticar(email, senha) {
-    var instrucaoSql = `
-        SELECT idUsuario, nome, email FROM usuario 
-        WHERE email = '${email}' AND senha = '${senha}';
-    `;
-    return database.executar(instrucaoSql);
+function autenticar(email, senha, codigo, ehAdm) {
+
+    var instrucaoSql;
+
+    if (ehAdm) {
+        // Administrador: valida email, senha, cargo e codGrupo
+        instrucaoSql = `
+            SELECT 
+                u.idUsuario, 
+                u.nome, 
+                u.email, 
+                u.cargo, 
+                u.fkEmpresa, 
+                u.fkGrupo
+            FROM usuario u
+            INNER JOIN grupoEmpresa g ON u.fkGrupo = g.codGrupo
+            WHERE u.email = '${email}' 
+            AND u.senha = '${senha}'
+            AND u.cargo = 'adm'
+            AND g.codGrupo = '${codigo}';
+        `;
+    } else {
+        // Usuário comum: valida email, senha e codEmpresa
+        instrucaoSql = `
+            SELECT 
+                u.idUsuario, 
+                u.nome, 
+                u.email, 
+                u.cargo, 
+                u.fkEmpresa, 
+                u.fkGrupo
+            FROM usuario u
+            INNER JOIN empresa e ON u.fkEmpresa = e.codEmpresa
+            WHERE u.email = '${email}' 
+            AND u.senha = '${senha}'
+            AND e.codEmpresa = '${codigo}';
+        `;
+    }
+
+    return db.executar(instrucaoSql);
 }
 
-function cadastrar(nome, sobrenome, email, senha, empresa) {
+function cadastrar(nome, sobrenome, email, senha, codigoEmpresa) {
 
     var instrucaoSql = `
         INSERT INTO usuario 
-        (nome, sobrenome, email, senha, fkEmpresa) 
+            (nome, sobrenome, email, senha, fkEmpresa) 
         VALUES 
-        ('${nome}', '${sobrenome}', '${email}', '${senha}', '${empresa}');
+            ('${nome}', '${sobrenome}', '${email}', '${senha}', '${codigoEmpresa}');
     `;
 
-    return database.executar(instrucaoSql);
+    return db.executar(instrucaoSql);
 }
 
 module.exports = { autenticar, cadastrar };
