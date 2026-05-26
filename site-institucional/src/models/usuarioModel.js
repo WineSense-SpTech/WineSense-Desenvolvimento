@@ -12,7 +12,7 @@ function autenticar(email, senha, codigo, ehAdm) {
                 u.nome, 
                 u.email, 
                 u.cargo, 
-                u.fkEmpresa, 
+                u.fkEmpresa,
                 u.fkGrupo
             FROM usuario u
             INNER JOIN grupoEmpresa g ON u.fkGrupo = g.codGrupo
@@ -54,4 +54,16 @@ function cadastrar(nome, sobrenome, email, senha, codigoEmpresa) {
     return db.executar(instrucaoSql);
 }
 
-module.exports = { autenticar, cadastrar };
+function listar() {
+
+    var instrucaoSql = `
+        SELECT
+            codEmpresa
+        FROM empresa;
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return db.executar(instrucaoSql);
+}
+
+module.exports = { autenticar, cadastrar, listar };

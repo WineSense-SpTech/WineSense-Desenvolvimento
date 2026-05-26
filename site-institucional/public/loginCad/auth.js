@@ -26,12 +26,12 @@ if (document.title.includes("Cadastro")) {
     listar();
 
     function cadastrar() {
-        var nome            = idNome.value;
-        var sobrenome       = idSobrenome.value;
-        var email           = idEmail.value;
-        var senha           = idSenha.value;
-        var confirmaSenha   = idConfirmaSenha.value;
-        var codigoEmpresa   = idEmpresa.value;
+        var nome = idNome.value;
+        var sobrenome = idSobrenome.value;
+        var email = idEmail.value;
+        var senha = idSenha.value;
+        var confirmaSenha = idConfirmaSenha.value;
+        var codigoEmpresa = idEmpresa.value;
 
         // Verificando campos em branco
         if (nome == "" || sobrenome == "" || email == "" || senha == "" || confirmaSenha == "" || codigoEmpresa == "") {
@@ -72,38 +72,40 @@ if (document.title.includes("Cadastro")) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(corpo)
         })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                mostrarSucesso("Cadastro realizado com sucesso! Redirecionando para o Login...");
-                setTimeout(function () {
-                    window.location = "login.html";
-                }, 2000);
-            } else {
-                resposta.text().then(function (texto) {
-                    mostrarErro("Erro ao cadastrar: " + texto);
-                });
-            }
-        })
-        .catch(function (erro) {
-            console.log("Erro: ", erro);
-            mostrarErro("Erro ao conectar com o servidor!");
-        });
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    mostrarSucesso("Cadastro realizado com sucesso! Redirecionando para o Login...");
+                    setTimeout(function () {
+                        window.location = "login.html";
+                    }, 2000);
+                } else {
+                    resposta.text().then(function (texto) {
+                        mostrarErro("Erro ao cadastrar: " + texto);
+                    });
+                }
+            })
+            .catch(function (erro) {
+                console.log("Erro: ", erro);
+                mostrarErro("Erro ao conectar com o servidor!");
+            });
 
         return false;
     }
 
     function listar() {
-        fetch("/empresas/listar", {
+        fetch("/usuarios/listar", {
             method: "GET"
         })
-        .then(function (resposta) {
-            resposta.json().then(function (empresas) {
-                listaEmpresasCadastradas = empresas;
+            .then(function (resposta) {
+                resposta.json().then(function (empresas) {
+                    console.log(empresas);
+
+                    listaEmpresasCadastradas = empresas;
+                });
+            })
+            .catch(function (erro) {
+                console.log("Erro ao listar empresas: ", erro);
             });
-        })
-        .catch(function (erro) {
-            console.log("Erro ao listar empresas: ", erro);
-        });
     }
 
     setInterval(sumirMensagem, 5000);
@@ -120,10 +122,10 @@ if (document.title.includes("Login")) {
     }
 
     function entrar() {
-        var email   = idEmail.value;
-        var senha   = idSenha.value;
-        var codigo  = idCodigo.value;
-        var ehAdm   = idAdm.checked;
+        var email = idEmail.value;
+        var senha = idSenha.value;
+        var codigo = idCodigo.value;
+        var ehAdm = idAdm.checked;
 
         // Verificando campos em branco
         if (email == "" || senha == "" || codigo == "") {
@@ -135,39 +137,39 @@ if (document.title.includes("Login")) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                emailServer:  email,
-                senhaServer:  senha,
+                emailServer: email,
+                senhaServer: senha,
                 codigoServer: codigo,
-                ehAdmServer:  ehAdm
+                ehAdmServer: ehAdm
             })
         })
-        .then(function (resposta) {
-            resposta.json().then(function (json) {
-                if (json.erro) {
-                    mostrarErro(json.erro);
-                    return;
-                }
+            .then(function (resposta) {
+                resposta.json().then(function (json) {
+                    if (json.erro) {
+                        mostrarErro(json.erro);
+                        return;
+                    }
 
-                // Salvando dados na sessionStorage
-                sessionStorage.idUsuario    = json.id;
-                sessionStorage.nomeUsuario  = json.nome;
-                sessionStorage.emailUsuario = json.email;
-                sessionStorage.cargoUsuario = json.cargo;
-                sessionStorage.empresaUsuario = json.fkEmpresa;
-                sessionStorage.grupoUsuario   = json.fkGrupo;
+                    // Salvando dados na sessionStorage
+                    sessionStorage.idUsuario = json.id;
+                    sessionStorage.nomeUsuario = json.nome;
+                    sessionStorage.emailUsuario = json.email;
+                    sessionStorage.cargoUsuario = json.cargo;
+                    sessionStorage.empresaUsuario = json.fkEmpresa;
+                    sessionStorage.grupoUsuario = json.fkGrupo;
 
-                // Redirecionando conforme o cargo
-                if (json.cargo === "adm") {
-                    window.location = "../Dashboard-estatica/selecionarUnidade.html";
-                } else {
-                    window.location = "../Dashboard-estatica/dashboard.html";
-                }
+                    // Redirecionando conforme o cargo
+                    if (json.cargo === "adm") {
+                        window.location = "../Dashboard-estatica/selecionarUnidade.html";
+                    } else {
+                        window.location = "../Dashboard-estatica/dashboard.html";
+                    }
+                });
+            })
+            .catch(function (erro) {
+                console.log("Erro: ", erro);
+                mostrarErro("Erro ao conectar com o servidor!");
             });
-        })
-        .catch(function (erro) {
-            console.log("Erro: ", erro);
-            mostrarErro("Erro ao conectar com o servidor!");
-        });
 
         return false;
     }

@@ -1,79 +1,80 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <title>WineSense | Selecionar Unidade</title>
-    <link rel="stylesheet" href="../styleFix.css">
-    <link rel="icon" href="../homeWineSense/img/LOGO-WINESENSE.png">
-  </head>
 
-  <body>
-    <header class="cabecalho">
-      <div></div>
-      <nav>
-        <ul class="menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="../sobre/sobre.html">Sobre</a></li>
-          <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
-      <a href="../loginCad/cadastro.html">
-        <button class="btn_entrar">Entrar</button>
-      </a>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <title>WineSense | Selecionar Unidade</title>
+  <link rel="stylesheet" href="../styleFix.css">
+  <link rel="icon" href="../homeWineSense/img/LOGO-WINESENSE.png">
+</head>
 
-    <a href="../homeWineSense/index.html" class="exit">➜</a>
+<body>
+  <header class="cabecalho">
+    <div></div>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="../sobre/sobre.html">Sobre</a></li>
+        <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a href="../loginCad/cadastro.html">
+      <button class="btn_entrar">Entrar</button>
+    </a>
+  </header>
 
-    <div class="bemVindo_unidade_select" id="bemVindo"></div>
+  <a href="../homeWineSense/index.html" class="exit">➜</a>
 
-    <div class="container cinza unidade_select">
-      <h2>Escolha a Unidade</h2>
-      <div class="unidades" id="listaUnidades"></div>
-    </div>
+  <div class="bemVindo_unidade_select" id="bemVindo"></div>
 
-    <script>
-      var nomeUsuario  = sessionStorage.nomeUsuario  || "Usuário";
-      var cargoUsuario = sessionStorage.cargoUsuario || "";
-      var empresaUsuario = sessionStorage.empresaUsuario || "";
+  <div class="container cinza unidade_select">
+    <h2>Escolha a Unidade</h2>
+    <div class="unidades" id="listaUnidades"></div>
+  </div>
 
-      bemVindo.innerHTML = "Bem-vindo, " + nomeUsuario + "!";
+  <script>
+    var nomeUsuario = sessionStorage.nomeUsuario || "Usuário";
+    var cargoUsuario = sessionStorage.cargoUsuario || "";
+    var empresaUsuario = sessionStorage.empresaUsuario || "";
 
-      // Se não for adm, redireciona direto pra dashboard
-      if (cargoUsuario !== "adm") {
-        localStorage.setItem("unidadeSelecionada", empresaUsuario);
-        window.location.href = "Dashboard.html";
-      }
+    bemVindo.innerHTML = "Bem-vindo, " + nomeUsuario + "!";
 
-      function fetchUnidades() {
-        return fetch("tanques.json").then(function(res) { return res.json(); });
-      }
+    // Se não for adm, redireciona direto pra dashboard
+    if (cargoUsuario !== "adm") {
+      localStorage.setItem("unidadeSelecionada", empresaUsuario);
+      window.location.href = "Dashboard.html";
+    }
 
-      function renderizarUnidades(listaUnidades) {
-        var container = listaUnidades;
-        var lista     = document.getElementById("listaUnidades");
+    function fetchUnidades() {
+      return fetch("tanques.json").then(function (res) { return res.json(); });
+    }
 
-        listaUnidades.forEach(function(unidadeObj) {
-          var totalTanques = unidadeObj.tanques.length;
+    function renderizarUnidades(listaUnidades) {
+      var container = listaUnidades;
+      var lista = document.getElementById("listaUnidades");
 
-          var tanquesAlerta = unidadeObj.tanques.filter(function(t) {
-            return t.status === "Crítico" || t.status === "Atenção";
-          }).length;
+      listaUnidades.forEach(function (unidadeObj) {
+        var totalTanques = unidadeObj.tanques.length;
 
-          var corClasse = "";
-          if (tanquesAlerta === 0) {
-            corClasse = "verde";
-          } else if (tanquesAlerta === 1) {
-            corClasse = "amarelo";
-          } else {
-            corClasse = "vermelho";
-          }
+        var tanquesAlerta = unidadeObj.tanques.filter(function (t) {
+          return t.status === "Crítico" || t.status === "Atenção";
+        }).length;
 
-          var btn = document.createElement("button");
-          btn.className = "btn_entrar";
-          btn.style.margin = "10px";
+        var corClasse = "";
+        if (tanquesAlerta === 0) {
+          corClasse = "verde";
+        } else if (tanquesAlerta === 1) {
+          corClasse = "amarelo";
+        } else {
+          corClasse = "vermelho";
+        }
 
-          btn.innerHTML = `
+        var btn = document.createElement("button");
+        btn.className = "btn_entrar";
+        btn.style.margin = "10px";
+
+        btn.innerHTML = `
             <div class="titulo_unidade">${unidadeObj.unidade}</div>
             <div class="info_unidade">Tanques: ${totalTanques}</div>
             <div class="info_unidade alerta ${corClasse}">
@@ -81,21 +82,22 @@
             </div>
           `;
 
-          btn.onclick = function() {
-            localStorage.setItem("unidadeSelecionada", unidadeObj.unidade);
-            window.location.href = "Dashboard.html";
-          };
+        btn.onclick = function () {
+          localStorage.setItem("unidadeSelecionada", unidadeObj.unidade);
+          window.location.href = "Dashboard.html";
+        };
 
-          lista.appendChild(btn);
-        });
-      }
+        lista.appendChild(btn);
+      });
+    }
 
-      // Só carrega a lista se for adm
-      fetchUnidades()
-        .then(renderizarUnidades)
-        .catch(function(erro) {
-          console.error("Erro ao carregar unidades:", erro);
-        });
-    </script>
-  </body>
+    // Só carrega a lista se for adm
+    fetchUnidades()
+      .then(renderizarUnidades)
+      .catch(function (erro) {
+        console.error("Erro ao carregar unidades:", erro);
+      });
+  </script>
+</body>
+
 </html>

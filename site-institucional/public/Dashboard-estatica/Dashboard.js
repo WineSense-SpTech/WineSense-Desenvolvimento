@@ -181,37 +181,37 @@ function carregarDashboard(tanque) {
 
   // Cria novo gráfico de linhas
   chartLinha = new Chart(document.getElementById("linha"), {
-  type: "line",
-  data: {
-    labels: tanque.temperatura.labels,
-    datasets: [
-      {
-        label: "Temperatura",
-        data: tanque.temperatura.valores,
-        borderColor: "#7a2f4b",
-        fill: false,
-      },
-      {
-        label: "Limite Superior",
-        data: new Array(totalLabels).fill(tempMax),
-        borderColor: "#22c55e",
-        borderDash: [6, 3],   
-        borderWidth: 2,
-        pointRadius: 0,        
-        fill: false,
-      },
-      {
-        label: "Limite Inferior",
-        data: new Array(totalLabels).fill(tempMin),
-        borderColor: "#16a34a",
-        borderDash: [6, 3],
-        borderWidth: 2,
-        pointRadius: 0,
-        fill: false,
-      },
-    ],
-  },
-});
+    type: "line",
+    data: {
+      labels: tanque.temperatura.labels,
+      datasets: [
+        {
+          label: "Temperatura",
+          data: tanque.temperatura.valores,
+          borderColor: "#7a2f4b",
+          fill: false,
+        },
+        {
+          label: "Limite Superior",
+          data: new Array(totalLabels).fill(tempMax),
+          borderColor: "#22c55e",
+          borderDash: [6, 3],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false,
+        },
+        {
+          label: "Limite Inferior",
+          data: new Array(totalLabels).fill(tempMin),
+          borderColor: "#16a34a",
+          borderDash: [6, 3],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false,
+        },
+      ],
+    },
+  });
   // Pega o horário já formatado do JSON
   const horario = tanque.metricas.horarioVar;
 
@@ -256,4 +256,10 @@ function voltarUnidade() {
 
   // Redireciona para tela de unidades
   window.location.href = "selecionarUnidade.html";
+}
+
+function sair() {
+  sessionStorage.clear();
+
+  window.location.href = "../homeWineSense/index.html";
 }

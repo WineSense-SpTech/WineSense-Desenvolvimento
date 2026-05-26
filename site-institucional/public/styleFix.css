@@ -22,12 +22,13 @@ body::selection {
 
 /*HEADER / NAVBAR*/
 
-.cabecalho{
+.cabecalho {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
 }
+
 nav {
     width: 100%;
     display: flex;
@@ -54,7 +55,7 @@ nav a {
     margin-left: 10px;
 }
 
-.navegacao{
+.navegacao {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,7 +81,7 @@ button {
     transition: 0.3s;
 }
 
-.btn_entrar{
+.btn_entrar {
     margin-right: 50px;
 }
 
@@ -364,7 +365,7 @@ textarea:focus {
 
 .card.textContent {
     width: 100%;
-    
+
 }
 
 
@@ -539,11 +540,11 @@ footer ul {
     border-radius: 15px;
 }
 
-.indicadores #varMinMax{
+.indicadores #varMinMax {
     font-size: 40px;
 }
 
-.indicadores #horarioVar{
+.indicadores #horarioVar {
     font-size: 45px;
 }
 
@@ -634,59 +635,59 @@ footer ul {
     background-color: rgb(100, 100, 100);
 }
 
-.exit{
-  position: absolute;
-  text-decoration: none;
-  color: #3B1E2C;
-  font-size: 32px;
-  top: 30px;
-  left: 30px;
-  transform: scaleX(-1);
+.exit {
+    position: absolute;
+    text-decoration: none;
+    color: #3B1E2C;
+    font-size: 32px;
+    top: 30px;
+    left: 30px;
+    transform: scaleX(-1);
 }
 
-.unidade_select{
+.unidade_select {
     text-align: center;
-    margin-top:15%;
+    margin-top: 15%;
 }
 
 .titulo_unidade {
-  font-size: 42px;
-  font-weight: bold;
-  margin-bottom: 30px;
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
 
 .info_unidade {
     text-align: start;
-  font-size: 24px;
+    font-size: 24px;
 }
 
 .info_unidade.alerta {
-  color: rgb(186, 66, 66);
-  font-weight: 600;
+    color: rgb(186, 66, 66);
+    font-weight: 600;
 }
 
-.btn_entrar_dash{
+.btn_entrar_dash {
     padding: 50px;
     margin: 5px;
 }
 
 .alerta.verde {
-  color: green;
-  font-weight: bold;
+    color: green;
+    font-weight: bold;
 }
 
 .alerta.amarelo {
-  color: orange;
-  font-weight: bold;
+    color: orange;
+    font-weight: bold;
 }
 
 .alerta.vermelho {
-  color: red;
-  font-weight: bold;
+    color: red;
+    font-weight: bold;
 }
 
-.box-header{
-    display:flex;
+.box-header {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
@@ -694,11 +695,11 @@ footer ul {
 
 .TipoUva {
 
-    text-align: center; 
+    text-align: center;
     font-size: 1.2rem;
-    font-weight: bold; 
+    font-weight: bold;
     margin-bottom: 20px;
-    
+
 }
 
 .bemVindo_unidade_select {
