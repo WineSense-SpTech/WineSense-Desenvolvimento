@@ -85,22 +85,7 @@
   <script src="Dashboard.js"></script>
 
   <script>
-    var idUsuario = sessionStorage.idUsuario;
-    var cargoUsuario = sessionStorage.cargoUsuario || "";
-    var empresaUsuario = sessionStorage.empresaUsuario || "";
-
-    if (idUsuario == undefined) {
-      window.location.href = "../homeWineSense/index.html";
-    }
-
-    if (cargoUsuario !== "adm") {
-      localStorage.setItem("unidadeSelecionada", empresaUsuario);
-
-      btnUnidades.disabled = true;
-      btnUnidades.style.opacity = "0.4";
-      btnUnidades.style.cursor = "not-allowed";
-      btnUnidades.title = "Acesso restrito à sua unidade";
-    }
+    
   </script>
 
   <script src="tanques.json"></script>

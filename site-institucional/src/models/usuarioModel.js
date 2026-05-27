@@ -15,7 +15,7 @@ function autenticar(email, senha, codigo, ehAdm) {
                 u.fkEmpresa,
                 u.fkGrupo
             FROM usuario u
-            INNER JOIN grupoEmpresa g ON u.fkGrupo = g.codGrupo
+            JOIN grupoEmpresa g ON u.fkGrupo = g.codGrupo
             WHERE u.email = '${email}' 
             AND u.senha = '${senha}'
             AND u.cargo = 'adm'
@@ -32,7 +32,7 @@ function autenticar(email, senha, codigo, ehAdm) {
                 u.fkEmpresa, 
                 u.fkGrupo
             FROM usuario u
-            INNER JOIN empresa e ON u.fkEmpresa = e.codEmpresa
+            JOIN empresa e ON u.fkEmpresa = e.codEmpresa
             WHERE u.email = '${email}' 
             AND u.senha = '${senha}'
             AND e.codEmpresa = '${codigo}';

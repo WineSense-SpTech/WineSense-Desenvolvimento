@@ -1,3 +1,21 @@
+let idUsuarioServer = sessionStorage.idUsuario;
+let cargoUsuarioServer = sessionStorage.cargoUsuario;
+let empresaUsuarioServer = sessionStorage.empresaUsuario;
+let grupoUsuarioServer = sessionStorage.grupoUsuario;
+
+if (idUsuarioServer == undefined) {
+  window.location.href = "../homeWineSense/index.html";
+}
+
+if (cargoUsuarioServer !== "adm") {
+  localStorage.setItem("unidadeSelecionada", empresaUsuario);
+
+  btnUnidades.disabled = true;
+  btnUnidades.style.opacity = "0.4";
+  btnUnidades.style.cursor = "not-allowed";
+  btnUnidades.title = "Acesso restrito à sua unidade";
+}
+
 // Container onde os tanques (cards) vão aparecer
 const container = document.getElementById("carrossel");
 
@@ -21,6 +39,8 @@ const tanqueId = localStorage.getItem("tanqueId");
 
 // Nome da unidade escolhida (São Paulo, Campinas, etc)
 const unidadeSelecionada = localStorage.getItem("unidadeSelecionada");
+
+window.onload = adquirirGrafico(grupoUsuarioServer);
 
 fetch("tanques.json") // Faz requisição para pegar o JSON (puxa os dados do JSON)
   .then((res) => {
@@ -56,6 +76,29 @@ fetch("tanques.json") // Faz requisição para pegar o JSON (puxa os dados do JS
     carregarDashboardInicial();
   })
   .catch((err) => console.error("ERRO:", err));
+
+function adquirirGrafico(grupoUsuarioPar) {
+
+  if (cargoUsuarioServer == `adm`) {
+    fetch(`/graficos/obtergrafico/${grupoUsuarioPar}`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+          return
+
+          carregarDashboard(resposta, grupoUsuarioPar);
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+  }
+}
 
 function ordenarTanques(lista) {
   // Define prioridade dos status
@@ -262,4 +305,60 @@ function sair() {
   sessionStorage.clear();
 
   window.location.href = "../homeWineSense/index.html";
+}
+
+function atualizarGrafico(grupoUsuarioServer, dados, myChart) {
+
+
+
+  fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (novoRegistro) {
+
+        obterdados(idAquario);
+        // alertar(novoRegistro, idAquario);
+        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+        console.log(`Dados atuais do gráfico:`);
+        console.log(dados);
+
+        let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+        avisoCaptura.innerHTML = ""
+
+
+        if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+          console.log("---------------------------------------------------------------")
+          console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+          avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+          console.log("Horário do novo dado capturado:")
+          console.log(novoRegistro[0].momento_grafico)
+          console.log("Horário do último dado capturado:")
+          console.log(dados.labels[dados.labels.length - 1])
+          console.log("---------------------------------------------------------------")
+        } else {
+          // tirando e colocando valores no gráfico
+          dados.labels.shift(); // apagar o primeiro
+          dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+          dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+          dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+          dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+          dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+          myChart.update();
+        }
+
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+      });
+    } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+      // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+      proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    }
+  })
+    .catch(function (error) {
+      console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
 }

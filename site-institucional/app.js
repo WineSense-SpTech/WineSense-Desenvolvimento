@@ -1,4 +1,4 @@
-var ambiente_processo = 'desenvolvimento';
+var ambiente_processo = 'producao';
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 
@@ -14,6 +14,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+var graficosRouter = require("./src/routes/graficos");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, "public/simulador-financeiro")));
 // Rotas
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/graficos", graficosRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`Servidor rodando em http://${HOST_APP}:${PORTA_APP}`);

@@ -43,7 +43,7 @@
     // Se não for adm, redireciona direto pra dashboard
     if (cargoUsuario !== "adm") {
       localStorage.setItem("unidadeSelecionada", empresaUsuario);
-      window.location.href = "Dashboard.html";
+      window.location.href = "dashboard.html";
     }
 
     function fetchUnidades() {
@@ -84,7 +84,7 @@
 
         btn.onclick = function () {
           localStorage.setItem("unidadeSelecionada", unidadeObj.unidade);
-          window.location.href = "Dashboard.html";
+          window.location.href = "dashboard.html";
         };
 
         lista.appendChild(btn);
