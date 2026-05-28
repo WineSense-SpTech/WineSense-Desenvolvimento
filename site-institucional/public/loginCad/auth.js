@@ -150,19 +150,21 @@ if (document.title.includes("Login")) {
                         return;
                     }
 
-                    // Salvando dados na sessionStorage
-                    sessionStorage.idUsuario = json.id;
-                    sessionStorage.nomeUsuario = json.nome;
-                    sessionStorage.emailUsuario = json.email;
-                    sessionStorage.cargoUsuario = json.cargo;
-                    sessionStorage.empresaUsuario = json.fkEmpresa;
-                    sessionStorage.grupoUsuario = json.fkGrupo;
+                    if (resposta.status == 200) {
+                        // Salvando dados na sessionStorage
+                        sessionStorage.idUsuario = json.id;
+                        sessionStorage.nomeUsuario = json.nome;
+                        sessionStorage.emailUsuario = json.email;
+                        sessionStorage.cargoUsuario = json.cargo;
+                        sessionStorage.empresaUsuario = json.fkEmpresa;
+                        sessionStorage.grupoUsuario = json.fkGrupo;
 
-                    // Redirecionando conforme o cargo
-                    if (json.cargo === "adm") {
-                        window.location = "../Dashboard-estatica/selecionarUnidade.html";
-                    } else {
-                        window.location = "../Dashboard-estatica/dashboard.html";
+                        // Redirecionando conforme o cargo
+                        if (json.cargo === "adm") {
+                            window.location = "../Dashboard-estatica/selecionarUnidade.html";
+                        } else {
+                            window.location = "../Dashboard-estatica/dashboard.html";
+                        }
                     }
                 });
             })

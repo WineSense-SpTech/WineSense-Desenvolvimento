@@ -130,11 +130,11 @@ function renderizarCarrossel() {
 
     // Conteúdo do card (HTML dinâmico)
     div.innerHTML = `
-<button class="tanque">
-<h3>Tanque ${tanque.id}</h3>
-<p class="${tanque.classe}">${tanque.status}</p>
-</button>
-`;
+    <button class="tanque">
+    <h3>Tanque ${tanque.id}</h3>
+    <p class="${tanque.classe}">${tanque.status}</p>
+    </button>
+    `;
 
     // Evento de clique no tanque
     div.onclick = () => {
