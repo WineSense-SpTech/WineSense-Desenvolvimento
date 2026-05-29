@@ -40,65 +40,53 @@ const tanqueId = localStorage.getItem("tanqueId");
 // Nome da unidade escolhida (São Paulo, Campinas, etc)
 const unidadeSelecionada = localStorage.getItem("unidadeSelecionada");
 
-window.onload = adquirirGrafico(grupoUsuarioServer);
+function inicializarDashboard() {
+  // Pega a string guardada no Selecionar Unidade
+  let dadosString = sessionStorage.getItem('dadosDashboard');
 
-fetch("tanques.json") // Faz requisição para pegar o JSON (puxa os dados do JSON)
-  .then((res) => {
-    // Verifica se a resposta deu certo (status 200)
-    if (!res.ok) throw new Error("Erro ao carregar JSON");
+  console.log(`Dados da dashboard:\n${dadosString}`);
 
-    // Converte resposta para JSON
-    return res.json();
-  })
-  .then((data) => {
-    // Procura dentro do JSON a unidade escolhida pelo usuário
-    const unidadeObj = data.find((u) => u.unidade === unidadeSelecionada);
-
-    // Se não encontrar a unidade exibe o erro
-    if (!unidadeObj) {
-      console.error("Unidade não encontrada");
-      return;
-    }
-
-    // Pega os tanques daquela unidade e adiciona na lista dos tanques
-    tanques = unidadeObj.tanques;
-
-    // Se não houver tanques na unidade
-    if (tanques.length === 0) {
-      console.error("Nenhum tanque encontrado para essa unidade");
-      return;
-    }
-
-    // Renderiza os cards do carrossel para a seleção de tanques
-    renderizarCarrossel();
-
-    // Carrega os dados iniciais da dashboard (Como status, unidade, uva utilizada, etc.)
-    carregarDashboardInicial();
-  })
-  .catch((err) => console.error("ERRO:", err));
-
-function adquirirGrafico(grupoUsuarioPar) {
-
-  if (cargoUsuarioServer == `adm`) {
-    fetch(`/graficos/obtergrafico/${grupoUsuarioPar}`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (resposta) {
-          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-          return
-
-          carregarDashboard(resposta, grupoUsuarioPar);
-
-        });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-      }
-    })
-      .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-      });
+  if (!dadosString) {
+    console.error("Dados não encontrados na sessão. Buscando na API...");
+    // Se o usuário entrou direto na URL sem passar pelo Selecionar Unidade, faz o fetch:
+    fetch(`/unidades/carunidades/${grupoUsuarioServer}`)
+      .then(res => res.json())
+      .then(data => {
+        sessionStorage.setItem('dadosDashboard', JSON.stringify(data));
+        processarDadosDashboard(data);
+      }).catch(err => console.error("Erro no fetch de fallback", err));
+    return;
   }
+
+  // Transforma o texto em objeto de volta
+  let data = JSON.parse(dadosString);
+  processarDadosDashboard(data);
 }
+
+function processarDadosDashboard(data) {
+  // Procura dentro da resposta da API a unidade escolhida pelo usuário
+  const unidadeObj = data.find((u) => u.unidade === unidadeSelecionada);
+
+  if (!unidadeObj) {
+    console.error("Unidade não encontrada");
+    return;
+  }
+
+  // Pega os tanques daquela unidade e adiciona na lista
+  tanques = unidadeObj.tanques;
+
+  if (tanques.length === 0) {
+    console.error("Nenhum tanque encontrado para essa unidade");
+    return;
+  }
+
+  // Renderiza os cards e carrega os gráficos iniciais
+  renderizarCarrossel();
+  carregarDashboardInicial();
+}
+
+// Inicia a tela
+inicializarDashboard();
 
 function ordenarTanques(lista) {
   // Define prioridade dos status

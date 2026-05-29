@@ -14,6 +14,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+var unidadesRouter = require("./src/routes/unidades");
 var graficosRouter = require("./src/routes/graficos");
 
 app.use(express.json());
@@ -30,8 +31,19 @@ app.use(express.static(path.join(__dirname, "public/simulador-financeiro")));
 // Rotas
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/unidades", unidadesRouter);
 app.use("/graficos", graficosRouter);
 
 app.listen(PORTA_APP, function () {
-    console.log(`Servidor rodando em http://${HOST_APP}:${PORTA_APP}`);
+    console.log(`
+        ##   ##   ####   ##   ##  ######   #####   ######  ##   ##   #####   ######  
+        ##   ##    ##    ###  ##  ##      ##   ##  ##      ###  ##  ##   ##  ##      
+        ##   ##    ##    #### ##  ##      ##       ##      #### ##  ##       ##      
+        ## # ##    ##    ## # ##  ####     #####   ####    ## # ##   #####   ####    
+        #######    ##    ## ####  ##           ##  ##      ## ####       ##  ##      
+        ### ###    ##    ##  ###  ##      ##   ##  ##      ##  ###  ##   ##  ##      
+        ##   ##   ####   ##   ##  ######   #####   ######  ##   ##   #####   ######  
+        \n\n
+        Servidor rodando em http://${HOST_APP}:${PORTA_APP}
+    `);
 });

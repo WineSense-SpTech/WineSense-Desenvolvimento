@@ -46,9 +46,9 @@ function cadastrar(nome, sobrenome, email, senha, codigoEmpresa) {
 
     var instrucaoSql = `
         INSERT INTO usuario 
-            (nome, sobrenome, email, senha, fkEmpresa) 
+            (nome, sobrenome, email, senha, cargo, fkEmpresa) 
         VALUES 
-            ('${nome}', '${sobrenome}', '${email}', '${senha}', '${codigoEmpresa}');
+            ('${nome}', '${sobrenome}', '${email}', '${senha}', 'usuario', '${codigoEmpresa}');
     `;
 
     return db.executar(instrucaoSql);

@@ -99,7 +99,8 @@ CREATE TABLE alerta(
     idAlerta INT PRIMARY KEY AUTO_INCREMENT,
     fkRegistro INT NOT NULL,
     tipoAlerta VARCHAR(45) NOT NULL,
-    CONSTRAINT cFkRegistro FOREIGN KEY (fkRegistro) REFERENCES registro(idRegistro)
+    CONSTRAINT cFkRegistro FOREIGN KEY (fkRegistro) REFERENCES registro(idRegistro),
+    CONSTRAINT cCheckAlerta CHECK (tipoAlerta IN ('Crítico','Alerta','Regular'))
 );
 
 -- INSERTS
@@ -161,61 +162,3 @@ INSERT INTO registro (temperatura, fkSensor) VALUES
 INSERT INTO alerta (fkRegistro, tipoAlerta) VALUES
 (3, 'Temperatura acima do limite'),
 (4, 'Sensor defeituoso');
-
--- SELECTS 
-
--- Ver temperatura registrada por sensor, Base de gráficos em tempo real
-SELECT s.idSensor AS 'Sensor', s.nomeTanque AS 'Nome', s.codSensor AS 'Código', r.dataHora
-FROM sensor s
-JOIN registro r 
-ON s.idSensor = r.fkSensor;
-
--- selecionar tipo de vinho 
-SELECT 
-    fkUva AS 'Tipo uva',
-    CASE 
-        WHEN tipoVinho = 'Tinto' THEN 'Vinho Tinto'
-        WHEN tipoVinho = 'Branco' THEN 'Vinho Branco'
-    END AS 'Categoria'
-FROM vinho;
-
--- Detectar temperatura fora do ideal
-SELECT 
-	idRegistro AS Registro, 
-	nomeTanque AS 'Nome Tanque', 
-	dataHora, 
-	temperatura,
-	CASE 
-		WHEN r.temperatura BETWEEN v.tempMinima AND v.tempMaxima 
-		THEN 'Ideal'
-		ELSE 'Alerta'
-	END AS 'Status'	
-FROM registro r
-JOIN sensor s ON r.fkSensor = s.idSensor
-JOIN tanque t ON s.idSensor = t.fkSensor
-JOIN vinho v ON t.fkVinho = v.idVinho
-JOIN empresa e ON t.fkEmpresa = e.idEmpresa;
-
--- Qual empresa é dona de cada tanque
-SELECT t.codTanque AS Codigo, e.razaoSocial AS Empresa
-FROM tanque t
-JOIN empresa e 
-ON t.fkEmpresa = e.idEmpresa;
-
--- Monitoramento geral da fermentação
-SELECT 
-	e.razaoSocial AS Empresa, 
-	t.codTanque AS Codigo, 
-	v.tipoVinho AS Tipo, 
-	s.codSensor AS 'Cod Sensor', 
-	u.nome as uva,
-	r.temperatura, 
-	v.tempMinima, 
-	v.tempMaxima, 
-	r.dataHora
-FROM registro r
-JOIN sensor s ON r.fkSensor = s.idSensor
-JOIN tanque t ON s.idSensor = t.fkSensor
-JOIN vinho v ON t.fkVinho = v.idVinho
-JOIN uva u ON v.fkUva = u.idUva
-JOIN empresa e ON t.fkEmpresa = e.idEmpresa;
