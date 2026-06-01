@@ -3,7 +3,7 @@ var router = express.Router();
 
 var graficoController = require("../controllers/graficoController");
 
-router.get("/obtergrafico/:grupoUsuarioPar", function (req, res) {
+router.get("/obtergrafico/:empresaUsuarioPar", function (req, res) {
   graficoController.obterGrafico(req, res);
 });
 

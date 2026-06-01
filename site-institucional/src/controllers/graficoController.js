@@ -42,9 +42,9 @@ function cadastrar(req, res) {
 }
 
 function obterGrafico(req, res) {
-  var grupoUsuario = req.params.grupoUsuarioPar;
+  var empresaUsuario = req.params.empresaUsuarioPar;
 
-  graficoModel.obterGrafico(grupoUsuario).then((resultado) => {
+  graficoModel.obterGrafico(empresaUsuario).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {

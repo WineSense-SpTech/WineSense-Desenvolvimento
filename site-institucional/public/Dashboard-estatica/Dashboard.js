@@ -8,7 +8,7 @@ if (idUsuarioServer == undefined) {
 }
 
 if (cargoUsuarioServer !== "adm") {
-  localStorage.setItem("unidadeSelecionada", empresaUsuario);
+  localStorage.setItem("empresaSelecionada", empresaUsuarioServer);
 
   btnUnidades.disabled = true;
   btnUnidades.style.opacity = "0.4";
@@ -40,6 +40,8 @@ const tanqueId = localStorage.getItem("tanqueId");
 // Nome da unidade escolhida (São Paulo, Campinas, etc)
 const unidadeSelecionada = localStorage.getItem("unidadeSelecionada");
 
+console.log('Unidade Selecionada', unidadeSelecionada)
+
 function inicializarDashboard() {
   // Pega a string guardada no Selecionar Unidade
   let dadosString = sessionStorage.getItem('dadosDashboard');
@@ -53,17 +55,35 @@ function inicializarDashboard() {
       .then(res => res.json())
       .then(data => {
         sessionStorage.setItem('dadosDashboard', JSON.stringify(data));
-        processarDadosDashboard(data);
+        processarDadosDashboard(data, empresaUsuarioServer);
       }).catch(err => console.error("Erro no fetch de fallback", err));
     return;
   }
 
   // Transforma o texto em objeto de volta
   let data = JSON.parse(dadosString);
-  processarDadosDashboard(data);
+  processarDadosDashboard(data, empresaUsuarioServer);
 }
 
-function processarDadosDashboard(data) {
+function processarDadosDashboard(data, empresaUsuarioPar) {
+
+  if (cargoUsuarioServer != 'adm') {
+    fetch(`/graficos/obtergrafico/${empresaUsuarioPar}`, { cache: 'no-store' })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos DI: ${JSON.stringify(resposta)}`);
+
+            dash_data.innerHTML = resposta[0].mes_ano;
+          })
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      }).catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ KPIs: ${error.message}`);
+      })
+  }
+
   // Procura dentro da resposta da API a unidade escolhida pelo usuário
   const unidadeObj = data.find((u) => u.unidade === unidadeSelecionada);
 
