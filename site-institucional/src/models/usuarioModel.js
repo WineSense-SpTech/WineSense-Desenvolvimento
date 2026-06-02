@@ -24,18 +24,10 @@ function autenticar(email, senha, codigo, ehAdm) {
     } else {
         // Usuário comum: valida email, senha e codEmpresa
         instrucaoSql = `
-            SELECT 
-                u.idUsuario, 
-                u.nome, 
-                u.email, 
-                u.cargo, 
-                u.fkEmpresa, 
-                u.fkGrupo
-            FROM usuario u
-            JOIN empresa e ON u.fkEmpresa = e.codEmpresa
-            WHERE u.email = '${email}' 
-            AND u.senha = '${senha}'
-            AND e.codEmpresa = '${codigo}';
+            SELECT * FROM autenticar_usuario au
+	            WHERE au.email = '${email}'
+	            AND au.senha = '${senha}'
+	            AND au.codEmpresa = '${codigo}';
         `;
     }
 
