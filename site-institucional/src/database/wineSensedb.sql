@@ -854,3 +854,60 @@ UPDATE registro SET dataHora = DATE_ADD(dataHora, INTERVAL 386 DAY) WHERE DATE(d
 
 -- Atualiza os registros do dia 05/05/2025 para 26/05/2026
 UPDATE registro SET dataHora = DATE_ADD(dataHora, INTERVAL 386 DAY) WHERE DATE(dataHora) = '2025-05-05';
+
+-- VIEWS --
+
+-- AUTENTICAÇÃO DE USUÁRIO 
+CREATE VIEW autenticar_usuario AS
+    SELECT u.idUsuario, 
+            u.nome, 
+            u.email,
+            u.senha,
+            u.cargo, 
+            u.fkEmpresa, 
+            u.fkGrupo,
+            e.codEmpresa
+        FROM usuario u
+        JOIN empresa e ON u.fkEmpresa = e.codEmpresa;
+
+-- OBTER DADOS PARA O GRÁFICO
+create view obter_dados AS
+    SELECT
+            r.dataHora AS dataHoraOriginal,
+            DATE_FORMAT(r.dataHora, '%H:%i') AS dataHora,
+            r.temperatura,
+            e.fkGrupo
+        FROM registro r
+        JOIN sensor s ON s.idSensor = r.fkSensor
+        JOIN tanque t ON s.idSensor = t.fkSensor
+        JOIN empresa e ON e.codEmpresa = t.fkEmpresa;
+
+-- INFORMAÇÕES DO TANQUE
+CREATE VIEW tanque_base AS
+    SELECT 
+      end.cidade AS unidade,
+      t.idTanque AS id,
+      u.nome AS uva_nome,
+      v.tempMinima AS temp_min_limite,
+      v.tempMaxima AS temp_max_limite,
+      t.fkSensor,
+      emp.fkGrupo
+    FROM empresa emp
+    JOIN endereco end ON emp.fkEndereco = end.idEndereco
+    JOIN tanque t ON t.fkEmpresa = emp.codEmpresa
+    JOIN vinho v ON t.fkVinho = v.idVinho
+    JOIN receitaVinho rv ON v.idVinho = rv.fkVinho
+    JOIN uva u ON rv.idVinhoUva = u.idUva;
+
+-- REGISTROS DE TEMPERATURA
+CREATE VIEW registros_temp AS     
+	SELECT 
+		  r.fkSensor,
+		  r.dataHora AS dataHoraOriginal,
+		  DATE_FORMAT(r.dataHora, '%Y-%m-%d') AS data_leitura,
+		  DATE_FORMAT(r.dataHora, '%H:%i') AS horario,
+		  r.temperatura AS temperatura,
+		  emp.fkGrupo
+		FROM registro r
+		JOIN tanque t ON r.fkSensor = t.fkSensor
+		JOIN empresa emp ON t.fkEmpresa = emp.codEmpresa;
