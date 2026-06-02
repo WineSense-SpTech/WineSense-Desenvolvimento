@@ -128,16 +128,61 @@
         <section id="contato" class="contato section2">
             <h2>Alguma dúvida? Entre em contato conosco!</h2>
 
-            <form action="" class="formulario">
-                <input type="text" placeholder="Nome" required />
-                <input type="email" placeholder="Email" required />
-                <textarea rows="5" placeholder="Texto..." required></textarea>
-                <button type="submit" class="btn_enviar">
-                    <h3 style="color: aliceblue">Enviar</h3>
-                    <br /><img src="img/email.png" style="height: 30px; width: 30px" alt="" />
+            <form class="formulario" id="contatoForm" novalidate>
+
+                <div class="ws-field">
+                    <input
+                        type="text"
+                        id="ws-nome"
+                        placeholder="Nome"
+                        autocomplete="name"
+                        required
+                    />
+                    <span class="ws-field-error" id="ws-erro-nome"></span>
+                </div>
+
+                <div class="ws-field">
+                    <input
+                        type="email"
+                        id="ws-email"
+                        placeholder="Email"
+                        autocomplete="email"
+                        required
+                    />
+                    <span class="ws-field-error" id="ws-erro-email"></span>
+                </div>
+
+                <div class="ws-field">
+                    <textarea
+                        id="ws-pedido"
+                        rows="5"
+                        placeholder="Texto..."
+                        required
+                    ></textarea>
+                    <span class="ws-field-error" id="ws-erro-pedido"></span>
+                </div>
+
+                <!-- Feedback de sucesso -->
+                <div class="ws-feedback ws-success" id="ws-ok" role="alert" style="display:none">
+                    ✓ <span id="ws-ticket-msg">Solicitação enviada com sucesso!</span>
+                </div>
+
+                <!-- Feedback de erro -->
+                <div class="ws-feedback ws-error" id="ws-err" role="alert" style="display:none">
+                    ✗ <span id="ws-err-msg">Erro ao enviar. Tente novamente.</span>
+                </div>
+
+                <button type="submit" class="btn_enviar" id="ws-btn">
+                    <span id="ws-btn-label">
+                        <h3 style="color: aliceblue">Enviar</h3>
+                        <br /><img src="img/email.png" style="height: 30px; width: 30px" alt="" />
+                    </span>
+                    <span id="ws-spinner" style="display:none; color:#fff; font-size:14px">Enviando...</span>
                 </button>
+
             </form>
         </section>
+
     </main>
 
     <footer>
@@ -153,7 +198,7 @@
                     <li>
                         <a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador financeiro</a>
                     </li>
-                    <li><a href="">Fale conosco</a></li>
+                    <li><a href="#contato">Fale conosco</a></li>
                 </ul>
             </div>
             <div class="coluna">
@@ -166,5 +211,5 @@
         </div>
     </footer>
 </body>
-
+<script src="home.js"></script>
 </html>
