@@ -38,6 +38,11 @@ if (document.title.includes("Cadastro")) {
             mostrarErro("Preencha todos os campos!");
             return false;
         }
+        
+        if (email.includes('@winesense.com')){
+            mostrarErro("Acesso negado! contas winesense não permitidas para cadastro!")
+            return false;
+        }
 
         // Verificando se as senhas coincidem
         if (senha !== confirmaSenha) {
