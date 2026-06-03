@@ -9,7 +9,7 @@ document.getElementById('contatoForm').addEventListener('submit', async function
     };
 
     try {
-        const res = await fetch('/api/contato', {
+        const res = await fetch('/jira/contato', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dados),
