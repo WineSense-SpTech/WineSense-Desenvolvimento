@@ -164,10 +164,13 @@ if (document.title.includes("Login")) {
                         sessionStorage.empresaUsuario = json.fkEmpresa;
                         sessionStorage.grupoUsuario = json.fkGrupo;
 
-                        // Redirecionando conforme o cargo
+                        // Redirecionando conforme o cargo (adm ou N3)
                         if (json.cargo === "adm") {
                             window.location = "../Dashboard-estatica/selecionarUnidade.html";
-                        } else {
+                        } else if (json.email.includes("@winesense.com")){
+                            window.location = "../bobia/index.html";
+                        }
+                        else {
                             window.location = "../Dashboard-estatica/dashboard.html";
                         }
                     }
