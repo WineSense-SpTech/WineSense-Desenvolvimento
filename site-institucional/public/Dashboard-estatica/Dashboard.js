@@ -320,14 +320,9 @@ function atualizarGrafico(idTanque, dados, myChart) {
           console.log(`Dados atuais do gráfico:`);
           console.log(dados);
 
-          let avisoCaptura = document.getElementById(
-            `avisoCaptura${idTanque}`,
-          );
-          avisoCaptura.innerHTML = "";
-
           if (
-            novoRegistro[0].momento_grafico ==
-            dados.labels[dados.labels.length - 1]
+            novoRegistro[0].valor ==
+            dados[dados.length - 1]
           ) {
             console.log(
               "---------------------------------------------------------------",
@@ -335,25 +330,25 @@ function atualizarGrafico(idTanque, dados, myChart) {
             console.log(
               "Como não há dados novos para captura, o gráfico não atualizará.",
             );
-            avisoCaptura.innerHTML =
-              "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.";
             console.log("Horário do novo dado capturado:");
-            console.log(novoRegistro[0].momento_grafico);
+            console.log(novoRegistro[0].valor);
             console.log("Horário do último dado capturado:");
-            console.log(dados.labels[dados.labels.length - 1]);
+            console.log(dados[dados.length - 1]);
             console.log(
               "---------------------------------------------------------------",
             );
           } else {
             // tirando e colocando valores no gráfico
-            dados.labels.shift(); // apagar o primeiro
-            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+            dados.shift(); // apagar o primeiro
+            dados.push(novoRegistro[0].valor); // incluir um novo momento
 
-            dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+            console.log("Atualizado com sucesso");
 
-            dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
-            dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+            // dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+            // dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+            // dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
+            // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 
             myChart.update();
           }
@@ -361,7 +356,7 @@ function atualizarGrafico(idTanque, dados, myChart) {
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
           proximaAtualizacao = setTimeout(
             () => atualizarGrafico(idTanque, dados, myChart),
-            2000,
+            10000,
           );
         });
       } else {
@@ -369,7 +364,7 @@ function atualizarGrafico(idTanque, dados, myChart) {
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
         proximaAtualizacao = setTimeout(
           () => atualizarGrafico(idTanque, dados, myChart),
-          2000,
+          10000,
         );
       }
     })
