@@ -73,7 +73,7 @@ function inicializarDashboard() {
 
   // Transforma o texto em objeto de volta
   let data = JSON.parse(dadosString);
-  processarDadosDashboard(data, empresaUsuarioServer);
+  processarDadosDashboard(data);
 }
 
 function processarDadosDashboard(data) {
@@ -310,7 +310,16 @@ function sair() {
   window.location.href = "../homeWineSense/index.html";
 }
 
+var proximaAtualizacao;
+
 function atualizarGrafico(idTanque, dados, myChart) {
+  // Se ja existir tanque atualizando, da clear na atualização dele
+  if (proximaAtualizacao != undefined) {
+    clearTimeout(proximaAtualizacao);
+  }
+
+  console.log('Esse é o id do tanque: ', idTanque);
+
   fetch(`/unidades/novovalor/${idTanque}`, { cache: "no-store" })
     .then(function (response) {
       if (response.ok) {
