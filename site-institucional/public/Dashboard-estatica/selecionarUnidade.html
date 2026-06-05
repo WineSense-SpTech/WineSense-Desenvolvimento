@@ -42,11 +42,13 @@
     let grupoUsuario = sessionStorage.grupoUsuario;
 
     window.onload = function () {
-      carregarUnidades(grupoUsuario);
+      carregarUnidades(grupoUsuario, empresaUsuario);
     };
 
-    function carregarUnidades(grupoUsuarioPar) {
-      fetch(`/unidades/carunidades/${grupoUsuarioPar}`, { cache: "no-store" })
+    function carregarUnidades(grupoUsuarioPar, empresaUsuarioPar) {
+      fetch(`/unidades/carunidades/${grupoUsuarioPar}/${empresaUsuarioPar}`, {
+        cache: "no-store",
+      })
         .then(function (response) {
           if (response.ok) {
             response.json().then(function (resposta) {

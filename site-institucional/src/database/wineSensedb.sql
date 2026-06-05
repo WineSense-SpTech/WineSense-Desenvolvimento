@@ -908,7 +908,8 @@ CREATE OR REPLACE VIEW registros_temp AS
 		  DATE_FORMAT(r.dataHora, '%Y-%m-%d') AS data_leitura,
 		  DATE_FORMAT(r.dataHora, '%H:%i') AS horario,
 		  r.temperatura AS valor,
-		  emp.fkGrupo
+		  emp.fkGrupo,
+          emp.codEmpresa AS codEmpresa
 		FROM registro r
 		JOIN tanque t ON r.fkSensor = t.fkSensor
 		JOIN empresa emp ON t.fkEmpresa = emp.codEmpresa;

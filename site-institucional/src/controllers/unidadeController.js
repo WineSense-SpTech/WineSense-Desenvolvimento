@@ -2,16 +2,17 @@ var unidadeModel = require("../models/unidadeModel");
 
 function carregarUnidades(req, res) {
   var grupoUsuario = req.params.grupoUsuarioPar;
+  var empresaUsuario = req.params.empresaUsuarioPar;
 
   // Obter a data de hoje no formato do banco para o filtro do gráfico
   var dataAtual = new Date();
   var hojeISO = dataAtual.toLocaleDateString("en-CA");
 
   unidadeModel
-    .tanquesBase(grupoUsuario)
+    .tanquesBase(grupoUsuario, empresaUsuario)
     .then(function (tanquesDB) {
       unidadeModel
-        .registrosTemperatura(grupoUsuario)
+        .registrosTemperatura(grupoUsuario, empresaUsuario)
         .then(function (registrosDB) {
           var respostaJSON = [];
           var agrupamentoPorUnidade = {};

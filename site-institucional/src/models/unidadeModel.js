@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function tanquesBase(grupoUsuario, empresaUsuario) {
-  if (grupoUsuario == null) {
+  if (empresaUsuario != "null") {
     var instrucaoSql = `
   SELECT * from tanque_base tb
       WHERE tb.codEmpresa = '${empresaUsuario}';
@@ -12,15 +12,19 @@ function tanquesBase(grupoUsuario, empresaUsuario) {
       WHERE tb.fkGrupo = '${grupoUsuario}';
   `;
   }
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  console.log(
+    "Executando a instrução SQL: \n" + instrucaoSql,
+    grupoUsuario,
+    empresaUsuario,
+  );
   return database.executar(instrucaoSql);
 }
 
 function registrosTemperatura(grupoUsuario, empresaUsuario) {
-  if (grupoUsuario == null) {
+  if (empresaUsuario != "null") {
     var instrucaoSql = `
     SELECT * FROM registros_temp rt
-      WHERE rt.fkGrupo = '${empresaUsuario}'
+      WHERE rt.codEmpresa = '${empresaUsuario}'
         AND rt.dataHoraOriginal >= DATE_SUB(NOW(), INTERVAL 20 DAY)
       ORDER BY rt.fkSensor, rt.dataHoraOriginal;
   `;
