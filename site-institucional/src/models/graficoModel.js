@@ -12,7 +12,6 @@ function obterGrafico(empresaUsuario) {
   return database.executar(instrucaoSql);
 }
 
-
 module.exports = {
-  obterGrafico
-}
+  obterGrafico,
+};

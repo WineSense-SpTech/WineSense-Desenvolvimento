@@ -858,7 +858,7 @@ UPDATE registro SET dataHora = DATE_ADD(dataHora, INTERVAL 386 DAY) WHERE DATE(d
 -- VIEWS --
 
 -- AUTENTICAÇÃO DE USUÁRIO 
-CREATE VIEW autenticar_usuario AS
+CREATE OR REPLACE VIEW autenticar_usuario AS
     SELECT u.idUsuario, 
             u.nome, 
             u.email,
@@ -871,7 +871,7 @@ CREATE VIEW autenticar_usuario AS
         JOIN empresa e ON u.fkEmpresa = e.codEmpresa;
 
 -- OBTER DADOS PARA O GRÁFICO
-create view obter_dados AS
+CREATE OR REPLACE VIEW obter_dados AS
     SELECT
             r.dataHora AS dataHoraOriginal,
             DATE_FORMAT(r.dataHora, '%H:%i') AS dataHora,
@@ -883,9 +883,10 @@ create view obter_dados AS
         JOIN empresa e ON e.codEmpresa = t.fkEmpresa;
 
 -- INFORMAÇÕES DO TANQUE
-CREATE VIEW tanque_base AS
+CREATE OR REPLACE VIEW tanque_base AS
     SELECT 
       end.cidade AS unidade,
+      emp.codEmpresa as codEmpresa,
       t.idTanque AS id,
       u.nome AS uva_nome,
       v.tempMinima AS temp_min_limite,
@@ -900,7 +901,7 @@ CREATE VIEW tanque_base AS
     JOIN uva u ON rv.idVinhoUva = u.idUva;
 
 -- REGISTROS DE TEMPERATURA
-CREATE VIEW registros_temp AS     
+CREATE OR REPLACE VIEW registros_temp AS     
 	SELECT 
 		  r.fkSensor,
 		  r.dataHora AS dataHoraOriginal,
