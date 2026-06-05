@@ -173,6 +173,8 @@ if (document.title.includes("Login")) {
             sessionStorage.empresaUsuario = json.fkEmpresa;
             sessionStorage.grupoUsuario = json.fkGrupo;
 
+            console.log("bom dia");
+
             // Redirecionando conforme o cargo (adm ou N3)
             if (json.email.includes("@winesense.com")) {
               window.location = "../bobia/index.html";

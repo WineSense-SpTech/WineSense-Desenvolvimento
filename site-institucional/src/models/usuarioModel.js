@@ -18,7 +18,7 @@ function autenticar(email, senha, codigo, ehAdm) {
             JOIN grupoEmpresa g ON u.fkGrupo = g.codGrupo
             WHERE u.email = '${email}' 
             AND u.senha = '${senha}'
-            AND u.cargo = 'adm'
+            AND u.cargo IN ('adm', 'N3')
             AND g.codGrupo = '${codigo}';
         `;
     } else {

@@ -916,3 +916,15 @@ CREATE OR REPLACE VIEW registros_temp AS
 		JOIN empresa emp ON t.fkEmpresa = emp.codEmpresa;
 
 UPDATE usuario SET email = REPLACE(email, '@winesense.com', '@gmail.com') WHERE email LIKE '%@winesense.com';
+
+INSERT INTO usuario (nome, sobrenome, email, senha, cargo) VALUES
+-- ADMs N3
+('Enzo',      'Martelozzo', 'enzo.martelozzo@winesense.com',  '111111', 'N3'),
+('Guilherme', 'Britto',     'guilherme.britto@winesense.com', '123456', 'N3'),
+('Jonatas',   'Teles',      'jonatas.teles@winesense.com',    '456789', 'N3'),
+('Marcos',    'Paulo',      'marcos.paulo@winesense.com',     '222222', 'N3'),
+('Marina',    'Santos',     'marina.santos@winesense.com',    '789012', 'N3'),
+('Rafael',    'Naleto',     'rafael.naleto@winesense.com',    '555666', 'N3');
+
+INSERT INTO grupoEmpresa (codGrupo, nomeGrupo) VALUES
+('SUP00', 'Grupo Suporte');
