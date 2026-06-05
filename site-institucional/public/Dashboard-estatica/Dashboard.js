@@ -65,7 +65,7 @@ function inicializarDashboard() {
       .then((res) => res.json())
       .then((data) => {
         sessionStorage.setItem("dadosDashboard", JSON.stringify(data));
-        processarDadosDashboard(data, empresaUsuarioServer);
+        processarDadosDashboard(data);
       })
       .catch((err) => console.error("Erro no fetch de fallback", err));
     return;
@@ -76,37 +76,17 @@ function inicializarDashboard() {
   processarDadosDashboard(data, empresaUsuarioServer);
 }
 
-function processarDadosDashboard(data, empresaUsuarioPar) {
-  if (cargoUsuarioServer != "adm") {
-    fetch(`/graficos/obtergrafico/${empresaUsuarioPar}`, { cache: "no-store" })
-      .then(function (response) {
-        if (response.ok) {
-          response.json().then(function (resposta) {
-            console.log(`Dados recebidos DI: ${JSON.stringify(resposta)}`);
-
-            dash_data.innerHTML = resposta[0].mes_ano;
-          });
-        } else {
-          console.error("Nenhum dado encontrado ou erro na API");
-        }
-      })
-      .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ KPIs: ${error.message}`);
-      });
-  }
-
-  // Procura dentro da resposta da API a unidade escolhida pelo usuário
-  const unidadeObj = data.find((u) => u.unidade === unidadeSelecionada);
-
+function processarDadosDashboard(data) {
   console.log("unidadeSelecionada:", unidadeSelecionada);
   console.log("data:", data);
+
+  const unidadeObj = data.find((u) => u.unidade === unidadeSelecionada);
 
   if (!unidadeObj) {
     console.error("Unidade não encontrada");
     return;
   }
 
-  // Pega os tanques daquela unidade e adiciona na lista
   tanques = unidadeObj.tanques;
 
   if (tanques.length === 0) {
@@ -114,7 +94,6 @@ function processarDadosDashboard(data, empresaUsuarioPar) {
     return;
   }
 
-  // Renderiza os cards e carrega os gráficos iniciais
   renderizarCarrossel();
   carregarDashboardInicial();
 }
