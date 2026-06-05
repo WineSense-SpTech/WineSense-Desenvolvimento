@@ -290,6 +290,8 @@ function carregarDashboard(tanque) {
       ],
     },
   });
+
+  atualizarGrafico(tanque.id, tanque.temperatura.valores, chartLinha)
 }
 
 //Botão de voltar a seleção de unidades
@@ -308,19 +310,18 @@ function sair() {
   window.location.href = "../homeWineSense/index.html";
 }
 
-function atualizarGrafico(grupoUsuarioServer, dados, myChart) {
-  fetch(`/medidas/tempo-real/${idAquario}`, { cache: "no-store" })
+function atualizarGrafico(idTanque, dados, myChart) {
+  fetch(`/unidades/novovalor/${idTanque}`, { cache: "no-store" })
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (novoRegistro) {
-          obterdados(idAquario);
           // alertar(novoRegistro, idAquario);
           console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
           console.log(`Dados atuais do gráfico:`);
           console.log(dados);
 
           let avisoCaptura = document.getElementById(
-            `avisoCaptura${idAquario}`,
+            `avisoCaptura${idTanque}`,
           );
           avisoCaptura.innerHTML = "";
 
@@ -359,7 +360,7 @@ function atualizarGrafico(grupoUsuarioServer, dados, myChart) {
 
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
           proximaAtualizacao = setTimeout(
-            () => atualizarGrafico(idAquario, dados, myChart),
+            () => atualizarGrafico(idTanque, dados, myChart),
             2000,
           );
         });
@@ -367,7 +368,7 @@ function atualizarGrafico(grupoUsuarioServer, dados, myChart) {
         console.error("Nenhum dado encontrado ou erro na API");
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
         proximaAtualizacao = setTimeout(
-          () => atualizarGrafico(idAquario, dados, myChart),
+          () => atualizarGrafico(idTanque, dados, myChart),
           2000,
         );
       }

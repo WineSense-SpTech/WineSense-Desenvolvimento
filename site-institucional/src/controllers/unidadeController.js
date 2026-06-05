@@ -126,6 +126,23 @@ function carregarUnidades(req, res) {
     });
 }
 
+function novoValor(req, res) {
+  var idTanque = req.params.idTanque;
+
+  unidadeModel.novoValor(idTanque).then((resultado) => {
+    if (resultado.length > 0) {
+      res.status(200).json(resultado);
+    } else {
+      res.status(204).json.send(`Não foi encontrado novo valor`);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar os registros: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
 module.exports = {
   carregarUnidades,
+  novoValor
 };

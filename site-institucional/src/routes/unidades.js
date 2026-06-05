@@ -10,4 +10,11 @@ router.get(
   },
 );
 
+router.get(
+  "/novovalor/:idTanque",
+  function (req, res) {
+    unidadeController.novoValor(req, res);
+  },
+);
+
 module.exports = router;

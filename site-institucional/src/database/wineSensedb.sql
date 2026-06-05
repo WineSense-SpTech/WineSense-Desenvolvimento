@@ -123,7 +123,7 @@ INSERT INTO empresa (codEmpresa, razaoSocial, telefone, fkEndereco, fkGrupo) VAL
 ('ADM01', 'WineSense Holding',        '5511954010004', 4, 'GRP02');
 
 -- Usuários: ADMs e operadores por unidade + usuários do grupo
-INSERT INTO usuario (nome, sobrenome, Email, senha, cargo, fkEmpresa, fkGrupo) VALUES
+INSERT INTO usuario (nome, sobrenome, email, senha, cargo, fkEmpresa, fkGrupo) VALUES
 -- ADMs de unidade
 ('Fernando',  'Brandão',  'fernando.brandao@winesense.com', '111111', 'adm',     NULL, 'GRP01'),
 ('Carolina',  'Soares',   'carol.soares@winesense.com',     '123456', 'adm',     NULL, 'GRP01'),
@@ -909,7 +909,10 @@ CREATE OR REPLACE VIEW registros_temp AS
 		  DATE_FORMAT(r.dataHora, '%H:%i') AS horario,
 		  r.temperatura AS valor,
 		  emp.fkGrupo,
-          emp.codEmpresa AS codEmpresa
+          emp.codEmpresa AS codEmpresa,
+          t.idTanque
 		FROM registro r
 		JOIN tanque t ON r.fkSensor = t.fkSensor
 		JOIN empresa emp ON t.fkEmpresa = emp.codEmpresa;
+
+UPDATE usuario SET email = REPLACE(email, '@winesense.com', '@gmail.com') WHERE email LIKE '%@winesense.com';

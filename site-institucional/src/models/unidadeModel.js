@@ -41,7 +41,20 @@ function registrosTemperatura(grupoUsuario, empresaUsuario) {
   return database.executar(instrucaoSql);
 }
 
+function novoValor(idTanque) {
+  var instrucaoSql = `
+    SELECT * FROM registros_temp rt
+    WHERE rt.idTanque = ${idTanque}
+    ORDER BY rt.fkSensor, rt.dataHoraOriginal DESC
+    LIMIT 1;
+  `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   tanquesBase,
   registrosTemperatura,
+  novoValor
 };
