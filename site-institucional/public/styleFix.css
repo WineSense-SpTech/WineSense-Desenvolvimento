@@ -50,6 +50,14 @@ nav a {
     transition: 0.3s;
 }
 
+.header_login{
+     margin-right: 140px;
+}
+
+.header_dash{
+    margin-left: 140px;
+}
+
 .logo img {
     width: 120px;
     margin-left: 10px;

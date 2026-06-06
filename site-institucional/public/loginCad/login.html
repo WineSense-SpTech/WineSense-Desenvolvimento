@@ -1,79 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WineSense | Login</title>
-    <link rel="stylesheet" href="/styleFix.css">
-    <link rel="icon" href="../homeWineSense/img/LOGO-WINESENSE.png">
-</head>
+    <link rel="stylesheet" href="/styleFix.css" />
+    <link rel="icon" href="../homeWineSense/img/LOGO-WINESENSE.png" />
+  </head>
 
-<body>
-
+  <body>
     <div class="navegacao">
-        <div class="logo">
-            <a href="../homeWineSense/index.html" class="logo">
-                <img src="../homeWineSense/img/LOGO-WINESENSE.png" alt="Logo Wine">
-            </a>
-        </div>
-        <header class="cabecalho">
-            <nav>
-                <ul class="menu">
-                    <li><a href="../homeWineSense/index.html">Home</a></li>
-                    <li><a href="../sobre/sobre.html">Sobre</a></li>
-                    <li><a href="../simulador-financeiro/simuladorFinanceiro.html">Simulador</a></li>
-                    <li><a href="../homeWineSense/index.html">Contato</a></li>
-                </ul>
-            </nav>
-            <a href="../loginCad/cadastro.html">
-                <button class="btn_entrar">Cadastrar</button>
-            </a>
-        </header>
+      <div class="logo">
+        <a href="../homeWineSense/index.html" class="logo">
+          <img src="../homeWineSense/img/LOGO-WINESENSE.png" alt="Logo Wine" />
+        </a>
+      </div>
+      <header class="cabecalho">
+        <nav class="header_login">
+          <ul class="menu">
+            <li><a href="../homeWineSense/index.html">Home</a></li>
+            <li><a href="../sobre/sobre.html">Sobre</a></li>
+            <li>
+              <a href="../simulador-financeiro/simuladorFinanceiro.html"
+                >Simulador</a
+              >
+            </li>
+            <li><a href="../homeWineSense/index.html#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </header>
     </div>
 
     <section class="auth">
+      <div class="auth-box">
+        <h1>Login</h1>
+        <p>Acesse sua conta WineSense</p>
 
-        <div class="auth-box">
+        <form>
+          <input type="text" id="idCodigo" placeholder="Cód da Empresa" />
 
-            <h1>Login</h1>
-            <p>Acesse sua conta WineSense</p>
+          <label class="label-checkbox">
+            <input type="checkbox" id="idAdm" onclick="alternarCodigo()" />
+            Sou administrador
+          </label>
 
-            <form>
+          <input type="email" id="idEmail" placeholder="Email" />
 
-                <input type="text" id="idCodigo" placeholder="Cód da Empresa">
+          <input type="password" id="idSenha" placeholder="Senha" />
 
-                <label class="label-checkbox">
-                    <input type="checkbox" id="idAdm" onclick="alternarCodigo()">
-                    Sou administrador
-                </label>
+          <button type="button" class="btn-primary" onclick="entrar()">
+            Entrar
+          </button>
+        </form>
 
-                <input type="email" id="idEmail" placeholder="Email">
+        <p class="auth-link">
+          Não possui conta?
+          <a href="cadastro.html">Criar conta</a>
+        </p>
+      </div>
 
-                <input type="password" id="idSenha" placeholder="Senha">
+      <div id="cardErro" style="display: none">
+        <span id="mensagem_erro"></span>
+      </div>
 
-                <button type="button" class="btn-primary" onclick="entrar()">Entrar</button>
-
-            </form>
-
-            <p class="auth-link">
-                Não possui conta?
-                <a href="cadastro.html">Criar conta</a>
-            </p>
-
-        </div>
-
-        <div id="cardErro" style="display: none;">
-            <span id="mensagem_erro"></span>
-        </div>
-
-        <div id="cardSucesso" style="display: none;">
-            <span id="mensagem_sucesso"></span>
-        </div>
-
+      <div id="cardSucesso" style="display: none">
+        <span id="mensagem_sucesso"></span>
+      </div>
     </section>
-
-</body>
-<script src="auth.js"></script>
-
+  </body>
+  <script src="auth.js"></script>
 </html>
