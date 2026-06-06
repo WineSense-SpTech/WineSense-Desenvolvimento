@@ -17,4 +17,11 @@ router.get(
   },
 );
 
+router.get(
+  "/maior-variacao-tempo/:grupoUsuarioPar/:empresaUsuarioPar",
+  function (req, res) {
+    unidadeController.buscarMaiorVariacao(req, res);
+  }
+);
+
 module.exports = router;

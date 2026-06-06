@@ -142,7 +142,23 @@ function novoValor(req, res) {
   });
 }
 
+function buscarMaiorVariacao(req, res) {
+
+unidadeModel.buscarMaiorVariacao(idGrupo, idEmpresa)
+    .then(function (resultado) {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        res.status(204).send("Nenhum registro encontrado!");
+      }
+    }).catch(function (erro) {
+      console.log("Houve um erro ao buscar as variações de temperatura: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   carregarUnidades,
-  novoValor
+  novoValor,
+  buscarMaiorVariacao,
 };
