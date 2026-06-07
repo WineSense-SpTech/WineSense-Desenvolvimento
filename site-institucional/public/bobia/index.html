@@ -8,8 +8,17 @@
 </head>
 <body>
 
+    <header class="header">
+        <div class="header-dummy"></div> 
+    
+        <div class="header-titulo">BobIA</div>
+    
+        <div class="btn_sair">
+            <button onclick="sair()">Sair</button>
+        </div>
+    </header>
     <div id="container">
-        <h1>BobIA</h1>
+        <h2 id="usuario"></h2>
         <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
         <br><br>
         <button onclick="gerarResposta()">Gerar Resposta</button>
@@ -19,6 +28,18 @@
 
     <script>
         
+        var nomeUsuario = sessionStorage.nomeUsuario;
+        var cargoUsuario = sessionStorage.cargoUsuario || "";
+        var empresaUsuario = sessionStorage.empresaUsuario || "";
+        let grupoUsuario = sessionStorage.grupoUsuario;
+
+        if (!nomeUsuario || !grupoUsuario) {
+        alert("Acesso negado! Por favor, faça login de uma conta N3 para acessar esta página.");
+        window.location.href = "../homeWineSense/index.html";
+    }
+
+        usuario.innerHTML = `Bem-vindo ${nomeUsuario}!`
+
         async function gerarResposta() {
             const pergunta = document.getElementById('pergunta').value;
 
@@ -35,6 +56,13 @@
             resposta.style.display = 'block';
             document.getElementById('resposta').innerText = data.resultado;
         }
+
+        function sair() {
+      sessionStorage.clear();
+      localStorage.clear();
+
+      window.location.href = "../homeWineSense/index.html";
+    }
 
     </script>
     
