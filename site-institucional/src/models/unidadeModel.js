@@ -57,12 +57,12 @@ function buscarMaiorVariacao(idTanque) {
   // nova query para a KPI de horario com maior variação
   var instrucaoSql = `
     SELECT
-      HOUR(r.dataHora) as horario,
+      DATE_FORMAT(r.dataHora, '%H:%i') as horario,
       ROUND((MAX(r.temperatura) - MIN(r.temperatura)), 2) as variacao
     FROM registro r
     JOIN tanque t ON r.fkSensor = t.fkSensor
     WHERE t.idTanque = ${idTanque} 
-    GROUP BY HOUR(r.dataHora)
+    GROUP BY DATE_FORMAT(r.dataHora, '%H:%i')
     ORDER BY variacao DESC
     LIMIT 1;
   `;

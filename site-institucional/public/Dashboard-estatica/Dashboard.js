@@ -191,11 +191,13 @@ function carregarDashboard(tanque) {
   fetch(`/unidades/maior-variacao-tempo/${tanque.id}`)
     .then((res) => {
       if (!res.ok) throw new Error(`Erro do servidor: status ${res.status}`);
-      if (res.status === 204) return []; 
+      if (res.status === 204) return [];
       return res.json();
     })
     .then((data) => {
       if (data.length > 0) {
+        console.log('Maior variação de tempo', data);
+
         document.getElementById("horarioVar").innerText = data[0].horario + "h";
       } else {
         document.getElementById("horarioVar").innerText = "--h";
@@ -206,7 +208,7 @@ function carregarDashboard(tanque) {
       document.getElementById("horarioVar").innerText = "--h";
     });
 
-    
+
   // Data da medição
   document.getElementById("data_medicao").innerText =
     tanque.data_medicao || "--";
@@ -275,7 +277,7 @@ function carregarDashboard(tanque) {
 
   // Se existir, mostra direto
   // Se não existir, mostra "--" (fallback)
-  
+
   // document.getElementById("horarioVar").innerText = horario || "--";
 
   // Uva usada para fazer o vinho daquele tanque
