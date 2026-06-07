@@ -1,6 +1,6 @@
 # 🍷 WineSense — Repositório de Desenvolvimento
 
-![STATUS EM DESENVOLVIMENTO](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange?style=for-the-badge)
+![STATUS CONCLUÍDO](https://img.shields.io/badge/Status-Concluído-orange?style=for-the-badge)
 ![INSTITUIÇÃO SPTECH SCHOOL](https://img.shields.io/badge/Institui%C3%A7%C3%A3o-SPTech%20School-blue?style=for-the-badge)
 
 O **WineSense** é uma solução baseada em IoT para monitoramento da temperatura durante o processo de fermentação do vinho.

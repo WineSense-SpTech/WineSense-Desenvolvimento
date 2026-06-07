@@ -186,6 +186,8 @@ function carregarDashboardInicial() {
 }
 
 function carregarDashboard(tanque) {
+  // Zera o contador quando troca de tanque
+  alertasSeguidos = 0;
 
   // KPI de horario com maior variação
   fetch(`/unidades/maior-variacao-tempo/${tanque.id}`)
@@ -309,7 +311,7 @@ function carregarDashboard(tanque) {
     },
   });
 
-  atualizarGrafico(tanque.id, tanque.temperatura.valores, chartLinha)
+  atualizarGrafico(tanque.id, tanque.temperatura.valores, chartLinha, tanque.temperatura.temp_min[0], tanque.temperatura.temp_max[0], chartBarra)
 }
 
 //Botão de voltar a seleção de unidades
@@ -329,8 +331,42 @@ function sair() {
 }
 
 var proximaAtualizacao;
+var alertasSeguidos = 0;
 
-function atualizarGrafico(idTanque, dados, myChart) {
+function atualizarGraficoBarra(novaTemperatura, tempMin, tempMax, myChartBarra) {
+
+  // Verifica se a nova temperatura está fora dos limites do tanque.
+  var estaForaDoLimite = novaTemperatura < tempMin || novaTemperatura > tempMax;
+
+  // Se estiver dentro dos limites, não há alerta
+  if (!estaForaDoLimite) {
+    // Zera o contador de alertas
+    alertasSeguidos = 0;
+    console.log("Temperatura no limite, não alterou o gráfico");
+    return;
+  }
+
+  // Incrementa o contador de alertas
+  alertasSeguidos++;
+
+  // Pega o dia de hoje.
+  var indiceDiaHoje = myChartBarra.data.datasets[0].data.length - 1;
+
+  if (alertasSeguidos >= 7) {
+    // Se 7 alertas seguidos, adiciona Urgente
+    myChartBarra.data.datasets[0].data[indiceDiaHoje]++;
+    console.log("Alerta Urgente registrado no gráfico de barras.");
+  } else {
+    // Senão, adiciona Atenção
+    myChartBarra.data.datasets[1].data[indiceDiaHoje]++;
+    console.log("Alerta Atenção registrado no gráfico de barras.");
+  }
+
+  // Chart.js redesenha o gráfico com os novos valores
+  myChartBarra.update();
+}
+
+function atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBarra) {
   // Se ja existir tanque atualizando, da clear na atualização dele
   if (proximaAtualizacao != undefined) {
     clearTimeout(proximaAtualizacao);
@@ -365,32 +401,29 @@ function atualizarGrafico(idTanque, dados, myChart) {
               "---------------------------------------------------------------",
             );
           } else {
-            // tirando e colocando valores no gráfico
+
+            var novaTemp = Number(novoRegistro[0].valor);
+            // tirando e colocando valores no gráfico de linhas
             dados.shift(); // apagar o primeiro
-            dados.push(novoRegistro[0].valor); // incluir um novo momento
+            dados.push(novaTemp); // incluir um novo momento
 
             console.log("Atualizado com sucesso");
 
-            // dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-            // dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-            // dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
-            // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
             myChart.update();
+
+            // Atualiza o gráfico de barras
+            atualizarGraficoBarra(novaTemp, tempMin, tempMax, myChartBarra);
           }
 
-          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
           proximaAtualizacao = setTimeout(
-            () => atualizarGrafico(idTanque, dados, myChart),
+            () => atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBarra),
             10000,
           );
         });
       } else {
         console.error("Nenhum dado encontrado ou erro na API");
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
         proximaAtualizacao = setTimeout(
-          () => atualizarGrafico(idTanque, dados, myChart),
+          () => atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBarra),
           10000,
         );
       }
