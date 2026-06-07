@@ -44,17 +44,11 @@ console.log("Unidade Selecionada", unidadeSelecionada);
 
 function inicializarDashboard() {
   console.log("dadosDashboard:", sessionStorage.getItem("dadosDashboard"));
-
-  console.log(
-    "unidadeSelecionada:",
-    sessionStorage.getItem("unidadeSelecionada"),
-  );
-
+  console.log("unidadeSelecionada:", sessionStorage.getItem("unidadeSelecionada"),);
   console.log("empresaUsuario:", sessionStorage.getItem("empresaUsuario"));
-
   console.log("grupoUsuario:", sessionStorage.getItem("grupoUsuario"));
-  // Pega a string guardada no Selecionar Unidade
 
+  // Pega a string guardada no Selecionar Unidade
   let dadosString = sessionStorage.dadosDashboard;
   console.log(`Dados da dashboard:\n${dadosString}`);
 
@@ -192,6 +186,27 @@ function carregarDashboardInicial() {
 }
 
 function carregarDashboard(tanque) {
+
+  // KPI de horario com maior variação
+  fetch(`/unidades/maior-variacao-tempo/${tanque.id}`)
+    .then((res) => {
+      if (!res.ok) throw new Error(`Erro do servidor: status ${res.status}`);
+      if (res.status === 204) return []; 
+      return res.json();
+    })
+    .then((data) => {
+      if (data.length > 0) {
+        document.getElementById("horarioVar").innerText = data[0].horario + "h";
+      } else {
+        document.getElementById("horarioVar").innerText = "--h";
+      }
+    })
+    .catch((err) => {
+      console.error("Erro ao buscar KPI de variação:", err);
+      document.getElementById("horarioVar").innerText = "--h";
+    });
+
+    
   // Data da medição
   document.getElementById("data_medicao").innerText =
     tanque.data_medicao || "--";
@@ -206,8 +221,8 @@ function carregarDashboard(tanque) {
   titulo.className = `titulo_tanque ${tanque.classe}`;
 
   // Métricas de "Horário médio com maior variação de temperatura na última semana", "Alertas nos Últimos 5 dias" e "Variação de Temperatura do Último Dia (24h)"
-  document.getElementById("horarioVar").innerText =
-    tanque.metricas.horarioVar + `h` + `m`;
+  // document.getElementById("horarioVar").innerText =
+  //   tanque.metricas.horarioVar + `h` + `m`;
 
   document.getElementById("alertasSemana").innerText =
     tanque.metricas.alertasSemana;
@@ -256,11 +271,12 @@ function carregarDashboard(tanque) {
     },
   });
   // Pega o horário já formatado do JSON
-  const horario = tanque.metricas.horarioVar;
+  // const horario = tanque.metricas.horarioVar;
 
   // Se existir, mostra direto
   // Se não existir, mostra "--" (fallback)
-  document.getElementById("horarioVar").innerText = horario || "--";
+  
+  // document.getElementById("horarioVar").innerText = horario || "--";
 
   // Uva usada para fazer o vinho daquele tanque
   document.getElementById("tipoUva").innerText =

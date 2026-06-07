@@ -144,7 +144,9 @@ function novoValor(req, res) {
 
 function buscarMaiorVariacao(req, res) {
 
-unidadeModel.buscarMaiorVariacao(idGrupo, idEmpresa)
+  var tanqueSelecionado = req.params.idTanque 
+
+unidadeModel.buscarMaiorVariacao(tanqueSelecionado)
     .then(function (resultado) {
       if (resultado.length > 0) {
         res.status(200).json(resultado);

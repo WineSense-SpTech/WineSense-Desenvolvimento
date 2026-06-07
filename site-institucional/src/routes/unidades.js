@@ -18,10 +18,10 @@ router.get(
 );
 
 router.get(
-  "/maior-variacao-tempo/:grupoUsuarioPar/:empresaUsuarioPar",
+  "/maior-variacao-tempo/:idTanque",
   function (req, res) {
     unidadeController.buscarMaiorVariacao(req, res);
-  }
+  },
 );
 
 module.exports = router;

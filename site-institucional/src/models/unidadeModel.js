@@ -53,37 +53,59 @@ function novoValor(idTanque) {
   return database.executar(instrucaoSql);
 }
 
-// query da KPI de MaiorVariação
-function buscarMaiorVariacao(idGrupo, empresaUsuario) {
-  if(empresaUsuario !="null"){
+function buscarMaiorVariacao(idTanque) {
+  // nova query para a KPI de horario com maior variação
   var instrucaoSql = `
-    SELECT 
+    SELECT
       HOUR(r.dataHora) as horario,
       ROUND((MAX(r.temperatura) - MIN(r.temperatura)), 2) as variacao
     FROM registro r
     JOIN tanque t ON r.fkSensor = t.fkSensor
-    JOIN empresa e ON t.fkEmpresa = e.codEmpresa
-    WHERE e.fkGrupo = '${grupoUsuario}'
+    WHERE t.idTanque = ${idTanque} 
     GROUP BY HOUR(r.dataHora)
     ORDER BY variacao DESC
     LIMIT 1;
-  `;}
-    else{
-      var instrucaoSql = `
-    SELECT 
-      HOUR(r.dataHora) as horario,
-      ROUND((MAX(r.temperatura) - MIN(r.temperatura)), 2) as variacao
-    FROM registro r
-    JOIN tanque t ON r.fkSensor = t.fkSensor
-    JOIN empresa e ON t.fkEmpresa = e.codEmpresa
-    WHERE e.codEmpresa = '${empresaUsuario}'
-    GROUP BY HOUR(r.dataHora)
-    ORDER BY variacao DESC
-    LIMIT 1;
-  `;}
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
+
+// Query antiga da KPI
+
+// query da KPI de MaiorVariação
+// function buscarMaiorVariacao(grupoUsuario, empresaUsuario) {
+//   if(empresaUsuario !="null"){
+//   var instrucaoSql = `
+//     SELECT 
+//       HOUR(r.dataHora) as horario,
+//       ROUND((MAX(r.temperatura) - MIN(r.temperatura)), 2) as variacao
+//     FROM registro r
+//     JOIN tanque t ON r.fkSensor = t.fkSensor
+//     JOIN empresa e ON t.fkEmpresa = e.codEmpresa
+//     WHERE e.codEmpresa = '${empresaUsuario}'
+//     GROUP BY HOUR(r.dataHora)
+//     ORDER BY variacao DESC
+//     LIMIT 1;
+//   `;}
+//     else{
+//       var instrucaoSql = `
+//     SELECT 
+//       HOUR(r.dataHora) as horario,
+//       ROUND((MAX(r.temperatura) - MIN(r.temperatura)), 2) as variacao
+//     FROM registro r
+//     JOIN tanque t ON r.fkSensor = t.fkSensor
+//     JOIN empresa e ON t.fkEmpresa = e.codEmpresa
+//     WHERE e.fkGrupo = '${grupoUsuario}'
+//     GROUP BY HOUR(r.dataHora)
+//     ORDER BY variacao DESC
+//     LIMIT 1;
+//   `;}
+//     console.log("Executando a instrução SQL: \n" + instrucaoSql);
+//   return database.executar(instrucaoSql);
+// }
+
+
 
 
 module.exports = {
