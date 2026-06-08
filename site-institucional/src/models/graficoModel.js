@@ -5,7 +5,7 @@ function obterGrafico(empresaUsuario) {
     SELECT * FROM obter_dados od
       WHERE od.fkGrupo = '${empresaUsuario}'
         ORDER BY od.dataHoraOriginal DESC
-        LIMIT 25;
+        LIMIT 21;
   `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

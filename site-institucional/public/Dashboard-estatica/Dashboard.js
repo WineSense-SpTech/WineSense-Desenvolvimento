@@ -239,17 +239,19 @@ function carregarDashboard(tanque) {
 
   const tempMax = tanque.temperatura.temp_max[0];
   const tempMin = tanque.temperatura.temp_min[0];
+  const labelsIniciais = tanque.temperatura.labels.slice(-21);
+  const valoresIniciais = tanque.temperatura.valores.slice(-21);
   const totalLabels = tanque.temperatura.labels.length;
 
   // Cria novo gráfico de linhas
   chartLinha = new Chart(document.getElementById("linha"), {
     type: "line",
     data: {
-      labels: tanque.temperatura.labels,
+      labels: labelsIniciais,
       datasets: [
         {
           label: "Temperatura",
-          data: tanque.temperatura.valores,
+          data: valoresIniciais,
           borderColor: "#7a2f4b",
           fill: false,
         },
@@ -311,7 +313,7 @@ function carregarDashboard(tanque) {
     },
   });
 
-  atualizarGrafico(tanque.id, tanque.temperatura.valores, chartLinha, tanque.temperatura.temp_min[0], tanque.temperatura.temp_max[0], chartBarra)
+  atualizarGrafico(tanque.id, valoresIniciais, chartLinha, tanque.temperatura.temp_min[0], tanque.temperatura.temp_max[0], chartBarra)
 }
 
 //Botão de voltar a seleção de unidades
