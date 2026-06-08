@@ -44,7 +44,10 @@ console.log("Unidade Selecionada", unidadeSelecionada);
 
 function inicializarDashboard() {
   console.log("dadosDashboard:", sessionStorage.getItem("dadosDashboard"));
-  console.log("unidadeSelecionada:", sessionStorage.getItem("unidadeSelecionada"),);
+  console.log(
+    "unidadeSelecionada:",
+    sessionStorage.getItem("unidadeSelecionada"),
+  );
   console.log("empresaUsuario:", sessionStorage.getItem("empresaUsuario"));
   console.log("grupoUsuario:", sessionStorage.getItem("grupoUsuario"));
 
@@ -198,7 +201,7 @@ function carregarDashboard(tanque) {
     })
     .then((data) => {
       if (data.length > 0) {
-        console.log('Maior variação de tempo', data);
+        console.log("Maior variação de tempo", data);
 
         document.getElementById("horarioVar").innerText = data[0].horario + "h";
       } else {
@@ -209,7 +212,6 @@ function carregarDashboard(tanque) {
       console.error("Erro ao buscar KPI de variação:", err);
       document.getElementById("horarioVar").innerText = "--h";
     });
-
 
   // Data da medição
   document.getElementById("data_medicao").innerText =
@@ -313,7 +315,14 @@ function carregarDashboard(tanque) {
     },
   });
 
-  atualizarGrafico(tanque.id, valoresIniciais, chartLinha, tanque.temperatura.temp_min[0], tanque.temperatura.temp_max[0], chartBarra)
+  atualizarGrafico(
+    tanque.id,
+    valoresIniciais,
+    chartLinha,
+    tanque.temperatura.temp_min[0],
+    tanque.temperatura.temp_max[0],
+    chartBarra,
+  );
 }
 
 //Botão de voltar a seleção de unidades
@@ -335,10 +344,14 @@ function sair() {
 var proximaAtualizacao;
 var alertasSeguidos = 0;
 
-let totalAlertasAcumulados = 0; 
+let totalAlertasAcumulados = 0;
 
-function atualizarGraficoBarra(novaTemperatura, tempMin, tempMax, myChartBarra) {
-
+function atualizarGraficoBarra(
+  novaTemperatura,
+  tempMin,
+  tempMax,
+  myChartBarra,
+) {
   // Verifica se a nova temperatura está fora dos limites do tanque.
   var estaForaDoLimite = novaTemperatura < tempMin || novaTemperatura > tempMax;
 
@@ -373,18 +386,23 @@ function atualizarGraficoBarra(novaTemperatura, tempMin, tempMax, myChartBarra) 
     totalAlertasAcumulados++;
     // Localiza o elemento idAlertasSemana ou alertasSemana conforme o seu HTML
     document.getElementById("alertasSemana").innerHTML = totalAlertasAcumulados;
-    document.getElementById("alertasSemana").style.color = "red";
   }
-
 }
 
-function atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBarra) {
+function atualizarGrafico(
+  idTanque,
+  dados,
+  myChart,
+  tempMin,
+  tempMax,
+  myChartBarra,
+) {
   // Se ja existir tanque atualizando, da clear na atualização dele
   if (proximaAtualizacao != undefined) {
     clearTimeout(proximaAtualizacao);
   }
 
-  console.log('Esse é o id do tanque: ', idTanque);
+  console.log("Esse é o id do tanque: ", idTanque);
 
   fetch(`/unidades/novovalor/${idTanque}`, { cache: "no-store" })
     .then(function (response) {
@@ -395,10 +413,7 @@ function atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBar
           console.log(`Dados atuais do gráfico:`);
           console.log(dados);
 
-          if (
-            novoRegistro[0].valor ==
-            dados[dados.length - 1]
-          ) {
+          if (novoRegistro[0].valor == dados[dados.length - 1]) {
             console.log(
               "---------------------------------------------------------------",
             );
@@ -413,10 +428,14 @@ function atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBar
               "---------------------------------------------------------------",
             );
           } else {
-
             var novaTemp = Number(novoRegistro[0].valor);
             // RECUPERA O HORÁRIO DO BANCO (Tratando se vier como dataHoraOriginal ou horario formatado)
-            var novoHorario = novoRegistro[0].horario || new Date(novoRegistro[0].dataHoraOriginal).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            var novoHorario =
+              novoRegistro[0].horario ||
+              new Date(novoRegistro[0].dataHoraOriginal).toLocaleTimeString(
+                "pt-BR",
+                { hour: "2-digit", minute: "2-digit" },
+              );
 
             // Atualiza os dados de temperatura
             //dados.shift();
@@ -426,10 +445,10 @@ function atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBar
             myChart.data.labels.push(novoHorario); // <--- Insere o horário do novo registro vindo do banco
 
             while (dados.length > 21) {
-              dados.shift(); 
+              dados.shift();
             }
             while (myChart.data.labels.length > 21) {
-              myChart.data.labels.shift(); 
+              myChart.data.labels.shift();
             }
 
             console.log("Gráfico de Linha e Horários atualizados com sucesso!");
@@ -441,14 +460,30 @@ function atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBar
           }
 
           proximaAtualizacao = setTimeout(
-            () => atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBarra),
+            () =>
+              atualizarGrafico(
+                idTanque,
+                dados,
+                myChart,
+                tempMin,
+                tempMax,
+                myChartBarra,
+              ),
             10000,
           );
         });
       } else {
         console.error("Nenhum dado encontrado ou erro na API");
         proximaAtualizacao = setTimeout(
-          () => atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBarra),
+          () =>
+            atualizarGrafico(
+              idTanque,
+              dados,
+              myChart,
+              tempMin,
+              tempMax,
+              myChartBarra,
+            ),
           10000,
         );
       }

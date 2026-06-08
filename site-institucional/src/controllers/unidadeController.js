@@ -12,11 +12,9 @@ function carregarUnidades(req, res) {
   unidadeModel
     .tanquesBase(grupoUsuario, empresaUsuario)
     .then(function (tanquesDB) {
-
       unidadeModel
         .registrosTemperatura(grupoUsuario, empresaUsuario)
         .then(function (registrosDB) {
-
           // JSON final que vai pro front.
           var respostaJSON = [];
 
@@ -26,7 +24,6 @@ function carregarUnidades(req, res) {
 
           // Percorre cada tanque que veio do banco.
           tanquesDB.forEach(function (tanque) {
-
             // Filtra só os registros que pertencem ao sensor deste tanque.
             var todosOsRegistrosDaSemana = registrosDB.filter(
               (reg) => reg.fkSensor === tanque.fkSensor,
@@ -102,8 +99,10 @@ function carregarUnidades(req, res) {
               }
 
               // Verifica se a temperatura está fora do limite da âncora.
-              if (valorTemperatura < tanque.temp_min_limite || valorTemperatura > tanque.temp_max_limite) {
-
+              if (
+                valorTemperatura < tanque.temp_min_limite ||
+                valorTemperatura > tanque.temp_max_limite
+              ) {
                 // Caso esteja fora, aumenta o contador.
                 leiturasRuinsSeguidas++;
 
@@ -113,7 +112,6 @@ function carregarUnidades(req, res) {
                 } else {
                   contagemPorDia[dataAtual].atencao++; // Conta como Atenção.
                 }
-
               } else {
                 // Caso volte ao normal, zera o contador.
                 leiturasRuinsSeguidas = 0;
@@ -122,6 +120,26 @@ function carregarUnidades(req, res) {
 
             // Pega apenas os últimos 5 dias dessa lista.
             var ultimos5Dias = diasComRegistro.slice(-5);
+
+            // Criando as variáveis para armazenar o valor que o status do tanque terá e a cor que ele receberá.
+            let status;
+            let classe;
+
+            // Se não teve nenhum alerta na semana, o status é "Regular".
+            if (alertasReaisDaSemana === 0) {
+              status = "Regular";
+              classe = "normal";
+
+              // Se teve até 20 alerta na semana, o alerta terá o status "Atenção".
+            } else if (alertasReaisDaSemana <= 20) {
+              status = "Atenção";
+              classe = "atencao yellow";
+
+              // Se tiver mais de 20 alertas o status será "Crítico".
+            } else {
+              status = "Crítico";
+              classe = "critico red";
+            }
 
             // Cria os arrays que vão para o gráfico no front.
             var labelsAlertas = [];
@@ -145,12 +163,8 @@ function carregarUnidades(req, res) {
             // Monta o objeto que representa um tanque na resposta.
             var objetoTanque = {
               id: tanque.id,
-
-              // Se teve algum alerta na semana, o status é "Crítico", senão, "Regular".
-              status: alertasReaisDaSemana > 0 ? "Crítico" : "Regular",
-
-              // Essa classe CSS vai colorir o card de vermelho ou verde no front-end.
-              classe: alertasReaisDaSemana > 0 ? "critico red" : "normal",
+              status: status,
+              classe: classe,
 
               Uva: tanque.uva_nome,
 
@@ -226,32 +240,39 @@ function carregarUnidades(req, res) {
 function novoValor(req, res) {
   var idTanque = req.params.idTanque;
 
-  unidadeModel.novoValor(idTanque).then((resultado) => {
-    if (resultado.length > 0) {
-      res.status(200).json(resultado);
-    } else {
-      res.status(204).json.send(`Não foi encontrado novo valor`);
-    }
-  }).catch(function (erro) {
-    console.log(erro);
-    console.log("Houve um erro ao buscar os registros: ", erro.sqlMessage);
-    res.status(500).json(erro.sqlMessage);
-  });
+  unidadeModel
+    .novoValor(idTanque)
+    .then((resultado) => {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        res.status(204).json.send(`Não foi encontrado novo valor`);
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log("Houve um erro ao buscar os registros: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
 }
 
 function buscarMaiorVariacao(req, res) {
+  var tanqueSelecionado = req.params.idTanque;
 
-  var tanqueSelecionado = req.params.idTanque
-
-  unidadeModel.buscarMaiorVariacao(tanqueSelecionado)
+  unidadeModel
+    .buscarMaiorVariacao(tanqueSelecionado)
     .then(function (resultado) {
       if (resultado.length > 0) {
         res.status(200).json(resultado);
       } else {
         res.status(204).send("Nenhum registro encontrado!");
       }
-    }).catch(function (erro) {
-      console.log("Houve um erro ao buscar as variações de temperatura: ", erro.sqlMessage);
+    })
+    .catch(function (erro) {
+      console.log(
+        "Houve um erro ao buscar as variações de temperatura: ",
+        erro.sqlMessage,
+      );
       res.status(500).json(erro.sqlMessage);
     });
 }
