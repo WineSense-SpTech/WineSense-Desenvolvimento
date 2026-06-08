@@ -417,12 +417,18 @@ function atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBar
             var novoHorario = novoRegistro[0].horario || new Date(novoRegistro[0].dataHoraOriginal).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
             // Atualiza os dados de temperatura
-            dados.shift();
+            //dados.shift();
             dados.push(novaTemp);
 
-            // CORREÇÃO: Atualiza os horários correspondentes no eixo X do gráfico
-            myChart.data.labels.shift();   // <--- Remove o texto do horário mais velho (Limpa o eixo X)
+            //myChart.data.labels.shift();   // <--- Remove o texto do horário mais velho (Limpa o eixo X)
             myChart.data.labels.push(novoHorario); // <--- Insere o horário do novo registro vindo do banco
+
+            while (dados.length > 21) {
+              dados.shift(); 
+            }
+            while (myChart.data.labels.length > 21) {
+              myChart.data.labels.shift(); 
+            }
 
             console.log("Gráfico de Linha e Horários atualizados com sucesso!");
 
