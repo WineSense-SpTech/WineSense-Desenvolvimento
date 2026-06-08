@@ -179,7 +179,7 @@ if (document.title.includes("Login")) {
             if (json.email.includes("@winesense.com")) {
               window.location = "../bobia/index.html";
             } else {
-              window.location = "../Dashboard-estatica/SelecionarUnidade.html";
+              window.location = "../Dashboard-estatica/selecionarUnidade.html";
             }
           }
         });

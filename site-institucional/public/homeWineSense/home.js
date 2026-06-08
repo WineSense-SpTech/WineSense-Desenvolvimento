@@ -1,4 +1,3 @@
-
 document.getElementById('contatoForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -11,14 +10,23 @@ document.getElementById('contatoForm').addEventListener('submit', async function
     try {
         const res = await fetch('/jira/contato', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(dados),
         });
+
         const data = await res.json();
 
-        if (res.ok) alert('Solicitação enviada! Ticket: ' + data.key);
-        else alert(data.erro || 'Erro ao enviar.');
-    } catch {
+        if (res.ok) {
+            alert(`Solicitação enviada! Ticket: ${data.key}`);
+        } else {
+            console.error(data);
+            alert('Erro ao enviar solicitação.');
+        }
+
+    } catch (erro) {
+        console.error(erro);
         alert('Erro de conexão. Tente novamente.');
     }
 });
