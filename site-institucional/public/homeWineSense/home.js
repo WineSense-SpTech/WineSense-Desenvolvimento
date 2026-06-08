@@ -16,7 +16,7 @@ document.getElementById('contatoForm').addEventListener('submit', async function
         });
         const data = await res.json();
 
-        if (res.ok) alert('Solicitação enviada! Ticket: ' + data.ticket);
+        if (res.ok) alert('Solicitação enviada! Ticket: ' + data.key);
         else alert(data.erro || 'Erro ao enviar.');
     } catch {
         alert('Erro de conexão. Tente novamente.');

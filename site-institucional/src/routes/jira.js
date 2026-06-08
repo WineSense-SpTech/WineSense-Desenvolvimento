@@ -42,10 +42,10 @@ router.post("/contato", async (req, res) => {
                             ]
                         },
                         issuetype: {
-                            name: "Task"
+                            name: process.env.JIRA_ISSUE_TYPE
                         }
                     }
-                })
+                }) 
             }
         );
 
