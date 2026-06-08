@@ -333,6 +333,8 @@ function sair() {
 var proximaAtualizacao;
 var alertasSeguidos = 0;
 
+let totalAlertasAcumulados = 0; 
+
 function atualizarGraficoBarra(novaTemperatura, tempMin, tempMax, myChartBarra) {
 
   // Verifica se a nova temperatura está fora dos limites do tanque.
@@ -365,7 +367,7 @@ function atualizarGraficoBarra(novaTemperatura, tempMin, tempMax, myChartBarra) 
   // Chart.js redesenha o gráfico com os novos valores
   myChartBarra.update();
 
-  if (novaTemp < tempMin || novaTemp > tempMax) {
+  if (novaTemperatura < tempMin || novaTemperatura > tempMax) {
     totalAlertasAcumulados++;
     // Localiza o elemento idAlertasSemana ou alertasSemana conforme o seu HTML
     document.getElementById("alertasSemana").innerHTML = totalAlertasAcumulados;
@@ -419,8 +421,8 @@ function atualizarGrafico(idTanque, dados, myChart, tempMin, tempMax, myChartBar
             dados.push(novaTemp);
 
             // CORREÇÃO: Atualiza os horários correspondentes no eixo X do gráfico
-            myChart.data.labels.shift(); // Remove o horário mais antigo
-            myChart.data.labels.push(novoHorario); // Adiciona o horário atual do banco
+            myChart.data.labels.shift();   // <--- Remove o texto do horário mais velho (Limpa o eixo X)
+            myChart.data.labels.push(novoHorario); // <--- Insere o horário do novo registro vindo do banco
 
             console.log("Gráfico de Linha e Horários atualizados com sucesso!");
 
