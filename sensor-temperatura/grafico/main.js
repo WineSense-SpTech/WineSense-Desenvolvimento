@@ -63,39 +63,34 @@ const serial = async (
         if (HABILITAR_OPERACAO_INSERIR) {
             const tempOriginal = Number(sensorTemp);
 
-            // Definição das variações calibradas para os 26 sensores oficiais
+            // Definição das variações calibradas para os 26 sensores
             const variacoes = [
-                // ====== SÃO PAULO (Sensores 1 ao 11) ======
-                { fkSensor: 1, valor: tempOriginal },               // SP-T01: Temperatura Normal (~14.0°C)
-                { fkSensor: 2, valor: tempOriginal + 0.5 },         // SP-T02: Variação sutil (~14.5°C)
-                { fkSensor: 3, valor: tempOriginal - 0.8 },         // SP-T03: Estável frio (~13.2°C)
-                { fkSensor: 4, valor: tempOriginal + 2.1 },         // SP-T04: Atenção Quente (~16.1°C)
-                { fkSensor: 5, valor: tempOriginal - 1.5 },         // SP-T05: Estável frio (~12.5°C)
-                { fkSensor: 6, valor: tempOriginal + 0.2 },         // SP-T06: Temperatura Normal (~14.2°C)
-                { fkSensor: 7, valor: tempOriginal + 5.5 },         // SP-T07: CRÍTICO QUENTE / DEFEITUOSO (~19.5°C)
-                { fkSensor: 8, valor: tempOriginal - 3.2 },         // SP-T08: Alerta Frio (~10.8°C)
-                { fkSensor: 9, valor: tempOriginal + 1.2 },         // SP-T09: Estável alto (~15.2°C)
-                { fkSensor: 10, valor: tempOriginal - 0.4 },        // SP-T10: Temperatura Normal (~13.6°C)
-                { fkSensor: 11, valor: tempOriginal + 2.8 },        // SP-T11: Atenção Quente (~16.8°C)
-
-                // ====== CAMPINAS (Sensores 12 ao 17) ======
-                { fkSensor: 12, valor: tempOriginal - 0.1 },        // CP-T01: Temperatura Normal (~13.9°C)
-                { fkSensor: 13, valor: tempOriginal + 1.7 },        // CP-T02: Estável alto (~15.7°C)
-                { fkSensor: 14, valor: tempOriginal - 2.5 },        // CP-T03: Alerta Frio (~11.5°C)
-                { fkSensor: 15, valor: tempOriginal + 0.9 },        // CP-T04: Temperatura Normal (~14.9°C)
-                { fkSensor: 16, valor: tempOriginal + 4.2 },        // CP-T05: CRÍTICO QUENTE (~18.2°C)
-                { fkSensor: 17, valor: tempOriginal - 0.7 },        // CP-T06: Estável frio (~13.3°C)
-
-                // ====== RIO DE JANEIRO (Sensores 18 ao 26) ======
-                { fkSensor: 18, valor: tempOriginal + 0.3 },        // RJ-T01: Temperatura Normal (~14.3°C)
-                { fkSensor: 19, valor: tempOriginal + 2.6 },        // RJ-T02: Atenção Quente (~16.6°C)
-                { fkSensor: 20, valor: tempOriginal - 1.1 },        // RJ-T03: Estável frio (~12.9°C)
-                { fkSensor: 21, valor: tempOriginal * 1.05 },       // RJ-T04: Variação percentual (~14.7°C)
-                { fkSensor: 22, valor: tempOriginal - 3.5 },        // RJ-T05: CRÍTICO FRIO (~10.5°C)
-                { fkSensor: 23, valor: tempOriginal + 1.1 },        // RJ-T06: Temperatura Normal (~15.1°C)
-                { fkSensor: 24, valor: tempOriginal - 0.2 },        // RJ-T07: Estável frio (~13.8°C)
-                { fkSensor: 25, valor: tempOriginal + 4.8 },        // RJ-T08: CRÍTICO QUENTE (~18.8°C)
-                { fkSensor: 26, valor: tempOriginal }               // RJ-T09: Temperatura Normal (~14.0°C)
+                { fkSensor: 1, valor: tempOriginal },
+                { fkSensor: 2, valor: tempOriginal + 0.5 },
+                { fkSensor: 3, valor: tempOriginal - 0.8 },
+                { fkSensor: 4, valor: tempOriginal + 2.1 },
+                { fkSensor: 5, valor: tempOriginal - 1.5 },
+                { fkSensor: 6, valor: tempOriginal + 0.2 },
+                { fkSensor: 7, valor: tempOriginal + 5.5 },
+                { fkSensor: 8, valor: tempOriginal - 3.2 },
+                { fkSensor: 9, valor: tempOriginal + 1.2 },
+                { fkSensor: 10, valor: tempOriginal - 0.4 },
+                { fkSensor: 11, valor: tempOriginal + 2.8 },
+                { fkSensor: 12, valor: tempOriginal - 0.1 },
+                { fkSensor: 13, valor: tempOriginal + 1.7 },
+                { fkSensor: 14, valor: tempOriginal - 2.5 },
+                { fkSensor: 15, valor: tempOriginal + 0.9 },
+                { fkSensor: 16, valor: tempOriginal + 4.2 },
+                { fkSensor: 17, valor: tempOriginal - 0.7 },
+                { fkSensor: 18, valor: tempOriginal + 0.3 },
+                { fkSensor: 19, valor: tempOriginal + 2.6 },
+                { fkSensor: 20, valor: tempOriginal - 1.1 },
+                { fkSensor: 21, valor: tempOriginal * 1.05 },
+                { fkSensor: 22, valor: tempOriginal - 3.5 },
+                { fkSensor: 23, valor: tempOriginal + 1.1 },
+                { fkSensor: 24, valor: tempOriginal - 0.2 },
+                { fkSensor: 25, valor: tempOriginal + 4.8 },
+                { fkSensor: 26, valor: tempOriginal }
             ];
 
             // Executa as inserções em lote para os 26 sensores simulados

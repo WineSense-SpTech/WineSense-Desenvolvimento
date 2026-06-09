@@ -50,11 +50,11 @@ nav a {
     transition: 0.3s;
 }
 
-.header_login{
-     margin-right: 140px;
+.header_login {
+    margin-right: 140px;
 }
 
-.header_dash{
+.header_dash {
     margin-left: 140px;
 }
 
@@ -328,6 +328,10 @@ textarea:focus {
 
 .red {
     color: red;
+}
+
+.amarelo {
+    color: orange;
 }
 
 /*DASHBOARD*/

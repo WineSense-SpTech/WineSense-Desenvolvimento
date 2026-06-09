@@ -25,14 +25,14 @@ function registrosTemperatura(grupoUsuario, empresaUsuario) {
     var instrucaoSql = `
     SELECT * FROM registros_temp rt
       WHERE rt.codEmpresa = '${empresaUsuario}'
-        AND rt.dataHoraOriginal >= DATE_SUB(NOW(), INTERVAL 20 DAY)
+        AND rt.dataHoraOriginal >= DATE_SUB(NOW(), INTERVAL 5 DAY)
       ORDER BY rt.fkSensor, rt.dataHoraOriginal;
   `;
   } else {
     var instrucaoSql = `
     SELECT * FROM registros_temp rt
       WHERE rt.fkGrupo = '${grupoUsuario}'
-        AND rt.dataHoraOriginal >= DATE_SUB(NOW(), INTERVAL 20 DAY)
+        AND rt.dataHoraOriginal >= DATE_SUB(NOW(), INTERVAL 5 DAY)
       ORDER BY rt.fkSensor, rt.dataHoraOriginal;
   `;
   }

@@ -133,7 +133,7 @@ function carregarUnidades(req, res) {
               // Se teve até 20 alerta na semana, o alerta terá o status "Atenção".
             } else if (alertasReaisDaSemana <= 20) {
               status = "Atenção";
-              classe = "atencao yellow";
+              classe = "atencao amarelo";
 
               // Se tiver mais de 20 alertas o status será "Crítico".
             } else {

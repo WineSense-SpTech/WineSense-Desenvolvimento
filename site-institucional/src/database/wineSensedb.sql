@@ -262,13 +262,6 @@ INSERT INTO tanque (codTanque, localTanque, fkSensor, fkVinho, fkEmpresa) VALUES
 ('RJ-T08', 'Galpão D - Rio',       25, 11, 'RJ001'),  -- Carmenere
 ('RJ-T09', 'Galpão E - Rio',       26,  9, 'RJ001');  -- Tannat
 
--- ============================================================
--- REGISTROS
--- Gerados a cada 5 min (10:00–12:00) em 5 dias (01/05–05/05/2025)
--- para todos os 26 sensores, reproduzindo fielmente os valores
--- do JSON. Cada bloco: sensor X, 25 leituras × 5 dias = 125 registros.
--- ============================================================
-
 -- ── Sensor 1 — SP-T01 Malbec ─────────────────────────────────
 INSERT INTO registro (dataHora, temperatura, fkSensor) VALUES
 ('2025-05-01 10:00:00', 21.5, 1), ('2025-05-01 10:05:00', 21.2, 1), ('2025-05-01 10:10:00', 20.8, 1), ('2025-05-01 10:15:00', 20.4, 1), ('2025-05-01 10:20:00', 19.8, 1),

@@ -23,6 +23,8 @@ const container = document.getElementById("carrossel");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
 
+let alertasKPI;
+
 // Lista que vai armazenar todos os tanques da unidade selecionada
 let tanques = [];
 
@@ -233,6 +235,8 @@ function carregarDashboard(tanque) {
   document.getElementById("alertasSemana").innerText =
     tanque.metricas.alertasSemana;
 
+  alertasKPI = tanque.metricas.alertasSemana
+
   document.getElementById("varMinMax").innerText =
     `${tanque.metricas.varMin}°C - ${tanque.metricas.varMax}°C`;
 
@@ -373,20 +377,16 @@ function atualizarGraficoBarra(
     // Se 7 alertas seguidos, adiciona Urgente
     myChartBarra.data.datasets[0].data[indiceDiaHoje]++;
     console.log("Alerta Urgente registrado no gráfico de barras.");
+    document.getElementById("alertasSemana").innerText = Number(alertasKPI) + 1;
   } else {
     // Senão, adiciona Atenção
     myChartBarra.data.datasets[1].data[indiceDiaHoje]++;
     console.log("Alerta Atenção registrado no gráfico de barras.");
+    document.getElementById("alertasSemana").innerText = Number(alertasKPI) + 1;
   }
 
   // Chart.js redesenha o gráfico com os novos valores
   myChartBarra.update();
-
-  if (novaTemperatura < tempMin || novaTemperatura > tempMax) {
-    totalAlertasAcumulados++;
-    // Localiza o elemento idAlertasSemana ou alertasSemana conforme o seu HTML
-    document.getElementById("alertasSemana").innerHTML = totalAlertasAcumulados;
-  }
 }
 
 function atualizarGrafico(
