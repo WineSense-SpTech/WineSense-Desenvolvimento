@@ -26,13 +26,14 @@ body::selection {
     display: flex;
     align-items: center;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 nav {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    margin-right: 20px;
 }
 
 .menu {
@@ -48,6 +49,8 @@ nav a {
     text-decoration: none;
     color: #3B1E2C;
     transition: 0.3s;
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
 .header_login {
@@ -61,6 +64,12 @@ nav a {
 .logo img {
     width: 120px;
     margin-left: 10px;
+    transition: 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 .navegacao {
@@ -72,11 +81,70 @@ nav a {
 .menu a:hover,
 nav a:hover {
     color: #4a2333;
-    text-decoration: underline;
 }
 
-.btn_principal,
-.btn_entrar,
+.btn_principal{
+    background: #4a2333;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn_principal:hover{
+    background: #4b2534;
+    transform: scale(1.02);
+}
+
+.btn_entrar{
+    background: #ecd9c4;
+    font-size: 1.3rem;
+    color: #4a2333;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn_entrar:hover{
+    background: #4a2333;
+    color: #ebddd0;
+    transform: scale(1.02);
+}
+
+.btn_enviar span{
+    display: flex;
+    flex-direction: row;
+    background: #4a2333;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    padding: 4px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn_enviar img {
+    margin-left: 10px;
+}
+
+.btn_enviar h3 {
+    margin-top: 2px;
+}
+
+.btn_enviar:hover{
+    background: #4b2534;
+    transform: scale(1.02);
+}
+
 .btn-primary,
 button {
     background: #4a2333;
@@ -107,10 +175,9 @@ button {
     margin: 10px auto;
 }
 
-.btn_principal:hover,
-.btn_entrar:hover,
+
+
 .btn-primary:hover,
-.btn_enviar:hover,
 button:hover {
     background: #6d344b;
     transform: scale(0.98);
@@ -126,11 +193,19 @@ button:hover {
 
 .hero_texto {
     width: 50%;
+    
 }
 
 .hero_texto h1 {
-    font-size: 2.5rem;
+    font-size: 5.4rem;
     margin-bottom: 15px;
+    text-align: left;
+}
+
+.hero_texto p {
+    font-size: 1.2rem;
+    color: #5c4b4b;
+    text-align: left;
 }
 
 .imagem img {
@@ -152,14 +227,30 @@ section {
     margin: auto;
 }
 
+.section2 h2{
+    font-size: 3.2rem;
+    margin-bottom: 10px;
+    color: #4a2333;
+}
+
+.section2 p{
+    font-size: 1.1rem;
+    color: #5c4b4b;
+}
+
 .borderDashed {
     border-bottom: 4px dashed #B37D33;
 }
 
-h2 {
-    font-size: 2.2rem;
+.borderDashed h2 {
+    font-size: 3.2rem;
     margin-bottom: 10px;
     color: #4a2333;
+}
+
+.borderDashed p{
+    font-size: 1.1rem;
+    color: #5c4b4b;
 }
 
 .cards_container {
@@ -180,6 +271,10 @@ h2 {
 
 .card:hover {
     transform: translateY(-5px);
+}
+
+.card p{
+    color: #3B1E2C;
 }
 
 .container_diagrama {
@@ -474,31 +569,57 @@ textarea:focus {
 /*FOOTER*/
 
 footer {
-    background: #1a1a1a;
-    color: white;
-    padding: 40px 20px;
-    margin-top: 50px;
+  background: #1a1a1a;
+  color: white;
+  padding: 40px 20px;
+  margin-top: 50px;
 }
 
 footer a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: lightgray;
+  color: lightgray;
+}
+
+.title_footer {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.title_footer h3 {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
 }
 
 .rodape_colunas {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 footer ul {
-    list-style: none;
+  list-style: none;
+  padding: 0;
 }
+
+.coluna li:first-child {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.coluna li {
+  margin-bottom: 8px;
+}
+
 
 /*RESPONSIVO*/
 
